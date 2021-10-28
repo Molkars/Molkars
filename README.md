@@ -6,4 +6,4 @@
 📫 Email me at `Molkars@outlook.com`\
 😄 Pronouns: He/Him\
 ⚡ Fun fact: The first language I learned is python, now it's my least favorite\
-📚 Education: B.Sc of Computer Science at Montana State University-Bozeman\
+📚 Education: B.Sc of Computer Science at Montana State University-Bozeman
