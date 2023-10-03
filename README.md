@@ -1,9 +1,14 @@
-### Hi there 👋
 
-🔭 I’m currently working on my own programming language named Vulture\
-🌱 I’m currently learning C, advanced SQL, advanced Rust, Proxmox VE and System Administration\
-💬 Ask me about anything!\
-📫 Email me at `dillon@molkars.dev`\
-😄 Pronouns: He/Him\
-⚡ Fun fact: The first language I learned is python, now it's my least favorite\
-📚 Education: B.Sc of Computer Science at Montana State University-Bozeman
+Hi, My name is Dillon Shaffer a.k.a Molkars.
+
+### Employment
+ - Software-engineering intern @ [quiq](https://quiq.com)
+ - Cloud Security & Software Engineering Intern @ [Blackthorne Consulting](https://www.blackthorneconsulting.com/)
+
+### Education
+
+ - High School Diploma from (somewhere)
+ - Pursuing a Bachelor's Degree in Computer Science from Montana State University.
+
+### Socials
+[Linked-In](https://linkedin.com/dillon-shaffer)
