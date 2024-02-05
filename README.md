@@ -5,7 +5,6 @@ Quack.
 
 ## Statistics
 
-![GitHub stats block: overview](https://raw.githubusercontent.com/Molkars/github-stats/master/generated/overview.svg#gh-dark-mode-only)
-![](https://raw.githubusercontent.com/Molkars/github-stats/master/generated/overview.svg#gh-light-mode-only)
-![GitHub stats block: languages](https://raw.githubusercontent.com/Molkars/github-stats/master/generated/languages.svg#gh-dark-mode-only)
-![](https://raw.githubusercontent.com/Molkars/github-stats/master/generated/languages.svg#gh-light-mode-only)
+![Molkars's Stats](https://github-readme-stats.vercel.app/api?username=Molkars&theme=solarized-light&show_icons=true&hide_border=true&count_private=true)
+![Molkars's Streak](https://github-readme-streak-stats.herokuapp.com/?user=Molkars&theme=solarized-light&hide_border=true)
+![Molkars's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Molkars&theme=solarized-light&show_icons=true&hide_border=true&layout=compact)
