@@ -1,7 +1,7 @@
 
 Hi, My name is Dillon Shaffer a.k.a Molkars.
 
-Quack.
+Quack. ASM > C/C++ > Rust
 
 ## Statistics
 
