@@ -1,0 +1,322 @@
+{
+ "user": "Molkars",
+ "colors": {
+  "Rust": "#dea584",
+  "Java": "#b07219",
+  "Dart": "#00b4ab",
+  "C": "#555555",
+  "C++": "#f34b7d",
+  "Kotlin": "#a97bff",
+  "Python": "#3572a5",
+  "JavaScript": "#f1e05a",
+  "TypeScript": "#3178c6",
+  "Ruby": "#701516",
+  "Swift": "#f05138",
+  "Objective-C": "#438eff",
+  "Lean": "#6e7681",
+  "Go": "#00add8",
+  "Zig": "#ec915c",
+  "Haskell": "#5e5086"
+ },
+ "totals": {
+  "Rust": 459338,
+  "Java": 380548,
+  "Dart": 219715,
+  "C": 67468,
+  "Python": 21503,
+  "Kotlin": 15337,
+  "Ruby": 6923,
+  "JavaScript": 1833,
+  "Swift": 404,
+  "Objective-C": 38
+ },
+ "repos": [
+  {
+   "name": "chemistry_calculator",
+   "url": "https://github.com/Molkars/chemistry_calculator",
+   "description": "A flutter app that does simple calculations for chemsitry",
+   "pushed_at": "2020-06-24T14:48:53Z",
+   "languages": {
+    "Dart": 184550,
+    "Kotlin": 424,
+    "Swift": 404,
+    "Objective-C": 38
+   },
+   "note": ""
+  },
+  {
+   "name": "csci-468-spring2024",
+   "url": "https://github.com/Molkars/csci-468-spring2024",
+   "description": "CSCI 468 Spring 2024",
+   "pushed_at": "2024-01-30T22:26:43Z",
+   "languages": {
+    "Java": 171231,
+    "Ruby": 6923,
+    "JavaScript": 694
+   },
+   "note": ""
+  },
+  {
+   "name": "jsl",
+   "url": "https://github.com/Molkars/jsl",
+   "description": "Java Scripting Language",
+   "pushed_at": "2023-10-23T14:28:52Z",
+   "languages": {
+    "Java": 132839
+   },
+   "note": ""
+  },
+  {
+   "name": "aio",
+   "url": "https://github.com/Molkars/aio",
+   "description": "An All-In-One (aio) library for applications",
+   "pushed_at": "2024-04-22T18:14:49Z",
+   "languages": {
+    "Rust": 115770
+   },
+   "note": ""
+  },
+  {
+   "name": "pcode-emulator-rs",
+   "url": "https://github.com/Molkars/pcode-emulator-rs",
+   "description": "A p-code emulator written in Rust",
+   "pushed_at": "2024-02-23T16:06:14Z",
+   "languages": {
+    "Rust": 69787
+   },
+   "note": "sleigh/ and sleigh-sys/ vendor Ghidra's C++ decompiler"
+  },
+  {
+   "name": "sea.c",
+   "url": "https://github.com/Molkars/sea.c",
+   "description": "the sea programming language (a simplified version of C for student instruction)",
+   "pushed_at": "2023-11-15T15:00:04Z",
+   "languages": {
+    "C": 61089
+   },
+   "note": ""
+  },
+  {
+   "name": "molksite",
+   "url": "https://github.com/Molkars/molksite",
+   "description": "my public website",
+   "pushed_at": "2024-08-26T23:43:19Z",
+   "languages": {
+    "Rust": 58899,
+    "JavaScript": 446
+   },
+   "note": ""
+  },
+  {
+   "name": "Vesper",
+   "url": "https://github.com/Molkars/Vesper",
+   "description": "A custom papermc plugin for my Minecraft Server",
+   "pushed_at": "2021-04-13T00:44:20Z",
+   "languages": {
+    "Java": 46761
+   },
+   "note": ""
+  },
+  {
+   "name": "serde_value",
+   "url": "https://github.com/Molkars/serde_value",
+   "description": "An intermediate-value library built on serde serialization",
+   "pushed_at": "2024-02-03T16:20:05Z",
+   "languages": {
+    "Rust": 36894
+   },
+   "note": ""
+  },
+  {
+   "name": "kingfisher",
+   "url": "https://github.com/Molkars/kingfisher",
+   "description": "A router implementation for dart,supports optional, variable, and static routes.",
+   "pushed_at": "2021-05-24T21:14:31Z",
+   "languages": {
+    "Dart": 32701
+   },
+   "note": ""
+  },
+  {
+   "name": "parse_rs",
+   "url": "https://github.com/Molkars/parse_rs",
+   "description": "A simple rust based language",
+   "pushed_at": "2024-01-05T13:37:39Z",
+   "languages": {
+    "Rust": 31602
+   },
+   "note": ""
+  },
+  {
+   "name": "dparse-derive",
+   "url": "https://github.com/Molkars/dparse-derive",
+   "description": "",
+   "pushed_at": "2023-11-20T14:51:47Z",
+   "languages": {
+    "Rust": 24604
+   },
+   "note": ""
+  },
+  {
+   "name": "scripts",
+   "url": "https://github.com/Molkars/scripts",
+   "description": "some useful python scripts",
+   "pushed_at": "2024-01-16T19:28:55Z",
+   "languages": {
+    "Python": 21503
+   },
+   "note": ""
+  },
+  {
+   "name": "wfc-rust",
+   "url": "https://github.com/Molkars/wfc-rust",
+   "description": "An implementation of the wave-function-collapse algorithm in rust.",
+   "pushed_at": "2022-11-01T14:40:07Z",
+   "languages": {
+    "Rust": 19517
+   },
+   "note": ""
+  },
+  {
+   "name": "pcompute",
+   "url": "https://github.com/Molkars/pcompute",
+   "description": "",
+   "pushed_at": "2023-12-12T22:31:04Z",
+   "languages": {
+    "Rust": 18535
+   },
+   "note": ""
+  },
+  {
+   "name": "dparse-html",
+   "url": "https://github.com/Molkars/dparse-html",
+   "description": "A very simple html parser built on my dparse library",
+   "pushed_at": "2023-11-19T02:53:59Z",
+   "languages": {
+    "Rust": 17964
+   },
+   "note": ""
+  },
+  {
+   "name": "thrume",
+   "url": "https://github.com/Molkars/thrume",
+   "description": "",
+   "pushed_at": "2026-05-16T07:47:57Z",
+   "languages": {
+    "Java": 15721
+   },
+   "note": ""
+  },
+  {
+   "name": "dndumb",
+   "url": "https://github.com/Molkars/dndumb",
+   "description": "A Kotlin D&D app",
+   "pushed_at": "2025-06-02T16:59:44Z",
+   "languages": {
+    "Kotlin": 14913,
+    "JavaScript": 693
+   },
+   "note": ""
+  },
+  {
+   "name": "glide",
+   "url": "https://github.com/Molkars/glide",
+   "description": "a ui library in rust",
+   "pushed_at": "2024-02-26T20:55:26Z",
+   "languages": {
+    "Rust": 15602
+   },
+   "note": ""
+  },
+  {
+   "name": "nobuild-rs",
+   "url": "https://github.com/Molkars/nobuild-rs",
+   "description": "a nobuild library written in rust",
+   "pushed_at": "2023-09-02T19:52:37Z",
+   "languages": {
+    "Rust": 15136
+   },
+   "note": ""
+  },
+  {
+   "name": "expando",
+   "url": "https://github.com/Molkars/expando",
+   "description": "A minecraft paper plugin for 1.16-1.17",
+   "pushed_at": "2021-11-04T16:51:31Z",
+   "languages": {
+    "Java": 13996
+   },
+   "note": ""
+  },
+  {
+   "name": "dparse",
+   "url": "https://github.com/Molkars/dparse",
+   "description": "A parsing library for rust",
+   "pushed_at": "2024-06-10T10:25:54Z",
+   "languages": {
+    "Rust": 13672
+   },
+   "note": ""
+  },
+  {
+   "name": "parser-utils-rs",
+   "url": "https://github.com/Molkars/parser-utils-rs",
+   "description": "",
+   "pushed_at": "2023-08-01T18:37:27Z",
+   "languages": {
+    "Rust": 12030
+   },
+   "note": ""
+  },
+  {
+   "name": "simpl",
+   "url": "https://github.com/Molkars/simpl",
+   "description": "",
+   "pushed_at": "2024-03-01T16:37:38Z",
+   "languages": {
+    "Rust": 9231
+   },
+   "note": ""
+  },
+  {
+   "name": "uber.c",
+   "url": "https://github.com/Molkars/uber.c",
+   "description": "",
+   "pushed_at": "2023-11-02T16:49:37Z",
+   "languages": {
+    "C": 5550
+   },
+   "note": ""
+  },
+  {
+   "name": "sockets",
+   "url": "https://github.com/Molkars/sockets",
+   "description": "",
+   "pushed_at": "2021-11-12T22:34:17Z",
+   "languages": {
+    "Dart": 2464
+   },
+   "note": ""
+  },
+  {
+   "name": "m442",
+   "url": "https://github.com/Molkars/m442",
+   "description": "A very small amount of code I did for M442",
+   "pushed_at": "2025-05-16T18:56:58Z",
+   "languages": {
+    "C": 829
+   },
+   "note": ""
+  },
+  {
+   "name": "safe_builder",
+   "url": "https://github.com/Molkars/safe_builder",
+   "description": "",
+   "pushed_at": "2024-01-14T00:05:05Z",
+   "languages": {
+    "Rust": 95
+   },
+   "note": ""
+  }
+ ]
+}

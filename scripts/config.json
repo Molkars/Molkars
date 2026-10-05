@@ -1,0 +1,13 @@
+{
+  "user": "Molkars",
+  "include_forks": false,
+  "skip_repos": ["Molkars", "template-testing", "template-testing-clone", "template-testing-clone-2"],
+  "skip_languages": ["Dockerfile", "Makefile", "Shell", "Nix", "HTML", "CSS"],
+  "repo_overrides": {
+    "pcode-emulator-rs": {
+      "note": "sleigh/ and sleigh-sys/ vendor Ghidra's C++ decompiler",
+      "skip_languages": ["C++", "C", "Yacc", "Lex", "Hack"]
+    }
+  },
+  "top_n": 8
+}

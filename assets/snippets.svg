@@ -1,0 +1,368 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="519" viewBox="0 0 780 519">
+<style>
+  .card { fill: #f6f8fa; stroke: #d1d9e0; }
+  text { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13px; fill: #1f2328; }
+  .h { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 600; }
+  .m { font-size: 12px; fill: #59636e; }
+  .dot { fill: #d1d9e0; }
+  .on { fill: #59636e; }
+  .k { fill: #cf222e; color: #cf222e; }
+  .f { fill: #8250df; color: #8250df; }
+  .t { fill: #953800; color: #953800; }
+  .s { fill: #0a3069; color: #0a3069; }
+  .n { fill: #0550ae; color: #0550ae; }
+  .c { fill: #6e7781; color: #6e7781; }
+  .sl, .on { opacity: 0; animation: cycle 135s infinite both; }
+  @keyframes cycle {
+    0% { opacity: 0; }
+    1.11% { opacity: 1; }
+    5.56% { opacity: 1; }
+    6.67% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @media (prefers-color-scheme: dark) {
+    .card { fill: #151b23; stroke: #3d444d; }
+    text { fill: #e6edf3; }
+    .m { fill: #9198a1; }
+    .dot { fill: #3d444d; }
+    .on { fill: #9198a1; }
+    .k { fill: #ff7b72; color: #ff7b72; }
+    .f { fill: #d2a8ff; color: #d2a8ff; }
+    .t { fill: #ffa657; color: #ffa657; }
+    .s { fill: #a5d6ff; color: #a5d6ff; }
+    .n { fill: #79c0ff; color: #79c0ff; }
+    .c { fill: #8b949e; color: #8b949e; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sl, .on { animation: none; }
+    .sl:first-of-type, .on:nth-of-type(2) { opacity: 1; }
+  }
+</style>
+<rect class="card" x="0.5" y="0.5" width="779" height="518" rx="8"/>
+<g class="sl" style="animation-delay:-1.50s">
+<text x="20" y="34" class="h">Type-checking JVM stacks across branches</text>
+<text x="20" y="54" class="m">msu/csci-468-template · src/main/java/csci468/bytecode/BytecodeBuilder.java</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="k">if</tspan> (instruction <tspan class="k">instanceof</tspan> Instruction.Branch br) {</text>
+<text x="20" y="111" class="code" xml:space="preserve">    <tspan class="k">var</tspan> block = labeledBlocks.get(br.target());</text>
+<text x="20" y="130" class="code" xml:space="preserve">    <tspan class="k">if</tspan> (block == <tspan class="n">null</tspan>) {</text>
+<text x="20" y="149" class="code" xml:space="preserve">        <tspan class="k">assert</tspan> incoming.label != br.target();</text>
+<text x="20" y="168" class="code" xml:space="preserve">        block = <tspan class="k">new</tspan> BasicBlock(br.target());</text>
+<text x="20" y="187" class="code" xml:space="preserve">        block.entryStack.addAll(newStack);</text>
+<text x="20" y="206" class="code" xml:space="preserve">        block.tailStack.addAll(newStack);</text>
+<text x="20" y="225" class="code" xml:space="preserve">        blocks.add(block);</text>
+<text x="20" y="244" class="code" xml:space="preserve">        labeledBlocks.put(br.target(), block);</text>
+<text x="20" y="263" class="code" xml:space="preserve">    } <tspan class="k">else</tspan> {</text>
+<text x="20" y="282" class="code" xml:space="preserve">        checkStacks(block.entryStack, newStack, instruction.source());</text>
+<text x="20" y="301" class="code" xml:space="preserve">    }</text>
+<text x="20" y="320" class="code" xml:space="preserve"></text>
+<text x="20" y="339" class="code" xml:space="preserve">    incoming.tailStack = newStack;</text>
+<text x="20" y="358" class="code" xml:space="preserve">    <tspan class="k">if</tspan> (br.opcode() == Opcodes.GOTO) {</text>
+<text x="20" y="377" class="code" xml:space="preserve">        incoming.terminated = <tspan class="n">true</tspan>;</text>
+<text x="20" y="396" class="code" xml:space="preserve">        incoming = <tspan class="n">null</tspan>;</text>
+<text x="20" y="415" class="code" xml:space="preserve">        <tspan class="k">return</tspan>;</text>
+<text x="20" y="434" class="code" xml:space="preserve">    }</text>
+<text x="20" y="453" class="code" xml:space="preserve">}</text>
+</g>
+<g class="sl" style="animation-delay:7.50s">
+<text x="20" y="34" class="h">Opaque handles for a C API</text>
+<text x="20" y="54" class="m">styx-emulator/styx-emulator · styx/bindings/styx-c-api/src/data/opaque_pointer/macros.rs</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="f">macro_rules!</tspan> opaque_pointer {</text>
+<text x="20" y="111" class="code" xml:space="preserve">    (</text>
+<text x="20" y="130" class="code" xml:space="preserve">        <tspan class="c">$(</tspan><tspan class="c">#[</tspan>doc <tspan class="c">$(</tspan><tspan class="c">$doc</tspan>:<tspan class="t">tt</tspan>)+])*</text>
+<text x="20" y="149" class="code" xml:space="preserve">        <tspan class="k">pub</tspan> <tspan class="k">struct</tspan> <tspan class="c">$n</tspan>:<tspan class="t">ident</tspan>(<tspan class="c">$t</tspan>:<tspan class="t">ty</tspan>)</text>
+<text x="20" y="168" class="code" xml:space="preserve">    ) =&gt; {</text>
+<text x="20" y="187" class="code" xml:space="preserve">        ::paste::paste! {</text>
+<text x="20" y="206" class="code" xml:space="preserve">            <tspan class="c">$(</tspan><tspan class="c">#[</tspan>doc <tspan class="c">$(</tspan><tspan class="c">$doc</tspan>)+])*</text>
+<text x="20" y="225" class="code" xml:space="preserve">            <tspan class="c">#[</tspan>repr(C)]</text>
+<text x="20" y="244" class="code" xml:space="preserve">            <tspan class="c">#[</tspan>allow(non_camel_case_types)]</text>
+<text x="20" y="263" class="code" xml:space="preserve">            <tspan class="k">pub</tspan> <tspan class="k">struct</tspan> [&lt; <tspan class="c">$n</tspan> _t &gt;];</text>
+<text x="20" y="282" class="code" xml:space="preserve">            <tspan class="k">impl</tspan> <tspan class="c">$crate</tspan>::data::OpaquePointerType <tspan class="k">for</tspan> [&lt; <tspan class="c">$n</tspan> _t &gt;] {</text>
+<text x="20" y="301" class="code" xml:space="preserve">                <tspan class="k">type</tspan> <tspan class="t">To</tspan> = <tspan class="c">$t</tspan>;</text>
+<text x="20" y="320" class="code" xml:space="preserve">            }</text>
+<text x="20" y="339" class="code" xml:space="preserve"></text>
+<text x="20" y="358" class="code" xml:space="preserve">            <tspan class="c">#[</tspan>allow(non_camel_case_types)]</text>
+<text x="20" y="377" class="code" xml:space="preserve">            <tspan class="c">#[</tspan>repr(transparent)]</text>
+<text x="20" y="396" class="code" xml:space="preserve">            <tspan class="k">pub</tspan> <tspan class="k">struct</tspan> <tspan class="c">$n</tspan>(<tspan class="c">$crate</tspan>::data::OpaquePointer&lt;[&lt; <tspan class="c">$n</tspan> _t &gt;]&gt;);</text>
+</g>
+<g class="sl" style="animation-delay:16.50s">
+<text x="20" y="34" class="h">Operators inferred from the shape of a type</text>
+<text x="20" y="54" class="m">dparse-derive · src/parse/impl_enum/mod.rs</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="k">let</tspan> kind = <tspan class="k">match</tspan> ops.as_slice() {</text>
+<text x="20" y="111" class="code" xml:space="preserve">    [ExprOp::Recurse, ExprOp::Parse(_), ExprOp::Recurse] =&gt; StepKind::Binary,</text>
+<text x="20" y="130" class="code" xml:space="preserve">    [ExprOp::Parse(_), ExprOp::Recurse] =&gt; StepKind::Prefix,</text>
+<text x="20" y="149" class="code" xml:space="preserve">    [ExprOp::Recurse, ExprOp::Parse(_)] =&gt; StepKind::Postfix,</text>
+<text x="20" y="168" class="code" xml:space="preserve">    [] =&gt; <tspan class="f">unreachable!</tspan>(<tspan class="s">&quot;</tspan><tspan class="s">empty variant</tspan><tspan class="s">&quot;</tspan>),</text>
+<text x="20" y="187" class="code" xml:space="preserve">    _ =&gt; StepKind::Simple,</text>
+<text x="20" y="206" class="code" xml:space="preserve">};</text>
+</g>
+<g class="sl" style="animation-delay:25.50s">
+<text x="20" y="34" class="h">Brace-balanced f-string expressions</text>
+<text x="20" y="54" class="m">msu/notch · src/main/java/edu/montana/notch/token/FStringTokenData.java</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="t">int</tspan> <tspan class="k">open</tspan> = <tspan class="n">1</tspan>;</text>
+<text x="20" y="111" class="code" xml:space="preserve"><tspan class="k">while</tspan> (<tspan class="n">true</tspan>) {</text>
+<text x="20" y="130" class="code" xml:space="preserve">    <tspan class="k">if</tspan> (t.atEnd()) {</text>
+<text x="20" y="149" class="code" xml:space="preserve">        <tspan class="k">final</tspan> <tspan class="k">var</tspan> diag = <tspan class="k">new</tspan> Diagnostic();</text>
+<text x="20" y="168" class="code" xml:space="preserve">        diag.highlight(start);</text>
+<text x="20" y="187" class="code" xml:space="preserve">        diag.note(<tspan class="s">&quot;</tspan><tspan class="s">unterminated &#x27;{&#x27; in f-string here</tspan><tspan class="s">&quot;</tspan>);</text>
+<text x="20" y="206" class="code" xml:space="preserve">        <tspan class="k">throw</tspan> <tspan class="k">new</tspan> TokenizeException(diag);</text>
+<text x="20" y="225" class="code" xml:space="preserve">    }</text>
+<text x="20" y="244" class="code" xml:space="preserve"></text>
+<text x="20" y="263" class="code" xml:space="preserve">    <tspan class="k">var</tspan> token = t.nextToken();</text>
+<text x="20" y="282" class="code" xml:space="preserve">    <tspan class="k">if</tspan> (token.type.equals(<tspan class="s">&quot;</tspan><tspan class="s">}</tspan><tspan class="s">&quot;</tspan>)) {</text>
+<text x="20" y="301" class="code" xml:space="preserve">        <tspan class="k">open</tspan> -= <tspan class="n">1</tspan>;</text>
+<text x="20" y="320" class="code" xml:space="preserve">        <tspan class="k">if</tspan> (<tspan class="k">open</tspan> == <tspan class="n">0</tspan>) <tspan class="k">break</tspan>;</text>
+<text x="20" y="339" class="code" xml:space="preserve">    }</text>
+<text x="20" y="358" class="code" xml:space="preserve"></text>
+<text x="20" y="377" class="code" xml:space="preserve">    <tspan class="k">if</tspan> (token.type.equals(<tspan class="s">&quot;</tspan><tspan class="s">{</tspan><tspan class="s">&quot;</tspan>)) <tspan class="k">open</tspan> += <tspan class="n">1</tspan>;</text>
+<text x="20" y="396" class="code" xml:space="preserve">    tokens.add(token);</text>
+<text x="20" y="415" class="code" xml:space="preserve">}</text>
+</g>
+<g class="sl" style="animation-delay:34.50s">
+<text x="20" y="34" class="h">Parsing calls with error recovery</text>
+<text x="20" y="54" class="m">sea.c · sea.c</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="k">while</tspan> (sea_parser_more(parser) &amp;&amp; !sea_parser_match(parser, <tspan class="s">&quot;</tspan><tspan class="s">)</tspan><tspan class="s">&quot;</tspan>)) {</text>
+<text x="20" y="111" class="code" xml:space="preserve">    start = sea_parser_peek(parser);</text>
+<text x="20" y="130" class="code" xml:space="preserve">    arg = sea_parse_expr(parser);</text>
+<text x="20" y="149" class="code" xml:space="preserve">    <tspan class="k">if</tspan> (!arg) {</text>
+<text x="20" y="168" class="code" xml:space="preserve">        arg = malloc(<tspan class="k">sizeof</tspan>(sea_expr));</text>
+<text x="20" y="187" class="code" xml:space="preserve">        arg-&gt;type = SEA_EXPR_ERROR;</text>
+<text x="20" y="206" class="code" xml:space="preserve">        arg-&gt;item = sea_token_clone(sea_parser_adv(parser));</text>
+<text x="20" y="225" class="code" xml:space="preserve">        arg-&gt;error = sea_make_error(<tspan class="s">&quot;</tspan><tspan class="s">Expected expression as argument</tspan><tspan class="s">&quot;</tspan>,</text>
+<text x="20" y="244" class="code" xml:space="preserve">                start, arg-&gt;item);</text>
+<text x="20" y="263" class="code" xml:space="preserve">    }</text>
+<text x="20" y="282" class="code" xml:space="preserve">    vec_sea_expr_append(call-&gt;args, arg);</text>
+<text x="20" y="301" class="code" xml:space="preserve"></text>
+<text x="20" y="320" class="code" xml:space="preserve">    <tspan class="k">if</tspan> (!sea_parser_match(parser, <tspan class="s">&quot;</tspan><tspan class="s">,</tspan><tspan class="s">&quot;</tspan>)) {</text>
+<text x="20" y="339" class="code" xml:space="preserve">        <tspan class="k">break</tspan>;</text>
+<text x="20" y="358" class="code" xml:space="preserve">    } <tspan class="k">else</tspan> {</text>
+<text x="20" y="377" class="code" xml:space="preserve">        sea_parser_adv(parser);</text>
+<text x="20" y="396" class="code" xml:space="preserve">    }</text>
+<text x="20" y="415" class="code" xml:space="preserve">}</text>
+</g>
+<g class="sl" style="animation-delay:43.50s">
+<text x="20" y="34" class="h">Racing tasks to a graceful shutdown</text>
+<text x="20" y="54" class="m">csci-476-grader · src/main.rs</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="k">let</tspan> <tspan class="k">mut</tspan> fu = FuturesUnordered::from_iter(tasks);</text>
+<text x="20" y="111" class="code" xml:space="preserve"></text>
+<text x="20" y="130" class="code" xml:space="preserve"><tspan class="k">let</tspan> _ = fu.next().<tspan class="k">await</tspan>;</text>
+<text x="20" y="149" class="code" xml:space="preserve">flag.set();</text>
+<text x="20" y="168" class="code" xml:space="preserve"><tspan class="f">eprintln!</tspan>(<tspan class="s">&quot;</tspan><tspan class="s">shutting down!</tspan><tspan class="s">&quot;</tspan>);</text>
+<text x="20" y="187" class="code" xml:space="preserve"></text>
+<text x="20" y="206" class="code" xml:space="preserve"><tspan class="k">let</tspan> end = <tspan class="k">async</tspan> {</text>
+<text x="20" y="225" class="code" xml:space="preserve">    <tspan class="k">while</tspan> fu.next().<tspan class="k">await</tspan>.is_some() {</text>
+<text x="20" y="244" class="code" xml:space="preserve">        <tspan class="k">continue</tspan>;</text>
+<text x="20" y="263" class="code" xml:space="preserve">    }</text>
+<text x="20" y="282" class="code" xml:space="preserve">};</text>
+<text x="20" y="301" class="code" xml:space="preserve">tokio::select! {</text>
+<text x="20" y="320" class="code" xml:space="preserve">    _ = end =&gt; {}</text>
+<text x="20" y="339" class="code" xml:space="preserve">    _ = tokio::time::sleep(Duration::from_secs(<tspan class="n">10</tspan>)) =&gt; {}</text>
+<text x="20" y="358" class="code" xml:space="preserve">}</text>
+</g>
+<g class="sl" style="animation-delay:52.50s">
+<text x="20" y="34" class="h">Any closure is a parser primitive</text>
+<text x="20" y="54" class="m">dparse · src/lib.rs</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="k">impl</tspan>&lt;T: <tspan class="t">FnOnce</tspan>(<tspan class="t">char</tspan>) -&gt; <tspan class="t">bool</tspan>&gt; ParsePrimitive <tspan class="k">for</tspan> T {</text>
+<text x="20" y="111" class="code" xml:space="preserve">    <tspan class="k">fn</tspan> <tspan class="f">peek</tspan>(<tspan class="t">self</tspan>, parser: <tspan class="k">&amp;</tspan><tspan class="t">Parser</tspan>) -&gt; <tspan class="t">bool</tspan> {</text>
+<text x="20" y="130" class="code" xml:space="preserve">        parser.source[parser.location.index..]</text>
+<text x="20" y="149" class="code" xml:space="preserve">            .chars()</text>
+<text x="20" y="168" class="code" xml:space="preserve">            .next()</text>
+<text x="20" y="187" class="code" xml:space="preserve">            .is_some_and(<tspan class="t">self</tspan>)</text>
+<text x="20" y="206" class="code" xml:space="preserve">    }</text>
+<text x="20" y="225" class="code" xml:space="preserve"></text>
+<text x="20" y="244" class="code" xml:space="preserve">    <tspan class="k">fn</tspan> <tspan class="f">take</tspan>(<tspan class="t">self</tspan>, parser: <tspan class="k">&amp;</tspan><tspan class="t">mut</tspan> Parser) -&gt; <tspan class="t">bool</tspan> {</text>
+<text x="20" y="263" class="code" xml:space="preserve">        parser.source[parser.location.index..]</text>
+<text x="20" y="282" class="code" xml:space="preserve">            .chars()</text>
+<text x="20" y="301" class="code" xml:space="preserve">            .next()</text>
+<text x="20" y="320" class="code" xml:space="preserve">            .filter(|c| <tspan class="t">self</tspan>(*c))</text>
+<text x="20" y="339" class="code" xml:space="preserve">            .inspect(|c| parser.location.advance(*c))</text>
+<text x="20" y="358" class="code" xml:space="preserve">            .is_some()</text>
+<text x="20" y="377" class="code" xml:space="preserve">    }</text>
+<text x="20" y="396" class="code" xml:space="preserve"></text>
+<text x="20" y="415" class="code" xml:space="preserve">    <tspan class="k">fn</tspan> <tspan class="f">len</tspan>(&amp;<tspan class="t">self</tspan>) -&gt; <tspan class="t">usize</tspan> {</text>
+<text x="20" y="434" class="code" xml:space="preserve">        <tspan class="n">1</tspan></text>
+<text x="20" y="453" class="code" xml:space="preserve">    }</text>
+<text x="20" y="472" class="code" xml:space="preserve">}</text>
+</g>
+<g class="sl" style="animation-delay:61.50s">
+<text x="20" y="34" class="h">Python hooks from an X-macro</text>
+<text x="20" y="54" class="m">styx-emulator/styx-emulator · styx/bindings/styx-py-api/src/cpu/hooks.rs</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="f">macro_rules!</tspan> define_hooks {</text>
+<text x="20" y="111" class="code" xml:space="preserve">    (</text>
+<text x="20" y="130" class="code" xml:space="preserve">        <tspan class="c">$(</tspan></text>
+<text x="20" y="149" class="code" xml:space="preserve">            <tspan class="c">$name</tspan>:<tspan class="t">ident</tspan>( <tspan class="c">$(</tspan><tspan class="c">$an</tspan>:<tspan class="t">ident</tspan>: <tspan class="c">$at</tspan>:<tspan class="t">ty</tspan>: <tspan class="c">$att</tspan>:<tspan class="t">ty</tspan>),* <tspan class="c">$(,</tspan>)? ) <tspan class="c">$(</tspan>-&gt; <tspan class="c">$rt</tspan>:<tspan class="t">ty</tspan>: <tspan class="c">$rtt</tspan>:<tspan class="t">ty</tspan>)? <tspan class="c">$(</tspan>{</text>
+<text x="20" y="168" class="code" xml:space="preserve">                <tspan class="c">$(</tspan><tspan class="c">$pn</tspan>:<tspan class="t">ident</tspan>: <tspan class="c">$pt</tspan>:<tspan class="t">ty</tspan>),* <tspan class="c">$(,</tspan>)?</text>
+<text x="20" y="187" class="code" xml:space="preserve">            })?</text>
+<text x="20" y="206" class="code" xml:space="preserve">        ;)*</text>
+<text x="20" y="225" class="code" xml:space="preserve">    ) =&gt; {</text>
+<text x="20" y="244" class="code" xml:space="preserve">        <tspan class="c">$(</tspan></text>
+<text x="20" y="263" class="code" xml:space="preserve">            ::paste::paste! {</text>
+<text x="20" y="282" class="code" xml:space="preserve">                <tspan class="c">#[</tspan>gen_stub_pyclass]</text>
+<text x="20" y="301" class="code" xml:space="preserve">                <tspan class="c">#[</tspan>pyclass(module = <tspan class="s">&quot;</tspan><tspan class="s">cpu.hooks</tspan><tspan class="s">&quot;</tspan>)]</text>
+<text x="20" y="320" class="code" xml:space="preserve">                <tspan class="c">#[</tspan>derive(<tspan class="t">Clone</tspan>)]</text>
+<text x="20" y="339" class="code" xml:space="preserve">                <tspan class="k">pub</tspan> <tspan class="k">struct</tspan> [&lt; <tspan class="c">$name</tspan> Hook &gt;] {</text>
+<text x="20" y="358" class="code" xml:space="preserve">                    <tspan class="c">$(</tspan> <tspan class="c">$(</tspan><tspan class="c">$pn</tspan>: <tspan class="c">$pt</tspan>,)*)?</text>
+<text x="20" y="377" class="code" xml:space="preserve">                    callback: <tspan class="t">std</tspan>::sync::Arc&lt;PyObject&gt;,</text>
+<text x="20" y="396" class="code" xml:space="preserve">                }</text>
+</g>
+<g class="sl" style="animation-delay:70.50s">
+<text x="20" y="34" class="h">Pinch-zoom that stops softly</text>
+<text x="20" y="54" class="m">chemistry_calculator · lib/widgets/custom_gesture_detector.dart</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="t">double</tspan> newScale = provider.scale * scaleDelta;</text>
+<text x="20" y="111" class="code" xml:space="preserve"></text>
+<text x="20" y="130" class="code" xml:space="preserve"><tspan class="k">if</tspan> (newScale &lt; minScale) {</text>
+<text x="20" y="149" class="code" xml:space="preserve">  <tspan class="t">double</tspan> t = (provider.scale - minScale) / (provider.scale -</text>
+<text x="20" y="168" class="code" xml:space="preserve">      newScale);</text>
+<text x="20" y="187" class="code" xml:space="preserve">  scaleOffset = Offset.lerp(Offset.zero, scaleOffset, t);</text>
+<text x="20" y="206" class="code" xml:space="preserve"></text>
+<text x="20" y="225" class="code" xml:space="preserve">  newScale = minScale;</text>
+<text x="20" y="244" class="code" xml:space="preserve">}</text>
+<text x="20" y="263" class="code" xml:space="preserve"></text>
+<text x="20" y="282" class="code" xml:space="preserve"><tspan class="k">if</tspan> (newScale &gt; maxScale) {</text>
+<text x="20" y="301" class="code" xml:space="preserve">  <tspan class="t">double</tspan> t = (maxScale - provider.scale) / (newScale -</text>
+<text x="20" y="320" class="code" xml:space="preserve">      provider.scale);</text>
+<text x="20" y="339" class="code" xml:space="preserve">  scaleOffset = Offset.lerp(Offset.zero, scaleOffset, t);</text>
+<text x="20" y="358" class="code" xml:space="preserve"></text>
+<text x="20" y="377" class="code" xml:space="preserve">  newScale = maxScale;</text>
+<text x="20" y="396" class="code" xml:space="preserve">}</text>
+</g>
+<g class="sl" style="animation-delay:79.50s">
+<text x="20" y="34" class="h">A tiny DSL for running commands</text>
+<text x="20" y="54" class="m">nobuild-rs · nobuild.rs</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="f">macro_rules!</tspan> cmd {</text>
+<text x="20" y="111" class="code" xml:space="preserve">    (</text>
+<text x="20" y="130" class="code" xml:space="preserve">        <tspan class="c">$(</tspan><tspan class="k">in</tspan> <tspan class="c">$path</tspan>:<tspan class="t">expr</tspan>;)?</text>
+<text x="20" y="149" class="code" xml:space="preserve">        <tspan class="c">$cmd</tspan>:<tspan class="t">expr</tspan> <tspan class="c">$(,</tspan> <tspan class="c">$(</tspan><tspan class="c">$e</tspan>:<tspan class="t">expr</tspan>),*)? <tspan class="c">$(,</tspan>)?</text>
+<text x="20" y="168" class="code" xml:space="preserve">        <tspan class="c">$(</tspan>; <tspan class="k">fn</tspan> <tspan class="c">$name</tspan>:<tspan class="t">ident</tspan> =&gt; <tspan class="c">$body</tspan>:<tspan class="t">expr</tspan>)?</text>
+<text x="20" y="187" class="code" xml:space="preserve"></text>
+<text x="20" y="206" class="code" xml:space="preserve">    ) =&gt; {{</text>
+<text x="20" y="225" class="code" xml:space="preserve">        <tspan class="k">let</tspan> <tspan class="k">mut</tspan> command = Command::new(<tspan class="t">AsRef</tspan>::&lt;OsStr&gt;::as_ref(&amp;<tspan class="c">$cmd</tspan>));</text>
+<text x="20" y="244" class="code" xml:space="preserve">        <tspan class="c">$(</tspan>command.current_dir(<tspan class="c">$path</tspan>);)?</text>
+<text x="20" y="263" class="code" xml:space="preserve">        <tspan class="c">$(</tspan>command.args(&amp;[ <tspan class="c">$(</tspan><tspan class="t">AsRef</tspan>::&lt;OsStr&gt;::as_ref(&amp;<tspan class="c">$e</tspan>)),* ]);)?</text>
+<text x="20" y="282" class="code" xml:space="preserve">        <tspan class="c">$(</tspan>{</text>
+<text x="20" y="301" class="code" xml:space="preserve">            <tspan class="k">let</tspan> <tspan class="c">$name</tspan> = &amp;<tspan class="k">mut</tspan> command;</text>
+<text x="20" y="320" class="code" xml:space="preserve">            <tspan class="c">$body</tspan>;</text>
+<text x="20" y="339" class="code" xml:space="preserve">        })?</text>
+<text x="20" y="358" class="code" xml:space="preserve">        <tspan class="f">eprintln!</tspan>(<tspan class="s">&quot;</tspan><tspan class="s">CMD: {:?}</tspan><tspan class="s">&quot;</tspan>, command);</text>
+<text x="20" y="377" class="code" xml:space="preserve">        cmd(&amp;<tspan class="k">mut</tspan> command)</text>
+<text x="20" y="396" class="code" xml:space="preserve">    }};</text>
+<text x="20" y="415" class="code" xml:space="preserve">    () =&gt; {</text>
+<text x="20" y="434" class="code" xml:space="preserve">        <tspan class="f">compile_error!</tspan>(<tspan class="s">&quot;</tspan><tspan class="s">cmd! macro requires at least a command name</tspan><tspan class="s">&quot;</tspan>)</text>
+<text x="20" y="453" class="code" xml:space="preserve">    }</text>
+<text x="20" y="472" class="code" xml:space="preserve">}</text>
+</g>
+<g class="sl" style="animation-delay:88.50s">
+<text x="20" y="34" class="h">Catching edited autograder releases</text>
+<text x="20" y="54" class="m">msu/csci-468-template · .github/workflows/anticheat.yml</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="n">steps</tspan>:</text>
+<text x="20" y="111" class="code" xml:space="preserve">  - <tspan class="n">run</tspan>: |</text>
+<text x="20" y="130" class="code" xml:space="preserve">      <tspan class="n">cp $GITHUB_EVENT_PATH release</tspan></text>
+<text x="20" y="149" class="code" xml:space="preserve">  - <tspan class="n">uses</tspan>: actions/upload-artifact@v4</text>
+<text x="20" y="168" class="code" xml:space="preserve">    <tspan class="n">id</tspan>: upload-release-diff</text>
+<text x="20" y="187" class="code" xml:space="preserve">    <tspan class="n">with</tspan>:</text>
+<text x="20" y="206" class="code" xml:space="preserve">      <tspan class="n">name</tspan>: Release Diff</text>
+<text x="20" y="225" class="code" xml:space="preserve">      <tspan class="n">path</tspan>: release</text>
+<text x="20" y="244" class="code" xml:space="preserve">      <tspan class="n">if-no-files-found</tspan>: error</text>
+<text x="20" y="263" class="code" xml:space="preserve">      <tspan class="n">retention-days</tspan>: 90</text>
+<text x="20" y="282" class="code" xml:space="preserve">      <tspan class="n">overwrite</tspan>: false</text>
+<text x="20" y="301" class="code" xml:space="preserve">  - <tspan class="n">uses</tspan>: actions/checkout@v3</text>
+<text x="20" y="320" class="code" xml:space="preserve">  - <tspan class="n">uses</tspan>: JasonEtco/create-an-issue@v2</text>
+<text x="20" y="339" class="code" xml:space="preserve">    <tspan class="n">env</tspan>:</text>
+<text x="20" y="358" class="code" xml:space="preserve">      <tspan class="n">GITHUB_TOKEN</tspan>: ${{ secrets.GITHUB_TOKEN }}</text>
+<text x="20" y="377" class="code" xml:space="preserve">      <tspan class="n">ARTIFACT_URL</tspan>: ${{ steps.upload-release-diff.outputs.artifact-url }}</text>
+<text x="20" y="396" class="code" xml:space="preserve">    <tspan class="n">with</tspan>:</text>
+<text x="20" y="415" class="code" xml:space="preserve">      <tspan class="n">filename</tspan>: .github/ANTICHEAT_TEMPLATE.md</text>
+</g>
+<g class="sl" style="animation-delay:97.50s">
+<text x="20" y="34" class="h">One fold for every precedence level</text>
+<text x="20" y="54" class="m">jsl · src/main/java/dev/molkars/jsl/parser/Separated.java</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="k">public</tspan> E <tspan class="f">fold</tspan>(TriFunction&lt;E, E, Token, E&gt; func) {</text>
+<text x="20" y="111" class="code" xml:space="preserve">    <tspan class="k">if</tspan> (items.isEmpty()) <tspan class="k">return</tspan> last;</text>
+<text x="20" y="130" class="code" xml:space="preserve">    <tspan class="k">var</tspan> iterator = items.iterator();</text>
+<text x="20" y="149" class="code" xml:space="preserve">    Pair&lt;E, Token&gt; last = iterator.next();</text>
+<text x="20" y="168" class="code" xml:space="preserve">    E acc = last.left();</text>
+<text x="20" y="187" class="code" xml:space="preserve">    <tspan class="k">while</tspan> (iterator.hasNext()) {</text>
+<text x="20" y="206" class="code" xml:space="preserve">        <tspan class="k">var</tspan> next = iterator.next();</text>
+<text x="20" y="225" class="code" xml:space="preserve">        acc = func.apply(acc, next.left(), last.right());</text>
+<text x="20" y="244" class="code" xml:space="preserve">        last = next;</text>
+<text x="20" y="263" class="code" xml:space="preserve">    }</text>
+<text x="20" y="282" class="code" xml:space="preserve">    <tspan class="k">return</tspan> func.apply(acc, <tspan class="k">this</tspan>.last, last.right());</text>
+<text x="20" y="301" class="code" xml:space="preserve">}</text>
+</g>
+<g class="sl" style="animation-delay:106.50s">
+<text x="20" y="34" class="h">Sudoku as wave function collapse</text>
+<text x="20" y="54" class="m">wfc-rust · src/main.rs</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="k">let</tspan> row = map.row();</text>
+<text x="20" y="111" class="code" xml:space="preserve"><tspan class="k">let</tspan> col = map.col();</text>
+<text x="20" y="130" class="code" xml:space="preserve"><tspan class="k">let</tspan> (x, y) = map.pos();</text>
+<text x="20" y="149" class="code" xml:space="preserve"><tspan class="k">let</tspan> block = map.section_at(<tspan class="n">3</tspan>, <tspan class="n">3</tspan>, *x, *y);</text>
+<text x="20" y="168" class="code" xml:space="preserve"></text>
+<text x="20" y="187" class="code" xml:space="preserve"><tspan class="k">let</tspan> row_states = states(row.row_iter());</text>
+<text x="20" y="206" class="code" xml:space="preserve"><tspan class="k">let</tspan> col_states = states(col.row_iter());</text>
+<text x="20" y="225" class="code" xml:space="preserve"><tspan class="k">let</tspan> block_states = states(block.row_iter());</text>
+<text x="20" y="244" class="code" xml:space="preserve"><tspan class="k">let</tspan> <tspan class="k">mut</tspan> possible = SudokuNum::full_set();</text>
+<text x="20" y="263" class="code" xml:space="preserve"><tspan class="k">for</tspan> states <tspan class="k">in</tspan> [row_states, col_states, block_states] {</text>
+<text x="20" y="282" class="code" xml:space="preserve">    <tspan class="k">for</tspan> state <tspan class="k">in</tspan> states {</text>
+<text x="20" y="301" class="code" xml:space="preserve">        possible.remove(state);</text>
+<text x="20" y="320" class="code" xml:space="preserve">    }</text>
+<text x="20" y="339" class="code" xml:space="preserve">}</text>
+<text x="20" y="358" class="code" xml:space="preserve">possible</text>
+</g>
+<g class="sl" style="animation-delay:115.50s">
+<text x="20" y="34" class="h">An if / else-if chain from a quote! repetition</text>
+<text x="20" y="54" class="m">dparse-derive · src/parse/impl_enum/mod.rs</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="k">fn</tspan> <tspan class="f">impl_parse_variants</tspan>(&amp;<tspan class="t">self</tspan>) -&gt; <tspan class="t">Result</tspan>&lt;TokenStream, Error&gt; {</text>
+<text x="20" y="111" class="code" xml:space="preserve">    <tspan class="k">let</tspan> variants = <tspan class="t">self</tspan></text>
+<text x="20" y="130" class="code" xml:space="preserve">        .item</text>
+<text x="20" y="149" class="code" xml:space="preserve">        .variants</text>
+<text x="20" y="168" class="code" xml:space="preserve">        .iter()</text>
+<text x="20" y="187" class="code" xml:space="preserve">        .map(|variant| <tspan class="t">self</tspan>.impl_parse_variant(variant))</text>
+<text x="20" y="206" class="code" xml:space="preserve">        .collect::&lt;<tspan class="t">Result</tspan>&lt;<tspan class="t">Vec</tspan>&lt;_&gt;, _&gt;&gt;()?;</text>
+<text x="20" y="225" class="code" xml:space="preserve"></text>
+<text x="20" y="244" class="code" xml:space="preserve">    <tspan class="t">Ok</tspan>(quote! {</text>
+<text x="20" y="263" class="code" xml:space="preserve">        <tspan class="k">return</tspan> #(#variants)<tspan class="k">else</tspan>*</text>
+<text x="20" y="282" class="code" xml:space="preserve">        <tspan class="k">else</tspan> {</text>
+<text x="20" y="301" class="code" xml:space="preserve">            <tspan class="t">Err</tspan>(input.mismatch(<tspan class="f">format!</tspan>(<tspan class="s">&quot;</tspan><tspan class="s">expected {}</tspan><tspan class="s">&quot;</tspan>, std::any::type_name::&lt;<tspan class="t">Self</tspan>&gt;())))</text>
+<text x="20" y="320" class="code" xml:space="preserve">        };</text>
+<text x="20" y="339" class="code" xml:space="preserve">    })</text>
+<text x="20" y="358" class="code" xml:space="preserve">}</text>
+</g>
+<g class="sl" style="animation-delay:124.50s">
+<text x="20" y="34" class="h">Route matching with captured variables</text>
+<text x="20" y="54" class="m">kingfisher · lib/sync/router.dart</text>
+<text x="20" y="92" class="code" xml:space="preserve"><tspan class="k">for</tspan> (<tspan class="t">int</tspan> i = <tspan class="n">0</tspan>; i &lt; uri.segments.length; i++) {</text>
+<text x="20" y="111" class="code" xml:space="preserve">  <tspan class="k">final</tspan> PathSegment segment = uri.segments[i];</text>
+<text x="20" y="130" class="code" xml:space="preserve">  <tspan class="k">final</tspan> <tspan class="t">String</tspan> intent = raw.pathSegments[i];</text>
+<text x="20" y="149" class="code" xml:space="preserve"></text>
+<text x="20" y="168" class="code" xml:space="preserve">  <tspan class="k">if</tspan> (segment.isVariable) {</text>
+<text x="20" y="187" class="code" xml:space="preserve">    <tspan class="k">if</tspan> (segment.matcher != <tspan class="n">null</tspan>) {</text>
+<text x="20" y="206" class="code" xml:space="preserve">      <tspan class="k">if</tspan> (!segment.matcher!.hasMatch(intent)) {</text>
+<text x="20" y="225" class="code" xml:space="preserve">        isMatch = <tspan class="n">false</tspan>;</text>
+<text x="20" y="244" class="code" xml:space="preserve">        <tspan class="k">break</tspan>;</text>
+<text x="20" y="263" class="code" xml:space="preserve">      }</text>
+<text x="20" y="282" class="code" xml:space="preserve">    }</text>
+<text x="20" y="301" class="code" xml:space="preserve">    variables[segment.name] = intent;</text>
+<text x="20" y="320" class="code" xml:space="preserve">    <tspan class="k">continue</tspan>;</text>
+<text x="20" y="339" class="code" xml:space="preserve">  }</text>
+<text x="20" y="358" class="code" xml:space="preserve"></text>
+<text x="20" y="377" class="code" xml:space="preserve">  <tspan class="k">if</tspan> (segment.name != intent) {</text>
+<text x="20" y="396" class="code" xml:space="preserve">    isMatch = <tspan class="n">false</tspan>;</text>
+<text x="20" y="415" class="code" xml:space="preserve">    <tspan class="k">break</tspan>;</text>
+<text x="20" y="434" class="code" xml:space="preserve">  }</text>
+<text x="20" y="453" class="code" xml:space="preserve">}</text>
+</g>
+<circle cx="278.0" cy="501" r="3.5" class="dot"/><circle cx="278.0" cy="501" r="3.5" class="dot on" style="animation-delay:-1.50s"/>
+<circle cx="294.0" cy="501" r="3.5" class="dot"/><circle cx="294.0" cy="501" r="3.5" class="dot on" style="animation-delay:7.50s"/>
+<circle cx="310.0" cy="501" r="3.5" class="dot"/><circle cx="310.0" cy="501" r="3.5" class="dot on" style="animation-delay:16.50s"/>
+<circle cx="326.0" cy="501" r="3.5" class="dot"/><circle cx="326.0" cy="501" r="3.5" class="dot on" style="animation-delay:25.50s"/>
+<circle cx="342.0" cy="501" r="3.5" class="dot"/><circle cx="342.0" cy="501" r="3.5" class="dot on" style="animation-delay:34.50s"/>
+<circle cx="358.0" cy="501" r="3.5" class="dot"/><circle cx="358.0" cy="501" r="3.5" class="dot on" style="animation-delay:43.50s"/>
+<circle cx="374.0" cy="501" r="3.5" class="dot"/><circle cx="374.0" cy="501" r="3.5" class="dot on" style="animation-delay:52.50s"/>
+<circle cx="390.0" cy="501" r="3.5" class="dot"/><circle cx="390.0" cy="501" r="3.5" class="dot on" style="animation-delay:61.50s"/>
+<circle cx="406.0" cy="501" r="3.5" class="dot"/><circle cx="406.0" cy="501" r="3.5" class="dot on" style="animation-delay:70.50s"/>
+<circle cx="422.0" cy="501" r="3.5" class="dot"/><circle cx="422.0" cy="501" r="3.5" class="dot on" style="animation-delay:79.50s"/>
+<circle cx="438.0" cy="501" r="3.5" class="dot"/><circle cx="438.0" cy="501" r="3.5" class="dot on" style="animation-delay:88.50s"/>
+<circle cx="454.0" cy="501" r="3.5" class="dot"/><circle cx="454.0" cy="501" r="3.5" class="dot on" style="animation-delay:97.50s"/>
+<circle cx="470.0" cy="501" r="3.5" class="dot"/><circle cx="470.0" cy="501" r="3.5" class="dot on" style="animation-delay:106.50s"/>
+<circle cx="486.0" cy="501" r="3.5" class="dot"/><circle cx="486.0" cy="501" r="3.5" class="dot on" style="animation-delay:115.50s"/>
+<circle cx="502.0" cy="501" r="3.5" class="dot"/><circle cx="502.0" cy="501" r="3.5" class="dot on" style="animation-delay:124.50s"/>
+</svg>

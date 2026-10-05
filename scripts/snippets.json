@@ -1,0 +1,143 @@
+{
+  "user": "Molkars",
+  "snippets": [
+    {
+      "repo": "msu/csci-468-template",
+      "path": "src/main/java/csci468/bytecode/BytecodeBuilder.java",
+      "lines": [80, 99],
+      "private": true,
+      "title": "Type-checking JVM stacks across branches",
+      "caption": "Part of a JVM bytecode generator built for MSU's compilers course: on every jump, the builder either seeds the target block with the current operand-stack types or checks they match what's already expected there.",
+      "ref": "b3b6b17286059e43ad5991def1683e81a33c6214",
+      "code": "if (instruction instanceof Instruction.Branch br) {\n    var block = labeledBlocks.get(br.target());\n    if (block == null) {\n        assert incoming.label != br.target();\n        block = new BasicBlock(br.target());\n        block.entryStack.addAll(newStack);\n        block.tailStack.addAll(newStack);\n        blocks.add(block);\n        labeledBlocks.put(br.target(), block);\n    } else {\n        checkStacks(block.entryStack, newStack, instruction.source());\n    }\n\n    incoming.tailStack = newStack;\n    if (br.opcode() == Opcodes.GOTO) {\n        incoming.terminated = true;\n        incoming = null;\n        return;\n    }\n}"
+    },
+    {
+      "repo": "styx-emulator/styx-emulator",
+      "path": "styx/bindings/styx-c-api/src/data/opaque_pointer/macros.rs",
+      "lines": [2, 18],
+      "title": "Opaque handles for a C API",
+      "caption": "Part of Styx's C bindings: one macro line per type generates a C-visible marker struct `Foo_t` and a `#[repr(transparent)]` handle around a typed opaque pointer, so C code holds safe, typed handles to Rust objects.",
+      "ref": "d743b1931d8740903fb40b6adb4b7700101316db",
+      "code": "macro_rules! opaque_pointer {\n    (\n        $(#[doc $($doc:tt)+])*\n        pub struct $n:ident($t:ty)\n    ) => {\n        ::paste::paste! {\n            $(#[doc $($doc)+])*\n            #[repr(C)]\n            #[allow(non_camel_case_types)]\n            pub struct [< $n _t >];\n            impl $crate::data::OpaquePointerType for [< $n _t >] {\n                type To = $t;\n            }\n\n            #[allow(non_camel_case_types)]\n            #[repr(transparent)]\n            pub struct $n($crate::data::OpaquePointer<[< $n _t >]>);"
+    },
+    {
+      "repo": "dparse-derive",
+      "path": "src/parse/impl_enum/mod.rs",
+      "lines": [233, 239],
+      "title": "Operators inferred from the shape of a type",
+      "caption": "The derive macro reads each enum variant's fields and decides whether it is a binary, prefix or postfix operator, so a precedence-climbing parser is generated from type definitions alone.",
+      "ref": "002d47bc5771f64eac3f0546540b4bd59f89115d",
+      "code": "let kind = match ops.as_slice() {\n    [ExprOp::Recurse, ExprOp::Parse(_), ExprOp::Recurse] => StepKind::Binary,\n    [ExprOp::Parse(_), ExprOp::Recurse] => StepKind::Prefix,\n    [ExprOp::Recurse, ExprOp::Parse(_)] => StepKind::Postfix,\n    [] => unreachable!(\"empty variant\"),\n    _ => StepKind::Simple,\n};"
+    },
+    {
+      "repo": "msu/notch",
+      "path": "src/main/java/edu/montana/notch/token/FStringTokenData.java",
+      "lines": [21, 38],
+      "title": "Brace-balanced f-string expressions",
+      "caption": "Inside an f-string, the tokenizer tracks nested `{`/`}` depth to cut out exactly one embedded expression, which is then handed to the full Notch parser.",
+      "ref": "7a809cc3a298e1c7568cfdf56a5575336f8018d0",
+      "code": "int open = 1;\nwhile (true) {\n    if (t.atEnd()) {\n        final var diag = new Diagnostic();\n        diag.highlight(start);\n        diag.note(\"unterminated '{' in f-string here\");\n        throw new TokenizeException(diag);\n    }\n\n    var token = t.nextToken();\n    if (token.type.equals(\"}\")) {\n        open -= 1;\n        if (open == 0) break;\n    }\n\n    if (token.type.equals(\"{\")) open += 1;\n    tokens.add(token);\n}"
+    },
+    {
+      "repo": "sea.c",
+      "path": "sea.c",
+      "lines": [342, 359],
+      "title": "Parsing calls with error recovery",
+      "caption": "From Sea, a simplified C for teaching systems programming: the call-argument loop doesn't stop at the first bad token, it turns it into an error node and keeps parsing.",
+      "ref": "5e20c338224150a7ed545e004f57feeb178ca9eb",
+      "code": "while (sea_parser_more(parser) && !sea_parser_match(parser, \")\")) {\n    start = sea_parser_peek(parser);\n    arg = sea_parse_expr(parser);\n    if (!arg) {\n        arg = malloc(sizeof(sea_expr));\n        arg->type = SEA_EXPR_ERROR;\n        arg->item = sea_token_clone(sea_parser_adv(parser));\n        arg->error = sea_make_error(\"Expected expression as argument\",\n                start, arg->item);\n    }\n    vec_sea_expr_append(call->args, arg);\n\n    if (!sea_parser_match(parser, \",\")) {\n        break;\n    } else {\n        sea_parser_adv(parser);\n    }\n}"
+    },
+    {
+      "repo": "csci-476-grader",
+      "path": "src/main.rs",
+      "lines": [50, 64],
+      "private": true,
+      "title": "Racing tasks to a graceful shutdown",
+      "caption": "From a grading server for MSU's security course: the first task to finish trips a shared shutdown flag, and the rest get 10 seconds to drain before the process exits.",
+      "ref": "c2e61ead16a21a72db5723e41ba9c7db16262c28",
+      "code": "let mut fu = FuturesUnordered::from_iter(tasks);\n\nlet _ = fu.next().await;\nflag.set();\neprintln!(\"shutting down!\");\n\nlet end = async {\n    while fu.next().await.is_some() {\n        continue;\n    }\n};\ntokio::select! {\n    _ = end => {}\n    _ = tokio::time::sleep(Duration::from_secs(10)) => {}\n}"
+    },
+    {
+      "repo": "dparse",
+      "path": "src/lib.rs",
+      "lines": [303, 323],
+      "title": "Any closure is a parser primitive",
+      "caption": "A blanket impl over `FnOnce(char) -> bool` means `parser.take(char::is_whitespace)` works right alongside the `char`, `&str` and `[char; N]` impls.",
+      "ref": "5c6e368213f24f50ada128e513b81c800fb45ac3",
+      "code": "impl<T: FnOnce(char) -> bool> ParsePrimitive for T {\n    fn peek(self, parser: &Parser) -> bool {\n        parser.source[parser.location.index..]\n            .chars()\n            .next()\n            .is_some_and(self)\n    }\n\n    fn take(self, parser: &mut Parser) -> bool {\n        parser.source[parser.location.index..]\n            .chars()\n            .next()\n            .filter(|c| self(*c))\n            .inspect(|c| parser.location.advance(*c))\n            .is_some()\n    }\n\n    fn len(&self) -> usize {\n        1\n    }\n}"
+    },
+    {
+      "repo": "styx-emulator/styx-emulator",
+      "path": "styx/bindings/styx-py-api/src/cpu/hooks.rs",
+      "lines": [58, 74],
+      "title": "Python hooks from an X-macro",
+      "caption": "Styx's Python bindings list every emulator hook once in an X-macro; `define_hooks!` turns each entry into a pyo3 class that wraps a Python callback and bridges it to the Rust hook trait.",
+      "ref": "d743b1931d8740903fb40b6adb4b7700101316db",
+      "code": "macro_rules! define_hooks {\n    (\n        $(\n            $name:ident( $($an:ident: $at:ty: $att:ty),* $(,)? ) $(-> $rt:ty: $rtt:ty)? $({\n                $($pn:ident: $pt:ty),* $(,)?\n            })?\n        ;)*\n    ) => {\n        $(\n            ::paste::paste! {\n                #[gen_stub_pyclass]\n                #[pyclass(module = \"cpu.hooks\")]\n                #[derive(Clone)]\n                pub struct [< $name Hook >] {\n                    $( $($pn: $pt,)*)?\n                    callback: std::sync::Arc<PyObject>,\n                }"
+    },
+    {
+      "repo": "chemistry_calculator",
+      "path": "lib/widgets/custom_gesture_detector.dart",
+      "lines": [95, 111],
+      "title": "Pinch-zoom that stops softly",
+      "caption": "When a pinch on the periodic table goes past the zoom limits, the zoom-centring offset is scaled back by the same fraction, so it stops at the limit instead of jumping.",
+      "ref": "e3a468321a7fd29bc9e869484d58308b11ee00aa",
+      "code": "double newScale = provider.scale * scaleDelta;\n\nif (newScale < minScale) {\n  double t = (provider.scale - minScale) / (provider.scale -\n      newScale);\n  scaleOffset = Offset.lerp(Offset.zero, scaleOffset, t);\n\n  newScale = minScale;\n}\n\nif (newScale > maxScale) {\n  double t = (maxScale - provider.scale) / (newScale -\n      provider.scale);\n  scaleOffset = Offset.lerp(Offset.zero, scaleOffset, t);\n\n  newScale = maxScale;\n}"
+    },
+    {
+      "repo": "nobuild-rs",
+      "path": "nobuild.rs",
+      "lines": [110, 130],
+      "title": "A tiny DSL for running commands",
+      "caption": "`cmd!` takes an optional `in dir;`, variadic args and an inline configuration hook, and fails at compile time with a clear message when called empty.",
+      "ref": "f03ab985e479ab42d8e56d396f5474420f704d37",
+      "code": "macro_rules! cmd {\n    (\n        $(in $path:expr;)?\n        $cmd:expr $(, $($e:expr),*)? $(,)?\n        $(; fn $name:ident => $body:expr)?\n\n    ) => {{\n        let mut command = Command::new(AsRef::<OsStr>::as_ref(&$cmd));\n        $(command.current_dir($path);)?\n        $(command.args(&[ $(AsRef::<OsStr>::as_ref(&$e)),* ]);)?\n        $({\n            let $name = &mut command;\n            $body;\n        })?\n        eprintln!(\"CMD: {:?}\", command);\n        cmd(&mut command)\n    }};\n    () => {\n        compile_error!(\"cmd! macro requires at least a command name\")\n    }\n}"
+    },
+    {
+      "repo": "msu/csci-468-template",
+      "path": ".github/workflows/anticheat.yml",
+      "lines": [13, 30],
+      "private": true,
+      "title": "Catching edited autograder releases",
+      "caption": "Autograder results are published as GitHub releases. If a student edits one, this action snapshots the edit event as an artifact and opens an issue for the instructor.",
+      "ref": "b3b6b17286059e43ad5991def1683e81a33c6214",
+      "code": "steps:\n  - run: |\n      cp $GITHUB_EVENT_PATH release\n  - uses: actions/upload-artifact@v4\n    id: upload-release-diff\n    with:\n      name: Release Diff\n      path: release\n      if-no-files-found: error\n      retention-days: 90\n      overwrite: false\n  - uses: actions/checkout@v3\n  - uses: JasonEtco/create-an-issue@v2\n    env:\n      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n      ARTIFACT_URL: ${{ steps.upload-release-diff.outputs.artifact-url }}\n    with:\n      filename: .github/ANTICHEAT_TEMPLATE.md"
+    },
+    {
+      "repo": "jsl",
+      "path": "src/main/java/dev/molkars/jsl/parser/Separated.java",
+      "lines": [20, 31],
+      "title": "One fold for every precedence level",
+      "caption": "A generic left fold turns a flat list like `a * b / c` into a left-associative syntax tree, so each binary-operator level of the parser is a one-liner.",
+      "ref": "5bd62e1bd1866c460e23338ed8c4d169078617c4",
+      "code": "public E fold(TriFunction<E, E, Token, E> func) {\n    if (items.isEmpty()) return last;\n    var iterator = items.iterator();\n    Pair<E, Token> last = iterator.next();\n    E acc = last.left();\n    while (iterator.hasNext()) {\n        var next = iterator.next();\n        acc = func.apply(acc, next.left(), last.right());\n        last = next;\n    }\n    return func.apply(acc, this.last, last.right());\n}"
+    },
+    {
+      "repo": "wfc-rust",
+      "path": "src/main.rs",
+      "lines": [68, 82],
+      "title": "Sudoku as wave function collapse",
+      "caption": "Sudoku expressed as rules for a generic wave-function-collapse solver: a cell may hold whatever its row, column and 3×3 block leave over.",
+      "ref": "78698da0cd8c22892c6a214519b7c7eecdd96232",
+      "code": "let row = map.row();\nlet col = map.col();\nlet (x, y) = map.pos();\nlet block = map.section_at(3, 3, *x, *y);\n\nlet row_states = states(row.row_iter());\nlet col_states = states(col.row_iter());\nlet block_states = states(block.row_iter());\nlet mut possible = SudokuNum::full_set();\nfor states in [row_states, col_states, block_states] {\n    for state in states {\n        possible.remove(state);\n    }\n}\npossible"
+    },
+    {
+      "repo": "dparse-derive",
+      "path": "src/parse/impl_enum/mod.rs",
+      "lines": [65, 79],
+      "title": "An if / else-if chain from a quote! repetition",
+      "caption": "Using `else` as the repetition separator turns a list of variant parsers into one `if let … else if let … else` chain, with a type-named error as the fallback.",
+      "ref": "002d47bc5771f64eac3f0546540b4bd59f89115d",
+      "code": "fn impl_parse_variants(&self) -> Result<TokenStream, Error> {\n    let variants = self\n        .item\n        .variants\n        .iter()\n        .map(|variant| self.impl_parse_variant(variant))\n        .collect::<Result<Vec<_>, _>>()?;\n\n    Ok(quote! {\n        return #(#variants)else*\n        else {\n            Err(input.mismatch(format!(\"expected {}\", std::any::type_name::<Self>())))\n        };\n    })\n}"
+    },
+    {
+      "repo": "kingfisher",
+      "path": "lib/sync/router.dart",
+      "lines": [54, 73],
+      "title": "Route matching with captured variables",
+      "caption": "The core of a Dart router: matches a path segment by segment, checks optional per-segment regex constraints, and captures path variables as it goes.",
+      "ref": "4676d677a307aea8030bd20214708fa3a84fd859",
+      "code": "for (int i = 0; i < uri.segments.length; i++) {\n  final PathSegment segment = uri.segments[i];\n  final String intent = raw.pathSegments[i];\n\n  if (segment.isVariable) {\n    if (segment.matcher != null) {\n      if (!segment.matcher!.hasMatch(intent)) {\n        isMatch = false;\n        break;\n      }\n    }\n    variables[segment.name] = intent;\n    continue;\n  }\n\n  if (segment.name != intent) {\n    isMatch = false;\n    break;\n  }\n}"
+    }
+  ]
+}

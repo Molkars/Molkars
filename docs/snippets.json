@@ -1,0 +1,150 @@
+{
+ "theme": {
+  "k": [
+   "#cf222e",
+   "#ff7b72"
+  ],
+  "f": [
+   "#8250df",
+   "#d2a8ff"
+  ],
+  "t": [
+   "#953800",
+   "#ffa657"
+  ],
+  "s": [
+   "#0a3069",
+   "#a5d6ff"
+  ],
+  "n": [
+   "#0550ae",
+   "#79c0ff"
+  ],
+  "c": [
+   "#6e7781",
+   "#8b949e"
+  ]
+ },
+ "snippets": [
+  {
+   "path": "src/main/java/csci468/bytecode/BytecodeBuilder.java",
+   "title": "Type-checking JVM stacks across branches",
+   "caption": "Part of a JVM bytecode generator built for MSU's compilers course: on every jump, the builder either seeds the target block with the current operand-stack types or checks they match what's already expected there.",
+   "repo": "msu/csci-468-template",
+   "url": null,
+   "html": "<span class=\"k\">if</span> (instruction <span class=\"k\">instanceof</span> Instruction.Branch br) {\n    <span class=\"k\">var</span> block = labeledBlocks.get(br.target());\n    <span class=\"k\">if</span> (block == <span class=\"n\">null</span>) {\n        <span class=\"k\">assert</span> incoming.label != br.target();\n        block = <span class=\"k\">new</span> BasicBlock(br.target());\n        block.entryStack.addAll(newStack);\n        block.tailStack.addAll(newStack);\n        blocks.add(block);\n        labeledBlocks.put(br.target(), block);\n    } <span class=\"k\">else</span> {\n        checkStacks(block.entryStack, newStack, instruction.source());\n    }\n\n    incoming.tailStack = newStack;\n    <span class=\"k\">if</span> (br.opcode() == Opcodes.GOTO) {\n        incoming.terminated = <span class=\"n\">true</span>;\n        incoming = <span class=\"n\">null</span>;\n        <span class=\"k\">return</span>;\n    }\n}"
+  },
+  {
+   "path": "styx/bindings/styx-c-api/src/data/opaque_pointer/macros.rs",
+   "title": "Opaque handles for a C API",
+   "caption": "Part of Styx's C bindings: one macro line per type generates a C-visible marker struct `Foo_t` and a `#[repr(transparent)]` handle around a typed opaque pointer, so C code holds safe, typed handles to Rust objects.",
+   "repo": "styx-emulator/styx-emulator",
+   "url": "https://github.com/styx-emulator/styx-emulator/blob/d743b1931d8740903fb40b6adb4b7700101316db/styx/bindings/styx-c-api/src/data/opaque_pointer/macros.rs#L2-L18",
+   "html": "<span class=\"f\">macro_rules!</span> opaque_pointer {\n    (\n        <span class=\"c\">$(</span><span class=\"c\">#[</span>doc <span class=\"c\">$(</span><span class=\"c\">$doc</span>:<span class=\"t\">tt</span>)+])*\n        <span class=\"k\">pub</span> <span class=\"k\">struct</span> <span class=\"c\">$n</span>:<span class=\"t\">ident</span>(<span class=\"c\">$t</span>:<span class=\"t\">ty</span>)\n    ) =&gt; {\n        ::paste::paste! {\n            <span class=\"c\">$(</span><span class=\"c\">#[</span>doc <span class=\"c\">$(</span><span class=\"c\">$doc</span>)+])*\n            <span class=\"c\">#[</span>repr(C)]\n            <span class=\"c\">#[</span>allow(non_camel_case_types)]\n            <span class=\"k\">pub</span> <span class=\"k\">struct</span> [&lt; <span class=\"c\">$n</span> _t &gt;];\n            <span class=\"k\">impl</span> <span class=\"c\">$crate</span>::data::OpaquePointerType <span class=\"k\">for</span> [&lt; <span class=\"c\">$n</span> _t &gt;] {\n                <span class=\"k\">type</span> <span class=\"t\">To</span> = <span class=\"c\">$t</span>;\n            }\n\n            <span class=\"c\">#[</span>allow(non_camel_case_types)]\n            <span class=\"c\">#[</span>repr(transparent)]\n            <span class=\"k\">pub</span> <span class=\"k\">struct</span> <span class=\"c\">$n</span>(<span class=\"c\">$crate</span>::data::OpaquePointer&lt;[&lt; <span class=\"c\">$n</span> _t &gt;]&gt;);"
+  },
+  {
+   "path": "src/parse/impl_enum/mod.rs",
+   "title": "Operators inferred from the shape of a type",
+   "caption": "The derive macro reads each enum variant's fields and decides whether it is a binary, prefix or postfix operator, so a precedence-climbing parser is generated from type definitions alone.",
+   "repo": "dparse-derive",
+   "url": "https://github.com/Molkars/dparse-derive/blob/002d47bc5771f64eac3f0546540b4bd59f89115d/src/parse/impl_enum/mod.rs#L233-L239",
+   "html": "<span class=\"k\">let</span> kind = <span class=\"k\">match</span> ops.as_slice() {\n    [ExprOp::Recurse, ExprOp::Parse(_), ExprOp::Recurse] =&gt; StepKind::Binary,\n    [ExprOp::Parse(_), ExprOp::Recurse] =&gt; StepKind::Prefix,\n    [ExprOp::Recurse, ExprOp::Parse(_)] =&gt; StepKind::Postfix,\n    [] =&gt; <span class=\"f\">unreachable!</span>(<span class=\"s\">&quot;</span><span class=\"s\">empty variant</span><span class=\"s\">&quot;</span>),\n    _ =&gt; StepKind::Simple,\n};"
+  },
+  {
+   "path": "src/main/java/edu/montana/notch/token/FStringTokenData.java",
+   "title": "Brace-balanced f-string expressions",
+   "caption": "Inside an f-string, the tokenizer tracks nested `{`/`}` depth to cut out exactly one embedded expression, which is then handed to the full Notch parser.",
+   "repo": "msu/notch",
+   "url": "https://github.com/msu/notch/blob/7a809cc3a298e1c7568cfdf56a5575336f8018d0/src/main/java/edu/montana/notch/token/FStringTokenData.java#L21-L38",
+   "html": "<span class=\"t\">int</span> <span class=\"k\">open</span> = <span class=\"n\">1</span>;\n<span class=\"k\">while</span> (<span class=\"n\">true</span>) {\n    <span class=\"k\">if</span> (t.atEnd()) {\n        <span class=\"k\">final</span> <span class=\"k\">var</span> diag = <span class=\"k\">new</span> Diagnostic();\n        diag.highlight(start);\n        diag.note(<span class=\"s\">&quot;</span><span class=\"s\">unterminated &#x27;{&#x27; in f-string here</span><span class=\"s\">&quot;</span>);\n        <span class=\"k\">throw</span> <span class=\"k\">new</span> TokenizeException(diag);\n    }\n\n    <span class=\"k\">var</span> token = t.nextToken();\n    <span class=\"k\">if</span> (token.type.equals(<span class=\"s\">&quot;</span><span class=\"s\">}</span><span class=\"s\">&quot;</span>)) {\n        <span class=\"k\">open</span> -= <span class=\"n\">1</span>;\n        <span class=\"k\">if</span> (<span class=\"k\">open</span> == <span class=\"n\">0</span>) <span class=\"k\">break</span>;\n    }\n\n    <span class=\"k\">if</span> (token.type.equals(<span class=\"s\">&quot;</span><span class=\"s\">{</span><span class=\"s\">&quot;</span>)) <span class=\"k\">open</span> += <span class=\"n\">1</span>;\n    tokens.add(token);\n}"
+  },
+  {
+   "path": "sea.c",
+   "title": "Parsing calls with error recovery",
+   "caption": "From Sea, a simplified C for teaching systems programming: the call-argument loop doesn't stop at the first bad token, it turns it into an error node and keeps parsing.",
+   "repo": "sea.c",
+   "url": "https://github.com/Molkars/sea.c/blob/5e20c338224150a7ed545e004f57feeb178ca9eb/sea.c#L342-L359",
+   "html": "<span class=\"k\">while</span> (sea_parser_more(parser) &amp;&amp; !sea_parser_match(parser, <span class=\"s\">&quot;</span><span class=\"s\">)</span><span class=\"s\">&quot;</span>)) {\n    start = sea_parser_peek(parser);\n    arg = sea_parse_expr(parser);\n    <span class=\"k\">if</span> (!arg) {\n        arg = malloc(<span class=\"k\">sizeof</span>(sea_expr));\n        arg-&gt;type = SEA_EXPR_ERROR;\n        arg-&gt;item = sea_token_clone(sea_parser_adv(parser));\n        arg-&gt;error = sea_make_error(<span class=\"s\">&quot;</span><span class=\"s\">Expected expression as argument</span><span class=\"s\">&quot;</span>,\n                start, arg-&gt;item);\n    }\n    vec_sea_expr_append(call-&gt;args, arg);\n\n    <span class=\"k\">if</span> (!sea_parser_match(parser, <span class=\"s\">&quot;</span><span class=\"s\">,</span><span class=\"s\">&quot;</span>)) {\n        <span class=\"k\">break</span>;\n    } <span class=\"k\">else</span> {\n        sea_parser_adv(parser);\n    }\n}"
+  },
+  {
+   "path": "src/main.rs",
+   "title": "Racing tasks to a graceful shutdown",
+   "caption": "From a grading server for MSU's security course: the first task to finish trips a shared shutdown flag, and the rest get 10 seconds to drain before the process exits.",
+   "repo": "csci-476-grader",
+   "url": null,
+   "html": "<span class=\"k\">let</span> <span class=\"k\">mut</span> fu = FuturesUnordered::from_iter(tasks);\n\n<span class=\"k\">let</span> _ = fu.next().<span class=\"k\">await</span>;\nflag.set();\n<span class=\"f\">eprintln!</span>(<span class=\"s\">&quot;</span><span class=\"s\">shutting down!</span><span class=\"s\">&quot;</span>);\n\n<span class=\"k\">let</span> end = <span class=\"k\">async</span> {\n    <span class=\"k\">while</span> fu.next().<span class=\"k\">await</span>.is_some() {\n        <span class=\"k\">continue</span>;\n    }\n};\ntokio::select! {\n    _ = end =&gt; {}\n    _ = tokio::time::sleep(Duration::from_secs(<span class=\"n\">10</span>)) =&gt; {}\n}"
+  },
+  {
+   "path": "src/lib.rs",
+   "title": "Any closure is a parser primitive",
+   "caption": "A blanket impl over `FnOnce(char) -> bool` means `parser.take(char::is_whitespace)` works right alongside the `char`, `&str` and `[char; N]` impls.",
+   "repo": "dparse",
+   "url": "https://github.com/Molkars/dparse/blob/5c6e368213f24f50ada128e513b81c800fb45ac3/src/lib.rs#L303-L323",
+   "html": "<span class=\"k\">impl</span>&lt;T: <span class=\"t\">FnOnce</span>(<span class=\"t\">char</span>) -&gt; <span class=\"t\">bool</span>&gt; ParsePrimitive <span class=\"k\">for</span> T {\n    <span class=\"k\">fn</span> <span class=\"f\">peek</span>(<span class=\"t\">self</span>, parser: <span class=\"k\">&amp;</span><span class=\"t\">Parser</span>) -&gt; <span class=\"t\">bool</span> {\n        parser.source[parser.location.index..]\n            .chars()\n            .next()\n            .is_some_and(<span class=\"t\">self</span>)\n    }\n\n    <span class=\"k\">fn</span> <span class=\"f\">take</span>(<span class=\"t\">self</span>, parser: <span class=\"k\">&amp;</span><span class=\"t\">mut</span> Parser) -&gt; <span class=\"t\">bool</span> {\n        parser.source[parser.location.index..]\n            .chars()\n            .next()\n            .filter(|c| <span class=\"t\">self</span>(*c))\n            .inspect(|c| parser.location.advance(*c))\n            .is_some()\n    }\n\n    <span class=\"k\">fn</span> <span class=\"f\">len</span>(&amp;<span class=\"t\">self</span>) -&gt; <span class=\"t\">usize</span> {\n        <span class=\"n\">1</span>\n    }\n}"
+  },
+  {
+   "path": "styx/bindings/styx-py-api/src/cpu/hooks.rs",
+   "title": "Python hooks from an X-macro",
+   "caption": "Styx's Python bindings list every emulator hook once in an X-macro; `define_hooks!` turns each entry into a pyo3 class that wraps a Python callback and bridges it to the Rust hook trait.",
+   "repo": "styx-emulator/styx-emulator",
+   "url": "https://github.com/styx-emulator/styx-emulator/blob/d743b1931d8740903fb40b6adb4b7700101316db/styx/bindings/styx-py-api/src/cpu/hooks.rs#L58-L74",
+   "html": "<span class=\"f\">macro_rules!</span> define_hooks {\n    (\n        <span class=\"c\">$(</span>\n            <span class=\"c\">$name</span>:<span class=\"t\">ident</span>( <span class=\"c\">$(</span><span class=\"c\">$an</span>:<span class=\"t\">ident</span>: <span class=\"c\">$at</span>:<span class=\"t\">ty</span>: <span class=\"c\">$att</span>:<span class=\"t\">ty</span>),* <span class=\"c\">$(,</span>)? ) <span class=\"c\">$(</span>-&gt; <span class=\"c\">$rt</span>:<span class=\"t\">ty</span>: <span class=\"c\">$rtt</span>:<span class=\"t\">ty</span>)? <span class=\"c\">$(</span>{\n                <span class=\"c\">$(</span><span class=\"c\">$pn</span>:<span class=\"t\">ident</span>: <span class=\"c\">$pt</span>:<span class=\"t\">ty</span>),* <span class=\"c\">$(,</span>)?\n            })?\n        ;)*\n    ) =&gt; {\n        <span class=\"c\">$(</span>\n            ::paste::paste! {\n                <span class=\"c\">#[</span>gen_stub_pyclass]\n                <span class=\"c\">#[</span>pyclass(module = <span class=\"s\">&quot;</span><span class=\"s\">cpu.hooks</span><span class=\"s\">&quot;</span>)]\n                <span class=\"c\">#[</span>derive(<span class=\"t\">Clone</span>)]\n                <span class=\"k\">pub</span> <span class=\"k\">struct</span> [&lt; <span class=\"c\">$name</span> Hook &gt;] {\n                    <span class=\"c\">$(</span> <span class=\"c\">$(</span><span class=\"c\">$pn</span>: <span class=\"c\">$pt</span>,)*)?\n                    callback: <span class=\"t\">std</span>::sync::Arc&lt;PyObject&gt;,\n                }"
+  },
+  {
+   "path": "lib/widgets/custom_gesture_detector.dart",
+   "title": "Pinch-zoom that stops softly",
+   "caption": "When a pinch on the periodic table goes past the zoom limits, the zoom-centring offset is scaled back by the same fraction, so it stops at the limit instead of jumping.",
+   "repo": "chemistry_calculator",
+   "url": "https://github.com/Molkars/chemistry_calculator/blob/e3a468321a7fd29bc9e869484d58308b11ee00aa/lib/widgets/custom_gesture_detector.dart#L95-L111",
+   "html": "<span class=\"t\">double</span> newScale = provider.scale * scaleDelta;\n\n<span class=\"k\">if</span> (newScale &lt; minScale) {\n  <span class=\"t\">double</span> t = (provider.scale - minScale) / (provider.scale -\n      newScale);\n  scaleOffset = Offset.lerp(Offset.zero, scaleOffset, t);\n\n  newScale = minScale;\n}\n\n<span class=\"k\">if</span> (newScale &gt; maxScale) {\n  <span class=\"t\">double</span> t = (maxScale - provider.scale) / (newScale -\n      provider.scale);\n  scaleOffset = Offset.lerp(Offset.zero, scaleOffset, t);\n\n  newScale = maxScale;\n}"
+  },
+  {
+   "path": "nobuild.rs",
+   "title": "A tiny DSL for running commands",
+   "caption": "`cmd!` takes an optional `in dir;`, variadic args and an inline configuration hook, and fails at compile time with a clear message when called empty.",
+   "repo": "nobuild-rs",
+   "url": "https://github.com/Molkars/nobuild-rs/blob/f03ab985e479ab42d8e56d396f5474420f704d37/nobuild.rs#L110-L130",
+   "html": "<span class=\"f\">macro_rules!</span> cmd {\n    (\n        <span class=\"c\">$(</span><span class=\"k\">in</span> <span class=\"c\">$path</span>:<span class=\"t\">expr</span>;)?\n        <span class=\"c\">$cmd</span>:<span class=\"t\">expr</span> <span class=\"c\">$(,</span> <span class=\"c\">$(</span><span class=\"c\">$e</span>:<span class=\"t\">expr</span>),*)? <span class=\"c\">$(,</span>)?\n        <span class=\"c\">$(</span>; <span class=\"k\">fn</span> <span class=\"c\">$name</span>:<span class=\"t\">ident</span> =&gt; <span class=\"c\">$body</span>:<span class=\"t\">expr</span>)?\n\n    ) =&gt; {{\n        <span class=\"k\">let</span> <span class=\"k\">mut</span> command = Command::new(<span class=\"t\">AsRef</span>::&lt;OsStr&gt;::as_ref(&amp;<span class=\"c\">$cmd</span>));\n        <span class=\"c\">$(</span>command.current_dir(<span class=\"c\">$path</span>);)?\n        <span class=\"c\">$(</span>command.args(&amp;[ <span class=\"c\">$(</span><span class=\"t\">AsRef</span>::&lt;OsStr&gt;::as_ref(&amp;<span class=\"c\">$e</span>)),* ]);)?\n        <span class=\"c\">$(</span>{\n            <span class=\"k\">let</span> <span class=\"c\">$name</span> = &amp;<span class=\"k\">mut</span> command;\n            <span class=\"c\">$body</span>;\n        })?\n        <span class=\"f\">eprintln!</span>(<span class=\"s\">&quot;</span><span class=\"s\">CMD: {:?}</span><span class=\"s\">&quot;</span>, command);\n        cmd(&amp;<span class=\"k\">mut</span> command)\n    }};\n    () =&gt; {\n        <span class=\"f\">compile_error!</span>(<span class=\"s\">&quot;</span><span class=\"s\">cmd! macro requires at least a command name</span><span class=\"s\">&quot;</span>)\n    }\n}"
+  },
+  {
+   "path": ".github/workflows/anticheat.yml",
+   "title": "Catching edited autograder releases",
+   "caption": "Autograder results are published as GitHub releases. If a student edits one, this action snapshots the edit event as an artifact and opens an issue for the instructor.",
+   "repo": "msu/csci-468-template",
+   "url": null,
+   "html": "<span class=\"n\">steps</span>:\n  - <span class=\"n\">run</span>: |\n      <span class=\"n\">cp $GITHUB_EVENT_PATH release</span>\n  - <span class=\"n\">uses</span>: actions/upload-artifact@v4\n    <span class=\"n\">id</span>: upload-release-diff\n    <span class=\"n\">with</span>:\n      <span class=\"n\">name</span>: Release Diff\n      <span class=\"n\">path</span>: release\n      <span class=\"n\">if-no-files-found</span>: error\n      <span class=\"n\">retention-days</span>: 90\n      <span class=\"n\">overwrite</span>: false\n  - <span class=\"n\">uses</span>: actions/checkout@v3\n  - <span class=\"n\">uses</span>: JasonEtco/create-an-issue@v2\n    <span class=\"n\">env</span>:\n      <span class=\"n\">GITHUB_TOKEN</span>: ${{ secrets.GITHUB_TOKEN }}\n      <span class=\"n\">ARTIFACT_URL</span>: ${{ steps.upload-release-diff.outputs.artifact-url }}\n    <span class=\"n\">with</span>:\n      <span class=\"n\">filename</span>: .github/ANTICHEAT_TEMPLATE.md"
+  },
+  {
+   "path": "src/main/java/dev/molkars/jsl/parser/Separated.java",
+   "title": "One fold for every precedence level",
+   "caption": "A generic left fold turns a flat list like `a * b / c` into a left-associative syntax tree, so each binary-operator level of the parser is a one-liner.",
+   "repo": "jsl",
+   "url": "https://github.com/Molkars/jsl/blob/5bd62e1bd1866c460e23338ed8c4d169078617c4/src/main/java/dev/molkars/jsl/parser/Separated.java#L20-L31",
+   "html": "<span class=\"k\">public</span> E <span class=\"f\">fold</span>(TriFunction&lt;E, E, Token, E&gt; func) {\n    <span class=\"k\">if</span> (items.isEmpty()) <span class=\"k\">return</span> last;\n    <span class=\"k\">var</span> iterator = items.iterator();\n    Pair&lt;E, Token&gt; last = iterator.next();\n    E acc = last.left();\n    <span class=\"k\">while</span> (iterator.hasNext()) {\n        <span class=\"k\">var</span> next = iterator.next();\n        acc = func.apply(acc, next.left(), last.right());\n        last = next;\n    }\n    <span class=\"k\">return</span> func.apply(acc, <span class=\"k\">this</span>.last, last.right());\n}"
+  },
+  {
+   "path": "src/main.rs",
+   "title": "Sudoku as wave function collapse",
+   "caption": "Sudoku expressed as rules for a generic wave-function-collapse solver: a cell may hold whatever its row, column and 3\u00d73 block leave over.",
+   "repo": "wfc-rust",
+   "url": "https://github.com/Molkars/wfc-rust/blob/78698da0cd8c22892c6a214519b7c7eecdd96232/src/main.rs#L68-L82",
+   "html": "<span class=\"k\">let</span> row = map.row();\n<span class=\"k\">let</span> col = map.col();\n<span class=\"k\">let</span> (x, y) = map.pos();\n<span class=\"k\">let</span> block = map.section_at(<span class=\"n\">3</span>, <span class=\"n\">3</span>, *x, *y);\n\n<span class=\"k\">let</span> row_states = states(row.row_iter());\n<span class=\"k\">let</span> col_states = states(col.row_iter());\n<span class=\"k\">let</span> block_states = states(block.row_iter());\n<span class=\"k\">let</span> <span class=\"k\">mut</span> possible = SudokuNum::full_set();\n<span class=\"k\">for</span> states <span class=\"k\">in</span> [row_states, col_states, block_states] {\n    <span class=\"k\">for</span> state <span class=\"k\">in</span> states {\n        possible.remove(state);\n    }\n}\npossible"
+  },
+  {
+   "path": "src/parse/impl_enum/mod.rs",
+   "title": "An if / else-if chain from a quote! repetition",
+   "caption": "Using `else` as the repetition separator turns a list of variant parsers into one `if let \u2026 else if let \u2026 else` chain, with a type-named error as the fallback.",
+   "repo": "dparse-derive",
+   "url": "https://github.com/Molkars/dparse-derive/blob/002d47bc5771f64eac3f0546540b4bd59f89115d/src/parse/impl_enum/mod.rs#L65-L79",
+   "html": "<span class=\"k\">fn</span> <span class=\"f\">impl_parse_variants</span>(&amp;<span class=\"t\">self</span>) -&gt; <span class=\"t\">Result</span>&lt;TokenStream, Error&gt; {\n    <span class=\"k\">let</span> variants = <span class=\"t\">self</span>\n        .item\n        .variants\n        .iter()\n        .map(|variant| <span class=\"t\">self</span>.impl_parse_variant(variant))\n        .collect::&lt;<span class=\"t\">Result</span>&lt;<span class=\"t\">Vec</span>&lt;_&gt;, _&gt;&gt;()?;\n\n    <span class=\"t\">Ok</span>(quote! {\n        <span class=\"k\">return</span> #(#variants)<span class=\"k\">else</span>*\n        <span class=\"k\">else</span> {\n            <span class=\"t\">Err</span>(input.mismatch(<span class=\"f\">format!</span>(<span class=\"s\">&quot;</span><span class=\"s\">expected {}</span><span class=\"s\">&quot;</span>, std::any::type_name::&lt;<span class=\"t\">Self</span>&gt;())))\n        };\n    })\n}"
+  },
+  {
+   "path": "lib/sync/router.dart",
+   "title": "Route matching with captured variables",
+   "caption": "The core of a Dart router: matches a path segment by segment, checks optional per-segment regex constraints, and captures path variables as it goes.",
+   "repo": "kingfisher",
+   "url": "https://github.com/Molkars/kingfisher/blob/4676d677a307aea8030bd20214708fa3a84fd859/lib/sync/router.dart#L54-L73",
+   "html": "<span class=\"k\">for</span> (<span class=\"t\">int</span> i = <span class=\"n\">0</span>; i &lt; uri.segments.length; i++) {\n  <span class=\"k\">final</span> PathSegment segment = uri.segments[i];\n  <span class=\"k\">final</span> <span class=\"t\">String</span> intent = raw.pathSegments[i];\n\n  <span class=\"k\">if</span> (segment.isVariable) {\n    <span class=\"k\">if</span> (segment.matcher != <span class=\"n\">null</span>) {\n      <span class=\"k\">if</span> (!segment.matcher!.hasMatch(intent)) {\n        isMatch = <span class=\"n\">false</span>;\n        <span class=\"k\">break</span>;\n      }\n    }\n    variables[segment.name] = intent;\n    <span class=\"k\">continue</span>;\n  }\n\n  <span class=\"k\">if</span> (segment.name != intent) {\n    isMatch = <span class=\"n\">false</span>;\n    <span class=\"k\">break</span>;\n  }\n}"
+  }
+ ]
+}

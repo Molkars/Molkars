@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Molkars Code Highlights</title>
+<style>
+  :root {
+    --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --line: #d1d9e0; --card: #f6f8fa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0d1117; --fg: #e6edf3; --muted: #9198a1; --line: #3d444d; --card: #151b23; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+  nav { display: flex; gap: 16px; margin-bottom: 24px; font-size: 13px; }
+  nav a { color: var(--muted); text-decoration: none; }
+  nav a[aria-current] { color: var(--fg); font-weight: 600; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  p.sub { color: var(--muted); margin: 0 0 24px; }
+  a { color: inherit; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 20px; }
+  .card h2 { font-size: 16px; margin: 0; }
+  .card .path { color: var(--muted); font: 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; margin: 2px 0 10px; }
+  .card .path a { color: inherit; }
+  .card p { margin: 0 0 14px; }
+  .card p code { font: 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+  pre {
+    margin: 0; overflow-x: auto; font: 13px/1.55 ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    border-top: 1px solid var(--line); padding-top: 14px;
+  }
+  .bar { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+  .bar button {
+    border: 1px solid var(--line); background: var(--card); color: var(--fg); border-radius: 6px;
+    font: inherit; padding: 4px 12px; cursor: pointer;
+  }
+  .dots { display: flex; gap: 8px; flex: 1; justify-content: center; flex-wrap: wrap; }
+  .dots button { width: 10px; height: 10px; padding: 0; border-radius: 50%; background: var(--line); border: 0; }
+  .dots button[aria-current="true"] { background: var(--muted); }
+  .count { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+</style>
+<style id="theme"></style>
+</head>
+<body>
+<main>
+  <nav><a href="./">Languages</a><a href="code.html" aria-current="page">Code</a><a href="https://github.com/Molkars">GitHub</a></nav>
+  <h1>Code I'm proud of</h1>
+  <p class="sub">Short excerpts from my projects. Use the arrows or ← → keys; titles link to the source where the repo is public.</p>
+
+  <article class="card" id="card" aria-live="polite">
+    <h2><a id="title"></a></h2>
+    <div class="path" id="path"></div>
+    <p id="caption"></p>
+    <pre><code id="code"></code></pre>
+  </article>
+
+  <div class="bar">
+    <button id="prev" aria-label="Previous snippet">←</button>
+    <div class="dots" id="dots"></div>
+    <span class="count" id="count"></span>
+    <button id="next" aria-label="Next snippet">→</button>
+  </div>
+</main>
+
+<script>
+let snippets = [], index = 0;
+const esc = t => t.replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"})[c]);
+
+function show(i) {
+  index = (i + snippets.length) % snippets.length;
+  const s = snippets[index];
+  const title = document.getElementById("title");
+  const where = `${esc(s.repo)} · ${esc(s.path)}`;
+  title.textContent = s.title;
+  if (s.url) title.href = s.url; else title.removeAttribute("href");
+  document.getElementById("path").innerHTML = s.url ? `<a href="${s.url}">${where}</a>` : `${where} (private repo)`;
+  document.getElementById("caption").innerHTML = esc(s.caption).replace(/`([^`]+)`/g, "<code>$1</code>");
+  document.getElementById("code").innerHTML = s.html;
+  document.getElementById("count").textContent = `${index + 1} / ${snippets.length}`;
+  document.querySelectorAll(".dots button").forEach((d, j) => d.setAttribute("aria-current", j === index));
+  history.replaceState(null, "", "#" + (index + 1));
+}
+
+fetch("snippets.json").then(r => r.json()).then(d => {
+  snippets = d.snippets;
+  const light = Object.entries(d.theme).map(([k, v]) => `.${k}{color:${v[0]}}`).join("");
+  const dark = Object.entries(d.theme).map(([k, v]) => `.${k}{color:${v[1]}}`).join("");
+  document.getElementById("theme").textContent = `${light}@media (prefers-color-scheme: dark){${dark}}`;
+  const dots = document.getElementById("dots");
+  snippets.forEach((s, i) => {
+    const b = document.createElement("button");
+    b.setAttribute("aria-label", s.title);
+    b.onclick = () => show(i);
+    dots.appendChild(b);
+  });
+  show((parseInt(location.hash.slice(1)) || 1) - 1);
+});
+
+document.getElementById("prev").onclick = () => show(index - 1);
+document.getElementById("next").onclick = () => show(index + 1);
+addEventListener("keydown", e => {
+  if (e.key === "ArrowLeft") show(index - 1);
+  if (e.key === "ArrowRight") show(index + 1);
+});
+</script>
+</body>
+</html>
