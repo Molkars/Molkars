@@ -24,7 +24,8 @@ from common import OUT_DIR, ROOT  # noqa: E402
 
 # Order the figures appear in, matching the README.
 FIGURES = ["bytecode", "notch-templates", "notch-commands", "notch-syntax",
-           "notch-traces", "sea-c", "sea-lmsm", "grading"]
+           "notch-traces", "sea-c", "sea-lmsm", "pcode-emulator",
+           "flip-syntax", "flip-parse", "flip-paging", "grading"]
 FPS = 20
 SCALE = 1.5           # pixel density of the GIF relative to the 780px layout
 W, H = 780, 656       # figure area; taller figures are scaled down to fit

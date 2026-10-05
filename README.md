@@ -16,10 +16,10 @@ I mostly write **Rust**, plus Java, Dart, and C. Usually parsers, languages, and
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/figures-dark.gif">
-  <img src="assets/figures.gif" alt="Looping animation of eight diagrams of code I've written: a CatScript-to-JVM bytecode generator rejecting IADD on a String; Sunny's two-pass layouts; the #fragment, #helper and #require template commands; Notch syntax; Notch stack traces interleaving Java and Notch frames; sea.c tokenizing and parsing x = a + b * 2; the Sea compiler stepping a for loop on the Little Man Stack Machine; and three grading pipelines" width="780">
+  <img src="assets/figures.gif" alt="Looping animation of twelve diagrams of code I've written: a CatScript-to-JVM bytecode generator rejecting IADD on a String; Sunny's two-pass layouts; the #fragment, #helper and #require template commands; Notch syntax; Notch stack traces interleaving Java and Notch frames; sea.c tokenizing and parsing x = a + b * 2; the Sea compiler stepping a for loop on the Little Man Stack Machine; pcode-emulator-rs lifting i386 code to P-code and interpreting it; flip's syntax, its recursive-descent parser, and a paging simulator written in it; and three grading pipelines" width="780">
 </picture>
 
-<sub>In order: CatScript bytecode · <a href="https://github.com/msu/notch">Notch</a> templates, commands, syntax and stack traces · <a href="https://github.com/Molkars/sea.c">sea.c</a> · <a href="https://github.com/msu/csci-366-spring2025/blob/main/lmsm/lmsm/src/sea.c">Sea → LMSM</a> · grading pipelines</sub>
+<sub>In order: CatScript bytecode · <a href="https://github.com/msu/notch">Notch</a> templates, commands, syntax and stack traces · <a href="https://github.com/Molkars/sea.c">sea.c</a> · <a href="https://github.com/msu/csci-366-spring2025/blob/main/lmsm/lmsm/src/sea.c">Sea → LMSM</a> · <a href="https://github.com/Molkars/pcode-emulator-rs">pcode-emulator-rs</a> · flip syntax, parser and paging simulator · grading pipelines</sub>
 
 <sub><a href="https://molkars.github.io/Molkars/code.html">More code I'm proud of: a carousel of short excerpts →</a></sub>
 
