@@ -14,19 +14,26 @@ I mostly write **Rust**, plus Java, Dart, and C. Usually parsers, languages, and
 
 #### Code I'm proud of
 
-<a href="https://molkars.github.io/Molkars/code.html">
-  <img src="assets/snippets.svg" alt="A slideshow of short code excerpts from my projects" width="780">
-</a>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/figures-dark.gif">
+  <img src="assets/figures.gif" alt="Looping animation of eight diagrams of code I've written: a CatScript-to-JVM bytecode generator rejecting IADD on a String; Sunny's two-pass layouts; the #fragment, #helper and #require template commands; Notch syntax; Notch stack traces interleaving Java and Notch frames; sea.c tokenizing and parsing x = a + b * 2; the Sea compiler stepping a for loop on the Little Man Stack Machine; and three grading pipelines" width="780">
+</picture>
 
-<sub>Rotates every few seconds. <a href="https://molkars.github.io/Molkars/code.html">Browse them with captions and source links →</a></sub>
+<sub>In order: CatScript bytecode · <a href="https://github.com/msu/notch">Notch</a> templates, commands, syntax and stack traces · <a href="https://github.com/Molkars/sea.c">sea.c</a> · <a href="https://github.com/msu/csci-366-spring2025/blob/main/lmsm/lmsm/src/sea.c">Sea → LMSM</a> · grading pipelines</sub>
+
+<sub><a href="https://molkars.github.io/Molkars/code.html">More code I'm proud of: a carousel of short excerpts →</a></sub>
 
 #### Selected projects
 
+- [**styx-emulator**](https://github.com/styx-emulator/styx-emulator) — multi-architecture emulation for the modern era; I wrote much of the macro machinery behind its C and Python bindings
+- [**notch**](https://github.com/msu/notch) — the Notch templating language
+- [**mtmc-old**](https://github.com/msu/mtmc-old) — the MonTana state Mini Computer, a teaching computer for MSU
 - [**pcode-emulator-rs**](https://github.com/Molkars/pcode-emulator-rs) — a P-code emulator written in Rust
 - [**dparse**](https://github.com/Molkars/dparse) — a parsing library for Rust, with [derive](https://github.com/Molkars/dparse-derive) and [HTML](https://github.com/Molkars/dparse-html) crates
 - [**sea.c**](https://github.com/Molkars/sea.c) — Sea, a simplified C for student instruction
 - [**jsl**](https://github.com/Molkars/jsl) — Java Scripting Language
 - [**wfc-rust**](https://github.com/Molkars/wfc-rust) — wave-function-collapse in Rust
+- [**Vesper**](https://github.com/Molkars/Vesper) — a custom Paper plugin for my Minecraft server
 
 #### Check these people out
 

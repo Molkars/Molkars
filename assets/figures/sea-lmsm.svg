@@ -1,0 +1,731 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="600" viewBox="0 0 780 600" role="img" aria-label="Diagram of the Sea compiler targeting the Little Man Stack Machine. A Sea for loop that prints i * i for i &lt; 4 compiles to 27 lines of LMSM stack assembly, each block linked to the source it came from; a program counter then steps through the assembly, showing the stack and accumulator, and the output reads 0 1 4 9.">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="tip"/></marker></defs>
+<style>
+  .card { fill: #f6f8fa; stroke: #d1d9e0; }
+  text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; fill: #1f2328; }
+  .h { font-size: 15px; font-weight: 600; }
+  .m { font-size: 12px; fill: #59636e; }
+  .cap { font-size: 13px; }
+  .s { font-size: 11px; fill: #59636e; }
+  .b { font-weight: 600; }
+  .lbl { font-size: 10px; font-weight: 600; letter-spacing: .08em; fill: #59636e; }
+  .code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13px; }
+  .sm { font-size: 11.5px; }
+  .box, .chip, .node, .rung { fill: #ffffff; stroke: #d1d9e0; }
+  .rung { stroke: #e1e6eb; }
+  .node { stroke: #0969da; }
+  .hl { fill: #0969da; fill-opacity: .14; stroke: #0969da; stroke-opacity: .6; }
+  .bad { fill: #cf222e; fill-opacity: .12; stroke: #cf222e; }
+  .badt { fill: #cf222e; }
+  .ok { fill: #1a7f37; }
+  .edge { stroke: #8c959f; stroke-width: 1.5; fill: none; }
+  .tip { fill: #8c959f; }
+  .term { fill: #1f2328; }
+  .termt { fill: #e6edf3; }
+  .termerr { fill: #ff7b72; }
+  .termdim { fill: #9198a1; }
+  .termok { fill: #3fb950; }
+  .k { fill: #cf222e; } .f { fill: #8250df; } .str { fill: #0a3069; } .num { fill: #0550ae; } .cm { fill: #6e7781; }
+  @media (prefers-color-scheme: dark) {
+    .card { fill: #151b23; stroke: #3d444d; }
+    text { fill: #e6edf3; }
+    .m, .s, .lbl { fill: #9198a1; }
+    .box, .chip, .node, .rung { fill: #0d1117; stroke: #3d444d; }
+    .node { stroke: #4493f8; }
+    .hl { fill: #4493f8; stroke: #4493f8; }
+    .bad { fill: #f85149; stroke: #f85149; }
+    .badt { fill: #ff7b72; }
+    .ok { fill: #3fb950; }
+    .edge { stroke: #656c76; }
+    .tip { fill: #656c76; }
+    .term { fill: #010409; }
+    .k { fill: #ff7b72; } .f { fill: #d2a8ff; } .str { fill: #a5d6ff; } .num { fill: #79c0ff; } .cm { fill: #8b949e; }
+  }
+
+.a0 { animation: a0 22.3s infinite; }
+@keyframes a0 { 0.00% { opacity: 0; } 0.90% { opacity: 0; } 1.57% { opacity: 1; } 25.56% { opacity: 1; } 26.23% { opacity: 0; } 100.00% { opacity: 0; } }
+.a1 { animation: a1 22.3s infinite; }
+@keyframes a1 { 0.00% { opacity: 0; } 25.56% { opacity: 0; } 26.23% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a2 { animation: a2 22.3s infinite; }
+@keyframes a2 { 0.00% { opacity: 0; } 1.79% { opacity: 0; } 2.47% { opacity: 1; } 3.81% { opacity: 1; } 4.48% { opacity: 0; } 100.00% { opacity: 0; } }
+.a3 { animation: a3 22.3s infinite; }
+@keyframes a3 { 0.00% { opacity: 0; } 3.81% { opacity: 0; } 4.48% { opacity: 1; } 5.83% { opacity: 1; } 6.50% { opacity: 0; } 100.00% { opacity: 0; } }
+.a4 { animation: a4 22.3s infinite; }
+@keyframes a4 { 0.00% { opacity: 0; } 5.83% { opacity: 0; } 6.50% { opacity: 1; } 7.85% { opacity: 1; } 8.52% { opacity: 0; } 100.00% { opacity: 0; } }
+.a5 { animation: a5 22.3s infinite; }
+@keyframes a5 { 0.00% { opacity: 0; } 7.85% { opacity: 0; } 8.52% { opacity: 1; } 9.87% { opacity: 1; } 10.54% { opacity: 0; } 100.00% { opacity: 0; } }
+.a6 { animation: a6 22.3s infinite; }
+@keyframes a6 { 0.00% { opacity: 0; } 9.87% { opacity: 0; } 10.54% { opacity: 1; } 11.88% { opacity: 1; } 12.56% { opacity: 0; } 100.00% { opacity: 0; } }
+.a7 { animation: a7 22.3s infinite; }
+@keyframes a7 { 0.00% { opacity: 0; } 11.88% { opacity: 0; } 12.56% { opacity: 1; } 13.90% { opacity: 1; } 14.57% { opacity: 0; } 100.00% { opacity: 0; } }
+.a8 { animation: a8 22.3s infinite; }
+@keyframes a8 { 0.00% { opacity: 0; } 13.90% { opacity: 0; } 14.57% { opacity: 1; } 15.92% { opacity: 1; } 16.59% { opacity: 0; } 100.00% { opacity: 0; } }
+.a9 { animation: a9 22.3s infinite; }
+@keyframes a9 { 0.00% { opacity: 0; } 15.92% { opacity: 0; } 16.59% { opacity: 1; } 17.94% { opacity: 1; } 18.61% { opacity: 0; } 100.00% { opacity: 0; } }
+.a10 { animation: a10 22.3s infinite; }
+@keyframes a10 { 0.00% { opacity: 0; } 17.94% { opacity: 0; } 18.61% { opacity: 1; } 19.96% { opacity: 1; } 20.63% { opacity: 0; } 100.00% { opacity: 0; } }
+.a11 { animation: a11 22.3s infinite; }
+@keyframes a11 { 0.00% { opacity: 0; } 19.96% { opacity: 0; } 20.63% { opacity: 1; } 21.97% { opacity: 1; } 22.65% { opacity: 0; } 100.00% { opacity: 0; } }
+.xs { font-size: 11px; }
+.a13 { animation: a13 22.3s infinite; }
+@keyframes a13 { 0.00% { opacity: 0; } 25.56% { opacity: 0; } 26.23% { opacity: 1; } 27.26% { opacity: 1; } 27.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a14 { animation: a14 22.3s infinite; }
+@keyframes a14 { 0.00% { opacity: 0; } 27.26% { opacity: 0; } 27.94% { opacity: 1; } 28.97% { opacity: 1; } 29.64% { opacity: 0; } 100.00% { opacity: 0; } }
+.a15 { animation: a15 22.3s infinite; }
+@keyframes a15 { 0.00% { opacity: 0; } 28.97% { opacity: 0; } 29.64% { opacity: 1; } 30.67% { opacity: 1; } 31.35% { opacity: 0; } 100.00% { opacity: 0; } }
+.a16 { animation: a16 22.3s infinite; }
+@keyframes a16 { 0.00% { opacity: 0; } 30.67% { opacity: 0; } 31.35% { opacity: 1; } 32.38% { opacity: 1; } 33.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a17 { animation: a17 22.3s infinite; }
+@keyframes a17 { 0.00% { opacity: 0; } 32.38% { opacity: 0; } 33.05% { opacity: 1; } 34.08% { opacity: 1; } 34.75% { opacity: 0; } 100.00% { opacity: 0; } }
+.a18 { animation: a18 22.3s infinite; }
+@keyframes a18 { 0.00% { opacity: 0; } 34.08% { opacity: 0; } 34.75% { opacity: 1; } 35.78% { opacity: 1; } 36.46% { opacity: 0; } 100.00% { opacity: 0; } }
+.a19 { animation: a19 22.3s infinite; }
+@keyframes a19 { 0.00% { opacity: 0; } 35.78% { opacity: 0; } 36.46% { opacity: 1; } 37.49% { opacity: 1; } 38.16% { opacity: 0; } 100.00% { opacity: 0; } }
+.a20 { animation: a20 22.3s infinite; }
+@keyframes a20 { 0.00% { opacity: 0; } 37.49% { opacity: 0; } 38.16% { opacity: 1; } 39.19% { opacity: 1; } 39.87% { opacity: 0; } 100.00% { opacity: 0; } }
+.a21 { animation: a21 22.3s infinite; }
+@keyframes a21 { 0.00% { opacity: 0; } 39.19% { opacity: 0; } 39.87% { opacity: 1; } 40.90% { opacity: 1; } 41.57% { opacity: 0; } 100.00% { opacity: 0; } }
+.a22 { animation: a22 22.3s infinite; }
+@keyframes a22 { 0.00% { opacity: 0; } 40.90% { opacity: 0; } 41.57% { opacity: 1; } 42.60% { opacity: 1; } 43.27% { opacity: 0; } 100.00% { opacity: 0; } }
+.a23 { animation: a23 22.3s infinite; }
+@keyframes a23 { 0.00% { opacity: 0; } 42.60% { opacity: 0; } 43.27% { opacity: 1; } 44.30% { opacity: 1; } 44.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a24 { animation: a24 22.3s infinite; }
+@keyframes a24 { 0.00% { opacity: 0; } 44.30% { opacity: 0; } 44.98% { opacity: 1; } 46.01% { opacity: 1; } 46.68% { opacity: 0; } 100.00% { opacity: 0; } }
+.a25 { animation: a25 22.3s infinite; }
+@keyframes a25 { 0.00% { opacity: 0; } 46.01% { opacity: 0; } 46.68% { opacity: 1; } 47.71% { opacity: 1; } 48.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a26 { animation: a26 22.3s infinite; }
+@keyframes a26 { 0.00% { opacity: 0; } 47.71% { opacity: 0; } 48.39% { opacity: 1; } 49.42% { opacity: 1; } 50.09% { opacity: 0; } 100.00% { opacity: 0; } }
+.a27 { animation: a27 22.3s infinite; }
+@keyframes a27 { 0.00% { opacity: 0; } 49.42% { opacity: 0; } 50.09% { opacity: 1; } 51.12% { opacity: 1; } 51.79% { opacity: 0; } 100.00% { opacity: 0; } }
+.a28 { animation: a28 22.3s infinite; }
+@keyframes a28 { 0.00% { opacity: 0; } 51.12% { opacity: 0; } 51.79% { opacity: 1; } 52.83% { opacity: 1; } 53.50% { opacity: 0; } 100.00% { opacity: 0; } }
+.a29 { animation: a29 22.3s infinite; }
+@keyframes a29 { 0.00% { opacity: 0; } 52.83% { opacity: 0; } 53.50% { opacity: 1; } 54.53% { opacity: 1; } 55.20% { opacity: 0; } 100.00% { opacity: 0; } }
+.a30 { animation: a30 22.3s infinite; }
+@keyframes a30 { 0.00% { opacity: 0; } 54.53% { opacity: 0; } 55.20% { opacity: 1; } 56.23% { opacity: 1; } 56.91% { opacity: 0; } 100.00% { opacity: 0; } }
+.a31 { animation: a31 22.3s infinite; }
+@keyframes a31 { 0.00% { opacity: 0; } 56.23% { opacity: 0; } 56.91% { opacity: 1; } 57.94% { opacity: 1; } 58.61% { opacity: 0; } 100.00% { opacity: 0; } }
+.a32 { animation: a32 22.3s infinite; }
+@keyframes a32 { 0.00% { opacity: 0; } 57.94% { opacity: 0; } 58.61% { opacity: 1; } 58.43% { opacity: 1; } 59.10% { opacity: 0; } 100.00% { opacity: 0; } }
+.a33 { animation: a33 22.3s infinite; }
+@keyframes a33 { 0.00% { opacity: 0; } 58.43% { opacity: 0; } 59.10% { opacity: 1; } 58.92% { opacity: 1; } 59.60% { opacity: 0; } 100.00% { opacity: 0; } }
+.a34 { animation: a34 22.3s infinite; }
+@keyframes a34 { 0.00% { opacity: 0; } 58.92% { opacity: 0; } 59.60% { opacity: 1; } 59.42% { opacity: 1; } 60.09% { opacity: 0; } 100.00% { opacity: 0; } }
+.a35 { animation: a35 22.3s infinite; }
+@keyframes a35 { 0.00% { opacity: 0; } 59.42% { opacity: 0; } 60.09% { opacity: 1; } 59.91% { opacity: 1; } 60.58% { opacity: 0; } 100.00% { opacity: 0; } }
+.a36 { animation: a36 22.3s infinite; }
+@keyframes a36 { 0.00% { opacity: 0; } 59.91% { opacity: 0; } 60.58% { opacity: 1; } 60.40% { opacity: 1; } 61.08% { opacity: 0; } 100.00% { opacity: 0; } }
+.a37 { animation: a37 22.3s infinite; }
+@keyframes a37 { 0.00% { opacity: 0; } 60.40% { opacity: 0; } 61.08% { opacity: 1; } 60.90% { opacity: 1; } 61.57% { opacity: 0; } 100.00% { opacity: 0; } }
+.a38 { animation: a38 22.3s infinite; }
+@keyframes a38 { 0.00% { opacity: 0; } 60.90% { opacity: 0; } 61.57% { opacity: 1; } 61.39% { opacity: 1; } 62.06% { opacity: 0; } 100.00% { opacity: 0; } }
+.a39 { animation: a39 22.3s infinite; }
+@keyframes a39 { 0.00% { opacity: 0; } 61.39% { opacity: 0; } 62.06% { opacity: 1; } 61.88% { opacity: 1; } 62.56% { opacity: 0; } 100.00% { opacity: 0; } }
+.a40 { animation: a40 22.3s infinite; }
+@keyframes a40 { 0.00% { opacity: 0; } 61.88% { opacity: 0; } 62.56% { opacity: 1; } 62.38% { opacity: 1; } 63.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a41 { animation: a41 22.3s infinite; }
+@keyframes a41 { 0.00% { opacity: 0; } 62.38% { opacity: 0; } 63.05% { opacity: 1; } 62.87% { opacity: 1; } 63.54% { opacity: 0; } 100.00% { opacity: 0; } }
+.a42 { animation: a42 22.3s infinite; }
+@keyframes a42 { 0.00% { opacity: 0; } 62.87% { opacity: 0; } 63.54% { opacity: 1; } 63.36% { opacity: 1; } 64.04% { opacity: 0; } 100.00% { opacity: 0; } }
+.a43 { animation: a43 22.3s infinite; }
+@keyframes a43 { 0.00% { opacity: 0; } 63.36% { opacity: 0; } 64.04% { opacity: 1; } 63.86% { opacity: 1; } 64.53% { opacity: 0; } 100.00% { opacity: 0; } }
+.a44 { animation: a44 22.3s infinite; }
+@keyframes a44 { 0.00% { opacity: 0; } 63.86% { opacity: 0; } 64.53% { opacity: 1; } 64.35% { opacity: 1; } 65.02% { opacity: 0; } 100.00% { opacity: 0; } }
+.a45 { animation: a45 22.3s infinite; }
+@keyframes a45 { 0.00% { opacity: 0; } 64.35% { opacity: 0; } 65.02% { opacity: 1; } 64.84% { opacity: 1; } 65.52% { opacity: 0; } 100.00% { opacity: 0; } }
+.a46 { animation: a46 22.3s infinite; }
+@keyframes a46 { 0.00% { opacity: 0; } 64.84% { opacity: 0; } 65.52% { opacity: 1; } 65.34% { opacity: 1; } 66.01% { opacity: 0; } 100.00% { opacity: 0; } }
+.a47 { animation: a47 22.3s infinite; }
+@keyframes a47 { 0.00% { opacity: 0; } 65.34% { opacity: 0; } 66.01% { opacity: 1; } 65.83% { opacity: 1; } 66.50% { opacity: 0; } 100.00% { opacity: 0; } }
+.a48 { animation: a48 22.3s infinite; }
+@keyframes a48 { 0.00% { opacity: 0; } 65.83% { opacity: 0; } 66.50% { opacity: 1; } 66.32% { opacity: 1; } 67.00% { opacity: 0; } 100.00% { opacity: 0; } }
+.a49 { animation: a49 22.3s infinite; }
+@keyframes a49 { 0.00% { opacity: 0; } 66.32% { opacity: 0; } 67.00% { opacity: 1; } 66.82% { opacity: 1; } 67.49% { opacity: 0; } 100.00% { opacity: 0; } }
+.a50 { animation: a50 22.3s infinite; }
+@keyframes a50 { 0.00% { opacity: 0; } 66.82% { opacity: 0; } 67.49% { opacity: 1; } 67.31% { opacity: 1; } 67.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a51 { animation: a51 22.3s infinite; }
+@keyframes a51 { 0.00% { opacity: 0; } 67.31% { opacity: 0; } 67.98% { opacity: 1; } 67.80% { opacity: 1; } 68.48% { opacity: 0; } 100.00% { opacity: 0; } }
+.a52 { animation: a52 22.3s infinite; }
+@keyframes a52 { 0.00% { opacity: 0; } 67.80% { opacity: 0; } 68.48% { opacity: 1; } 68.30% { opacity: 1; } 68.97% { opacity: 0; } 100.00% { opacity: 0; } }
+.a53 { animation: a53 22.3s infinite; }
+@keyframes a53 { 0.00% { opacity: 0; } 68.30% { opacity: 0; } 68.97% { opacity: 1; } 68.79% { opacity: 1; } 69.46% { opacity: 0; } 100.00% { opacity: 0; } }
+.a54 { animation: a54 22.3s infinite; }
+@keyframes a54 { 0.00% { opacity: 0; } 68.79% { opacity: 0; } 69.46% { opacity: 1; } 69.28% { opacity: 1; } 69.96% { opacity: 0; } 100.00% { opacity: 0; } }
+.a55 { animation: a55 22.3s infinite; }
+@keyframes a55 { 0.00% { opacity: 0; } 69.28% { opacity: 0; } 69.96% { opacity: 1; } 69.78% { opacity: 1; } 70.45% { opacity: 0; } 100.00% { opacity: 0; } }
+.a56 { animation: a56 22.3s infinite; }
+@keyframes a56 { 0.00% { opacity: 0; } 69.78% { opacity: 0; } 70.45% { opacity: 1; } 70.27% { opacity: 1; } 70.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a57 { animation: a57 22.3s infinite; }
+@keyframes a57 { 0.00% { opacity: 0; } 70.27% { opacity: 0; } 70.94% { opacity: 1; } 70.76% { opacity: 1; } 71.43% { opacity: 0; } 100.00% { opacity: 0; } }
+.a58 { animation: a58 22.3s infinite; }
+@keyframes a58 { 0.00% { opacity: 0; } 70.76% { opacity: 0; } 71.43% { opacity: 1; } 71.26% { opacity: 1; } 71.93% { opacity: 0; } 100.00% { opacity: 0; } }
+.a59 { animation: a59 22.3s infinite; }
+@keyframes a59 { 0.00% { opacity: 0; } 71.26% { opacity: 0; } 71.93% { opacity: 1; } 71.75% { opacity: 1; } 72.42% { opacity: 0; } 100.00% { opacity: 0; } }
+.a60 { animation: a60 22.3s infinite; }
+@keyframes a60 { 0.00% { opacity: 0; } 71.75% { opacity: 0; } 72.42% { opacity: 1; } 72.24% { opacity: 1; } 72.91% { opacity: 0; } 100.00% { opacity: 0; } }
+.a61 { animation: a61 22.3s infinite; }
+@keyframes a61 { 0.00% { opacity: 0; } 72.24% { opacity: 0; } 72.91% { opacity: 1; } 72.74% { opacity: 1; } 73.41% { opacity: 0; } 100.00% { opacity: 0; } }
+.a62 { animation: a62 22.3s infinite; }
+@keyframes a62 { 0.00% { opacity: 0; } 72.74% { opacity: 0; } 73.41% { opacity: 1; } 73.23% { opacity: 1; } 73.90% { opacity: 0; } 100.00% { opacity: 0; } }
+.a63 { animation: a63 22.3s infinite; }
+@keyframes a63 { 0.00% { opacity: 0; } 73.23% { opacity: 0; } 73.90% { opacity: 1; } 73.72% { opacity: 1; } 74.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a64 { animation: a64 22.3s infinite; }
+@keyframes a64 { 0.00% { opacity: 0; } 73.72% { opacity: 0; } 74.39% { opacity: 1; } 74.22% { opacity: 1; } 74.89% { opacity: 0; } 100.00% { opacity: 0; } }
+.a65 { animation: a65 22.3s infinite; }
+@keyframes a65 { 0.00% { opacity: 0; } 74.22% { opacity: 0; } 74.89% { opacity: 1; } 74.71% { opacity: 1; } 75.38% { opacity: 0; } 100.00% { opacity: 0; } }
+.a66 { animation: a66 22.3s infinite; }
+@keyframes a66 { 0.00% { opacity: 0; } 74.71% { opacity: 0; } 75.38% { opacity: 1; } 75.20% { opacity: 1; } 75.87% { opacity: 0; } 100.00% { opacity: 0; } }
+.a67 { animation: a67 22.3s infinite; }
+@keyframes a67 { 0.00% { opacity: 0; } 75.20% { opacity: 0; } 75.87% { opacity: 1; } 75.70% { opacity: 1; } 76.37% { opacity: 0; } 100.00% { opacity: 0; } }
+.a68 { animation: a68 22.3s infinite; }
+@keyframes a68 { 0.00% { opacity: 0; } 75.70% { opacity: 0; } 76.37% { opacity: 1; } 76.19% { opacity: 1; } 76.86% { opacity: 0; } 100.00% { opacity: 0; } }
+.a69 { animation: a69 22.3s infinite; }
+@keyframes a69 { 0.00% { opacity: 0; } 76.19% { opacity: 0; } 76.86% { opacity: 1; } 76.68% { opacity: 1; } 77.35% { opacity: 0; } 100.00% { opacity: 0; } }
+.a70 { animation: a70 22.3s infinite; }
+@keyframes a70 { 0.00% { opacity: 0; } 76.68% { opacity: 0; } 77.35% { opacity: 1; } 77.17% { opacity: 1; } 77.85% { opacity: 0; } 100.00% { opacity: 0; } }
+.a71 { animation: a71 22.3s infinite; }
+@keyframes a71 { 0.00% { opacity: 0; } 77.17% { opacity: 0; } 77.85% { opacity: 1; } 77.67% { opacity: 1; } 78.34% { opacity: 0; } 100.00% { opacity: 0; } }
+.a72 { animation: a72 22.3s infinite; }
+@keyframes a72 { 0.00% { opacity: 0; } 77.67% { opacity: 0; } 78.34% { opacity: 1; } 78.16% { opacity: 1; } 78.83% { opacity: 0; } 100.00% { opacity: 0; } }
+.a73 { animation: a73 22.3s infinite; }
+@keyframes a73 { 0.00% { opacity: 0; } 78.16% { opacity: 0; } 78.83% { opacity: 1; } 78.65% { opacity: 1; } 79.33% { opacity: 0; } 100.00% { opacity: 0; } }
+.a74 { animation: a74 22.3s infinite; }
+@keyframes a74 { 0.00% { opacity: 0; } 78.65% { opacity: 0; } 79.33% { opacity: 1; } 79.15% { opacity: 1; } 79.82% { opacity: 0; } 100.00% { opacity: 0; } }
+.a75 { animation: a75 22.3s infinite; }
+@keyframes a75 { 0.00% { opacity: 0; } 79.15% { opacity: 0; } 79.82% { opacity: 1; } 79.64% { opacity: 1; } 80.31% { opacity: 0; } 100.00% { opacity: 0; } }
+.a76 { animation: a76 22.3s infinite; }
+@keyframes a76 { 0.00% { opacity: 0; } 79.64% { opacity: 0; } 80.31% { opacity: 1; } 80.13% { opacity: 1; } 80.81% { opacity: 0; } 100.00% { opacity: 0; } }
+.a77 { animation: a77 22.3s infinite; }
+@keyframes a77 { 0.00% { opacity: 0; } 80.13% { opacity: 0; } 80.81% { opacity: 1; } 80.63% { opacity: 1; } 81.30% { opacity: 0; } 100.00% { opacity: 0; } }
+.a78 { animation: a78 22.3s infinite; }
+@keyframes a78 { 0.00% { opacity: 0; } 80.63% { opacity: 0; } 81.30% { opacity: 1; } 81.12% { opacity: 1; } 81.79% { opacity: 0; } 100.00% { opacity: 0; } }
+.a79 { animation: a79 22.3s infinite; }
+@keyframes a79 { 0.00% { opacity: 0; } 81.12% { opacity: 0; } 81.79% { opacity: 1; } 81.61% { opacity: 1; } 82.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a80 { animation: a80 22.3s infinite; }
+@keyframes a80 { 0.00% { opacity: 0; } 81.61% { opacity: 0; } 82.29% { opacity: 1; } 82.11% { opacity: 1; } 82.78% { opacity: 0; } 100.00% { opacity: 0; } }
+.a81 { animation: a81 22.3s infinite; }
+@keyframes a81 { 0.00% { opacity: 0; } 82.11% { opacity: 0; } 82.78% { opacity: 1; } 82.60% { opacity: 1; } 83.27% { opacity: 0; } 100.00% { opacity: 0; } }
+.a82 { animation: a82 22.3s infinite; }
+@keyframes a82 { 0.00% { opacity: 0; } 82.60% { opacity: 0; } 83.27% { opacity: 1; } 83.09% { opacity: 1; } 83.77% { opacity: 0; } 100.00% { opacity: 0; } }
+.a83 { animation: a83 22.3s infinite; }
+@keyframes a83 { 0.00% { opacity: 0; } 83.09% { opacity: 0; } 83.77% { opacity: 1; } 83.59% { opacity: 1; } 84.26% { opacity: 0; } 100.00% { opacity: 0; } }
+.a84 { animation: a84 22.3s infinite; }
+@keyframes a84 { 0.00% { opacity: 0; } 83.59% { opacity: 0; } 84.26% { opacity: 1; } 84.08% { opacity: 1; } 84.75% { opacity: 0; } 100.00% { opacity: 0; } }
+.a85 { animation: a85 22.3s infinite; }
+@keyframes a85 { 0.00% { opacity: 0; } 84.08% { opacity: 0; } 84.75% { opacity: 1; } 84.57% { opacity: 1; } 85.25% { opacity: 0; } 100.00% { opacity: 0; } }
+.a86 { animation: a86 22.3s infinite; }
+@keyframes a86 { 0.00% { opacity: 0; } 84.57% { opacity: 0; } 85.25% { opacity: 1; } 85.07% { opacity: 1; } 85.74% { opacity: 0; } 100.00% { opacity: 0; } }
+.a87 { animation: a87 22.3s infinite; }
+@keyframes a87 { 0.00% { opacity: 0; } 85.07% { opacity: 0; } 85.74% { opacity: 1; } 85.56% { opacity: 1; } 86.23% { opacity: 0; } 100.00% { opacity: 0; } }
+.a88 { animation: a88 22.3s infinite; }
+@keyframes a88 { 0.00% { opacity: 0; } 85.56% { opacity: 0; } 86.23% { opacity: 1; } 86.05% { opacity: 1; } 86.73% { opacity: 0; } 100.00% { opacity: 0; } }
+.a89 { animation: a89 22.3s infinite; }
+@keyframes a89 { 0.00% { opacity: 0; } 86.05% { opacity: 0; } 86.73% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a90 { animation: a90 22.3s infinite; }
+@keyframes a90 { 0.00% { opacity: 0; } 49.42% { opacity: 0; } 50.09% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a91 { animation: a91 22.3s infinite; }
+@keyframes a91 { 0.00% { opacity: 0; } 62.87% { opacity: 0; } 63.54% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a92 { animation: a92 22.3s infinite; }
+@keyframes a92 { 0.00% { opacity: 0; } 70.27% { opacity: 0; } 70.94% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a93 { animation: a93 22.3s infinite; }
+@keyframes a93 { 0.00% { opacity: 0; } 77.67% { opacity: 0; } 78.34% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a94 { animation: a94 22.3s infinite; }
+@keyframes a94 { 0.00% { opacity: 0; } 1.79% { opacity: 0; } 2.47% { opacity: 1; } 3.81% { opacity: 1; } 4.48% { opacity: 0; } 100.00% { opacity: 0; } }
+.a95 { animation: a95 22.3s infinite; }
+@keyframes a95 { 0.00% { opacity: 0; } 1.79% { opacity: 0; } 2.47% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a96 { animation: a96 22.3s infinite; }
+@keyframes a96 { 0.00% { opacity: 0; } 3.81% { opacity: 0; } 4.48% { opacity: 1; } 5.83% { opacity: 1; } 6.50% { opacity: 0; } 100.00% { opacity: 0; } }
+.a97 { animation: a97 22.3s infinite; }
+@keyframes a97 { 0.00% { opacity: 0; } 3.81% { opacity: 0; } 4.48% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a98 { animation: a98 22.3s infinite; }
+@keyframes a98 { 0.00% { opacity: 0; } 5.83% { opacity: 0; } 6.50% { opacity: 1; } 7.85% { opacity: 1; } 8.52% { opacity: 0; } 100.00% { opacity: 0; } }
+.a99 { animation: a99 22.3s infinite; }
+@keyframes a99 { 0.00% { opacity: 0; } 5.83% { opacity: 0; } 6.50% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a100 { animation: a100 22.3s infinite; }
+@keyframes a100 { 0.00% { opacity: 0; } 7.85% { opacity: 0; } 8.52% { opacity: 1; } 9.87% { opacity: 1; } 10.54% { opacity: 0; } 100.00% { opacity: 0; } }
+.a101 { animation: a101 22.3s infinite; }
+@keyframes a101 { 0.00% { opacity: 0; } 7.85% { opacity: 0; } 8.52% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a102 { animation: a102 22.3s infinite; }
+@keyframes a102 { 0.00% { opacity: 0; } 9.87% { opacity: 0; } 10.54% { opacity: 1; } 11.88% { opacity: 1; } 12.56% { opacity: 0; } 100.00% { opacity: 0; } }
+.a103 { animation: a103 22.3s infinite; }
+@keyframes a103 { 0.00% { opacity: 0; } 9.87% { opacity: 0; } 10.54% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a104 { animation: a104 22.3s infinite; }
+@keyframes a104 { 0.00% { opacity: 0; } 11.88% { opacity: 0; } 12.56% { opacity: 1; } 13.90% { opacity: 1; } 14.57% { opacity: 0; } 100.00% { opacity: 0; } }
+.a105 { animation: a105 22.3s infinite; }
+@keyframes a105 { 0.00% { opacity: 0; } 11.88% { opacity: 0; } 12.56% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a106 { animation: a106 22.3s infinite; }
+@keyframes a106 { 0.00% { opacity: 0; } 13.90% { opacity: 0; } 14.57% { opacity: 1; } 15.92% { opacity: 1; } 16.59% { opacity: 0; } 100.00% { opacity: 0; } }
+.a107 { animation: a107 22.3s infinite; }
+@keyframes a107 { 0.00% { opacity: 0; } 13.90% { opacity: 0; } 14.57% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a108 { animation: a108 22.3s infinite; }
+@keyframes a108 { 0.00% { opacity: 0; } 15.92% { opacity: 0; } 16.59% { opacity: 1; } 17.94% { opacity: 1; } 18.61% { opacity: 0; } 100.00% { opacity: 0; } }
+.a109 { animation: a109 22.3s infinite; }
+@keyframes a109 { 0.00% { opacity: 0; } 15.92% { opacity: 0; } 16.59% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a110 { animation: a110 22.3s infinite; }
+@keyframes a110 { 0.00% { opacity: 0; } 17.94% { opacity: 0; } 18.61% { opacity: 1; } 19.96% { opacity: 1; } 20.63% { opacity: 0; } 100.00% { opacity: 0; } }
+.a111 { animation: a111 22.3s infinite; }
+@keyframes a111 { 0.00% { opacity: 0; } 17.94% { opacity: 0; } 18.61% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a112 { animation: a112 22.3s infinite; }
+@keyframes a112 { 0.00% { opacity: 0; } 19.96% { opacity: 0; } 20.63% { opacity: 1; } 21.97% { opacity: 1; } 22.65% { opacity: 0; } 100.00% { opacity: 0; } }
+.a113 { animation: a113 22.3s infinite; }
+@keyframes a113 { 0.00% { opacity: 0; } 19.96% { opacity: 0; } 20.63% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a114 { animation: a114 22.3s infinite; }
+@keyframes a114 { 0.00% { opacity: 0; } 1.79% { opacity: 0; } 2.47% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a115 { animation: a115 22.3s infinite; }
+@keyframes a115 { 0.00% { opacity: 0; } 1.79% { opacity: 0; } 2.47% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a116 { animation: a116 22.3s infinite; }
+@keyframes a116 { 0.00% { opacity: 0; } 3.81% { opacity: 0; } 4.48% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a117 { animation: a117 22.3s infinite; }
+@keyframes a117 { 0.00% { opacity: 0; } 5.83% { opacity: 0; } 6.50% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a118 { animation: a118 22.3s infinite; }
+@keyframes a118 { 0.00% { opacity: 0; } 5.83% { opacity: 0; } 6.50% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a119 { animation: a119 22.3s infinite; }
+@keyframes a119 { 0.00% { opacity: 0; } 7.85% { opacity: 0; } 8.52% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a120 { animation: a120 22.3s infinite; }
+@keyframes a120 { 0.00% { opacity: 0; } 7.85% { opacity: 0; } 8.52% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a121 { animation: a121 22.3s infinite; }
+@keyframes a121 { 0.00% { opacity: 0; } 7.85% { opacity: 0; } 8.52% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a122 { animation: a122 22.3s infinite; }
+@keyframes a122 { 0.00% { opacity: 0; } 7.85% { opacity: 0; } 8.52% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a123 { animation: a123 22.3s infinite; }
+@keyframes a123 { 0.00% { opacity: 0; } 7.85% { opacity: 0; } 8.52% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a124 { animation: a124 22.3s infinite; }
+@keyframes a124 { 0.00% { opacity: 0; } 9.87% { opacity: 0; } 10.54% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a125 { animation: a125 22.3s infinite; }
+@keyframes a125 { 0.00% { opacity: 0; } 9.87% { opacity: 0; } 10.54% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a126 { animation: a126 22.3s infinite; }
+@keyframes a126 { 0.00% { opacity: 0; } 9.87% { opacity: 0; } 10.54% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a127 { animation: a127 22.3s infinite; }
+@keyframes a127 { 0.00% { opacity: 0; } 9.87% { opacity: 0; } 10.54% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a128 { animation: a128 22.3s infinite; }
+@keyframes a128 { 0.00% { opacity: 0; } 9.87% { opacity: 0; } 10.54% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a129 { animation: a129 22.3s infinite; }
+@keyframes a129 { 0.00% { opacity: 0; } 11.88% { opacity: 0; } 12.56% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a130 { animation: a130 22.3s infinite; }
+@keyframes a130 { 0.00% { opacity: 0; } 11.88% { opacity: 0; } 12.56% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a131 { animation: a131 22.3s infinite; }
+@keyframes a131 { 0.00% { opacity: 0; } 11.88% { opacity: 0; } 12.56% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a132 { animation: a132 22.3s infinite; }
+@keyframes a132 { 0.00% { opacity: 0; } 11.88% { opacity: 0; } 12.56% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a133 { animation: a133 22.3s infinite; }
+@keyframes a133 { 0.00% { opacity: 0; } 13.90% { opacity: 0; } 14.57% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a134 { animation: a134 22.3s infinite; }
+@keyframes a134 { 0.00% { opacity: 0; } 15.92% { opacity: 0; } 16.59% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a135 { animation: a135 22.3s infinite; }
+@keyframes a135 { 0.00% { opacity: 0; } 15.92% { opacity: 0; } 16.59% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a136 { animation: a136 22.3s infinite; }
+@keyframes a136 { 0.00% { opacity: 0; } 15.92% { opacity: 0; } 16.59% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a137 { animation: a137 22.3s infinite; }
+@keyframes a137 { 0.00% { opacity: 0; } 17.94% { opacity: 0; } 18.61% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a138 { animation: a138 22.3s infinite; }
+@keyframes a138 { 0.00% { opacity: 0; } 17.94% { opacity: 0; } 18.61% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a139 { animation: a139 22.3s infinite; }
+@keyframes a139 { 0.00% { opacity: 0; } 17.94% { opacity: 0; } 18.61% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a140 { animation: a140 22.3s infinite; }
+@keyframes a140 { 0.00% { opacity: 0; } 19.96% { opacity: 0; } 20.63% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a141 { animation: a141 22.3s infinite; }
+@keyframes a141 { 0.00% { opacity: 0; } 25.56% { opacity: 0; } 26.23% { opacity: 1; } 27.26% { opacity: 1; } 27.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a142 { animation: a142 22.3s infinite; }
+@keyframes a142 { 0.00% { opacity: 0; } 27.26% { opacity: 0; } 27.94% { opacity: 1; } 28.97% { opacity: 1; } 29.64% { opacity: 0; } 100.00% { opacity: 0; } }
+.a143 { animation: a143 22.3s infinite; }
+@keyframes a143 { 0.00% { opacity: 0; } 28.97% { opacity: 0; } 29.64% { opacity: 1; } 30.67% { opacity: 1; } 31.35% { opacity: 0; } 100.00% { opacity: 0; } }
+.a144 { animation: a144 22.3s infinite; }
+@keyframes a144 { 0.00% { opacity: 0; } 30.67% { opacity: 0; } 31.35% { opacity: 1; } 32.38% { opacity: 1; } 33.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a145 { animation: a145 22.3s infinite; }
+@keyframes a145 { 0.00% { opacity: 0; } 32.38% { opacity: 0; } 33.05% { opacity: 1; } 34.08% { opacity: 1; } 34.75% { opacity: 0; } 100.00% { opacity: 0; } }
+.a146 { animation: a146 22.3s infinite; }
+@keyframes a146 { 0.00% { opacity: 0; } 34.08% { opacity: 0; } 34.75% { opacity: 1; } 35.78% { opacity: 1; } 36.46% { opacity: 0; } 100.00% { opacity: 0; } }
+.a147 { animation: a147 22.3s infinite; }
+@keyframes a147 { 0.00% { opacity: 0; } 35.78% { opacity: 0; } 36.46% { opacity: 1; } 37.49% { opacity: 1; } 38.16% { opacity: 0; } 100.00% { opacity: 0; } }
+.a148 { animation: a148 22.3s infinite; }
+@keyframes a148 { 0.00% { opacity: 0; } 37.49% { opacity: 0; } 38.16% { opacity: 1; } 39.19% { opacity: 1; } 39.87% { opacity: 0; } 100.00% { opacity: 0; } }
+.a149 { animation: a149 22.3s infinite; }
+@keyframes a149 { 0.00% { opacity: 0; } 39.19% { opacity: 0; } 39.87% { opacity: 1; } 40.90% { opacity: 1; } 41.57% { opacity: 0; } 100.00% { opacity: 0; } }
+.a150 { animation: a150 22.3s infinite; }
+@keyframes a150 { 0.00% { opacity: 0; } 40.90% { opacity: 0; } 41.57% { opacity: 1; } 42.60% { opacity: 1; } 43.27% { opacity: 0; } 100.00% { opacity: 0; } }
+.a151 { animation: a151 22.3s infinite; }
+@keyframes a151 { 0.00% { opacity: 0; } 42.60% { opacity: 0; } 43.27% { opacity: 1; } 44.30% { opacity: 1; } 44.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a152 { animation: a152 22.3s infinite; }
+@keyframes a152 { 0.00% { opacity: 0; } 44.30% { opacity: 0; } 44.98% { opacity: 1; } 46.01% { opacity: 1; } 46.68% { opacity: 0; } 100.00% { opacity: 0; } }
+.a153 { animation: a153 22.3s infinite; }
+@keyframes a153 { 0.00% { opacity: 0; } 46.01% { opacity: 0; } 46.68% { opacity: 1; } 47.71% { opacity: 1; } 48.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a154 { animation: a154 22.3s infinite; }
+@keyframes a154 { 0.00% { opacity: 0; } 47.71% { opacity: 0; } 48.39% { opacity: 1; } 49.42% { opacity: 1; } 50.09% { opacity: 0; } 100.00% { opacity: 0; } }
+.a155 { animation: a155 22.3s infinite; }
+@keyframes a155 { 0.00% { opacity: 0; } 49.42% { opacity: 0; } 50.09% { opacity: 1; } 51.12% { opacity: 1; } 51.79% { opacity: 0; } 100.00% { opacity: 0; } }
+.a156 { animation: a156 22.3s infinite; }
+@keyframes a156 { 0.00% { opacity: 0; } 51.12% { opacity: 0; } 51.79% { opacity: 1; } 52.83% { opacity: 1; } 53.50% { opacity: 0; } 100.00% { opacity: 0; } }
+.a157 { animation: a157 22.3s infinite; }
+@keyframes a157 { 0.00% { opacity: 0; } 52.83% { opacity: 0; } 53.50% { opacity: 1; } 54.53% { opacity: 1; } 55.20% { opacity: 0; } 100.00% { opacity: 0; } }
+.a158 { animation: a158 22.3s infinite; }
+@keyframes a158 { 0.00% { opacity: 0; } 54.53% { opacity: 0; } 55.20% { opacity: 1; } 56.23% { opacity: 1; } 56.91% { opacity: 0; } 100.00% { opacity: 0; } }
+.a159 { animation: a159 22.3s infinite; }
+@keyframes a159 { 0.00% { opacity: 0; } 56.23% { opacity: 0; } 56.91% { opacity: 1; } 57.94% { opacity: 1; } 58.61% { opacity: 0; } 100.00% { opacity: 0; } }
+.a160 { animation: a160 22.3s infinite; }
+@keyframes a160 { 0.00% { opacity: 0; } 57.94% { opacity: 0; } 58.61% { opacity: 1; } 58.43% { opacity: 1; } 59.10% { opacity: 0; } 100.00% { opacity: 0; } }
+.a161 { animation: a161 22.3s infinite; }
+@keyframes a161 { 0.00% { opacity: 0; } 58.43% { opacity: 0; } 59.10% { opacity: 1; } 58.92% { opacity: 1; } 59.60% { opacity: 0; } 100.00% { opacity: 0; } }
+.a162 { animation: a162 22.3s infinite; }
+@keyframes a162 { 0.00% { opacity: 0; } 58.92% { opacity: 0; } 59.60% { opacity: 1; } 59.42% { opacity: 1; } 60.09% { opacity: 0; } 100.00% { opacity: 0; } }
+.a163 { animation: a163 22.3s infinite; }
+@keyframes a163 { 0.00% { opacity: 0; } 59.42% { opacity: 0; } 60.09% { opacity: 1; } 59.91% { opacity: 1; } 60.58% { opacity: 0; } 100.00% { opacity: 0; } }
+.a164 { animation: a164 22.3s infinite; }
+@keyframes a164 { 0.00% { opacity: 0; } 59.91% { opacity: 0; } 60.58% { opacity: 1; } 60.40% { opacity: 1; } 61.08% { opacity: 0; } 100.00% { opacity: 0; } }
+.a165 { animation: a165 22.3s infinite; }
+@keyframes a165 { 0.00% { opacity: 0; } 60.40% { opacity: 0; } 61.08% { opacity: 1; } 60.90% { opacity: 1; } 61.57% { opacity: 0; } 100.00% { opacity: 0; } }
+.a166 { animation: a166 22.3s infinite; }
+@keyframes a166 { 0.00% { opacity: 0; } 60.90% { opacity: 0; } 61.57% { opacity: 1; } 61.39% { opacity: 1; } 62.06% { opacity: 0; } 100.00% { opacity: 0; } }
+.a167 { animation: a167 22.3s infinite; }
+@keyframes a167 { 0.00% { opacity: 0; } 61.39% { opacity: 0; } 62.06% { opacity: 1; } 61.88% { opacity: 1; } 62.56% { opacity: 0; } 100.00% { opacity: 0; } }
+.a168 { animation: a168 22.3s infinite; }
+@keyframes a168 { 0.00% { opacity: 0; } 61.88% { opacity: 0; } 62.56% { opacity: 1; } 62.38% { opacity: 1; } 63.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a169 { animation: a169 22.3s infinite; }
+@keyframes a169 { 0.00% { opacity: 0; } 62.38% { opacity: 0; } 63.05% { opacity: 1; } 62.87% { opacity: 1; } 63.54% { opacity: 0; } 100.00% { opacity: 0; } }
+.a170 { animation: a170 22.3s infinite; }
+@keyframes a170 { 0.00% { opacity: 0; } 62.87% { opacity: 0; } 63.54% { opacity: 1; } 63.36% { opacity: 1; } 64.04% { opacity: 0; } 100.00% { opacity: 0; } }
+.a171 { animation: a171 22.3s infinite; }
+@keyframes a171 { 0.00% { opacity: 0; } 63.36% { opacity: 0; } 64.04% { opacity: 1; } 63.86% { opacity: 1; } 64.53% { opacity: 0; } 100.00% { opacity: 0; } }
+.a172 { animation: a172 22.3s infinite; }
+@keyframes a172 { 0.00% { opacity: 0; } 63.86% { opacity: 0; } 64.53% { opacity: 1; } 64.35% { opacity: 1; } 65.02% { opacity: 0; } 100.00% { opacity: 0; } }
+.a173 { animation: a173 22.3s infinite; }
+@keyframes a173 { 0.00% { opacity: 0; } 64.35% { opacity: 0; } 65.02% { opacity: 1; } 64.84% { opacity: 1; } 65.52% { opacity: 0; } 100.00% { opacity: 0; } }
+.a174 { animation: a174 22.3s infinite; }
+@keyframes a174 { 0.00% { opacity: 0; } 64.84% { opacity: 0; } 65.52% { opacity: 1; } 65.34% { opacity: 1; } 66.01% { opacity: 0; } 100.00% { opacity: 0; } }
+.a175 { animation: a175 22.3s infinite; }
+@keyframes a175 { 0.00% { opacity: 0; } 65.34% { opacity: 0; } 66.01% { opacity: 1; } 65.83% { opacity: 1; } 66.50% { opacity: 0; } 100.00% { opacity: 0; } }
+.a176 { animation: a176 22.3s infinite; }
+@keyframes a176 { 0.00% { opacity: 0; } 65.83% { opacity: 0; } 66.50% { opacity: 1; } 66.32% { opacity: 1; } 67.00% { opacity: 0; } 100.00% { opacity: 0; } }
+.a177 { animation: a177 22.3s infinite; }
+@keyframes a177 { 0.00% { opacity: 0; } 66.32% { opacity: 0; } 67.00% { opacity: 1; } 66.82% { opacity: 1; } 67.49% { opacity: 0; } 100.00% { opacity: 0; } }
+.a178 { animation: a178 22.3s infinite; }
+@keyframes a178 { 0.00% { opacity: 0; } 66.82% { opacity: 0; } 67.49% { opacity: 1; } 67.31% { opacity: 1; } 67.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a179 { animation: a179 22.3s infinite; }
+@keyframes a179 { 0.00% { opacity: 0; } 67.31% { opacity: 0; } 67.98% { opacity: 1; } 67.80% { opacity: 1; } 68.48% { opacity: 0; } 100.00% { opacity: 0; } }
+.a180 { animation: a180 22.3s infinite; }
+@keyframes a180 { 0.00% { opacity: 0; } 67.80% { opacity: 0; } 68.48% { opacity: 1; } 68.30% { opacity: 1; } 68.97% { opacity: 0; } 100.00% { opacity: 0; } }
+.a181 { animation: a181 22.3s infinite; }
+@keyframes a181 { 0.00% { opacity: 0; } 68.30% { opacity: 0; } 68.97% { opacity: 1; } 68.79% { opacity: 1; } 69.46% { opacity: 0; } 100.00% { opacity: 0; } }
+.a182 { animation: a182 22.3s infinite; }
+@keyframes a182 { 0.00% { opacity: 0; } 68.79% { opacity: 0; } 69.46% { opacity: 1; } 69.28% { opacity: 1; } 69.96% { opacity: 0; } 100.00% { opacity: 0; } }
+.a183 { animation: a183 22.3s infinite; }
+@keyframes a183 { 0.00% { opacity: 0; } 69.28% { opacity: 0; } 69.96% { opacity: 1; } 69.78% { opacity: 1; } 70.45% { opacity: 0; } 100.00% { opacity: 0; } }
+.a184 { animation: a184 22.3s infinite; }
+@keyframes a184 { 0.00% { opacity: 0; } 69.78% { opacity: 0; } 70.45% { opacity: 1; } 70.27% { opacity: 1; } 70.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a185 { animation: a185 22.3s infinite; }
+@keyframes a185 { 0.00% { opacity: 0; } 70.27% { opacity: 0; } 70.94% { opacity: 1; } 70.76% { opacity: 1; } 71.43% { opacity: 0; } 100.00% { opacity: 0; } }
+.a186 { animation: a186 22.3s infinite; }
+@keyframes a186 { 0.00% { opacity: 0; } 70.76% { opacity: 0; } 71.43% { opacity: 1; } 71.26% { opacity: 1; } 71.93% { opacity: 0; } 100.00% { opacity: 0; } }
+.a187 { animation: a187 22.3s infinite; }
+@keyframes a187 { 0.00% { opacity: 0; } 71.26% { opacity: 0; } 71.93% { opacity: 1; } 71.75% { opacity: 1; } 72.42% { opacity: 0; } 100.00% { opacity: 0; } }
+.a188 { animation: a188 22.3s infinite; }
+@keyframes a188 { 0.00% { opacity: 0; } 71.75% { opacity: 0; } 72.42% { opacity: 1; } 72.24% { opacity: 1; } 72.91% { opacity: 0; } 100.00% { opacity: 0; } }
+.a189 { animation: a189 22.3s infinite; }
+@keyframes a189 { 0.00% { opacity: 0; } 72.24% { opacity: 0; } 72.91% { opacity: 1; } 72.74% { opacity: 1; } 73.41% { opacity: 0; } 100.00% { opacity: 0; } }
+.a190 { animation: a190 22.3s infinite; }
+@keyframes a190 { 0.00% { opacity: 0; } 72.74% { opacity: 0; } 73.41% { opacity: 1; } 73.23% { opacity: 1; } 73.90% { opacity: 0; } 100.00% { opacity: 0; } }
+.a191 { animation: a191 22.3s infinite; }
+@keyframes a191 { 0.00% { opacity: 0; } 73.23% { opacity: 0; } 73.90% { opacity: 1; } 73.72% { opacity: 1; } 74.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a192 { animation: a192 22.3s infinite; }
+@keyframes a192 { 0.00% { opacity: 0; } 73.72% { opacity: 0; } 74.39% { opacity: 1; } 74.22% { opacity: 1; } 74.89% { opacity: 0; } 100.00% { opacity: 0; } }
+.a193 { animation: a193 22.3s infinite; }
+@keyframes a193 { 0.00% { opacity: 0; } 74.22% { opacity: 0; } 74.89% { opacity: 1; } 74.71% { opacity: 1; } 75.38% { opacity: 0; } 100.00% { opacity: 0; } }
+.a194 { animation: a194 22.3s infinite; }
+@keyframes a194 { 0.00% { opacity: 0; } 74.71% { opacity: 0; } 75.38% { opacity: 1; } 75.20% { opacity: 1; } 75.87% { opacity: 0; } 100.00% { opacity: 0; } }
+.a195 { animation: a195 22.3s infinite; }
+@keyframes a195 { 0.00% { opacity: 0; } 75.20% { opacity: 0; } 75.87% { opacity: 1; } 75.70% { opacity: 1; } 76.37% { opacity: 0; } 100.00% { opacity: 0; } }
+.a196 { animation: a196 22.3s infinite; }
+@keyframes a196 { 0.00% { opacity: 0; } 75.70% { opacity: 0; } 76.37% { opacity: 1; } 76.19% { opacity: 1; } 76.86% { opacity: 0; } 100.00% { opacity: 0; } }
+.a197 { animation: a197 22.3s infinite; }
+@keyframes a197 { 0.00% { opacity: 0; } 76.19% { opacity: 0; } 76.86% { opacity: 1; } 76.68% { opacity: 1; } 77.35% { opacity: 0; } 100.00% { opacity: 0; } }
+.a198 { animation: a198 22.3s infinite; }
+@keyframes a198 { 0.00% { opacity: 0; } 76.68% { opacity: 0; } 77.35% { opacity: 1; } 77.17% { opacity: 1; } 77.85% { opacity: 0; } 100.00% { opacity: 0; } }
+.a199 { animation: a199 22.3s infinite; }
+@keyframes a199 { 0.00% { opacity: 0; } 77.17% { opacity: 0; } 77.85% { opacity: 1; } 77.67% { opacity: 1; } 78.34% { opacity: 0; } 100.00% { opacity: 0; } }
+.a200 { animation: a200 22.3s infinite; }
+@keyframes a200 { 0.00% { opacity: 0; } 77.67% { opacity: 0; } 78.34% { opacity: 1; } 78.16% { opacity: 1; } 78.83% { opacity: 0; } 100.00% { opacity: 0; } }
+.a201 { animation: a201 22.3s infinite; }
+@keyframes a201 { 0.00% { opacity: 0; } 78.16% { opacity: 0; } 78.83% { opacity: 1; } 78.65% { opacity: 1; } 79.33% { opacity: 0; } 100.00% { opacity: 0; } }
+.a202 { animation: a202 22.3s infinite; }
+@keyframes a202 { 0.00% { opacity: 0; } 78.65% { opacity: 0; } 79.33% { opacity: 1; } 79.15% { opacity: 1; } 79.82% { opacity: 0; } 100.00% { opacity: 0; } }
+.a203 { animation: a203 22.3s infinite; }
+@keyframes a203 { 0.00% { opacity: 0; } 79.15% { opacity: 0; } 79.82% { opacity: 1; } 79.64% { opacity: 1; } 80.31% { opacity: 0; } 100.00% { opacity: 0; } }
+.a204 { animation: a204 22.3s infinite; }
+@keyframes a204 { 0.00% { opacity: 0; } 79.64% { opacity: 0; } 80.31% { opacity: 1; } 80.13% { opacity: 1; } 80.81% { opacity: 0; } 100.00% { opacity: 0; } }
+.a205 { animation: a205 22.3s infinite; }
+@keyframes a205 { 0.00% { opacity: 0; } 80.13% { opacity: 0; } 80.81% { opacity: 1; } 80.63% { opacity: 1; } 81.30% { opacity: 0; } 100.00% { opacity: 0; } }
+.a206 { animation: a206 22.3s infinite; }
+@keyframes a206 { 0.00% { opacity: 0; } 80.63% { opacity: 0; } 81.30% { opacity: 1; } 81.12% { opacity: 1; } 81.79% { opacity: 0; } 100.00% { opacity: 0; } }
+.a207 { animation: a207 22.3s infinite; }
+@keyframes a207 { 0.00% { opacity: 0; } 81.12% { opacity: 0; } 81.79% { opacity: 1; } 81.61% { opacity: 1; } 82.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a208 { animation: a208 22.3s infinite; }
+@keyframes a208 { 0.00% { opacity: 0; } 81.61% { opacity: 0; } 82.29% { opacity: 1; } 82.11% { opacity: 1; } 82.78% { opacity: 0; } 100.00% { opacity: 0; } }
+.a209 { animation: a209 22.3s infinite; }
+@keyframes a209 { 0.00% { opacity: 0; } 82.11% { opacity: 0; } 82.78% { opacity: 1; } 82.60% { opacity: 1; } 83.27% { opacity: 0; } 100.00% { opacity: 0; } }
+.a210 { animation: a210 22.3s infinite; }
+@keyframes a210 { 0.00% { opacity: 0; } 82.60% { opacity: 0; } 83.27% { opacity: 1; } 83.09% { opacity: 1; } 83.77% { opacity: 0; } 100.00% { opacity: 0; } }
+.a211 { animation: a211 22.3s infinite; }
+@keyframes a211 { 0.00% { opacity: 0; } 83.09% { opacity: 0; } 83.77% { opacity: 1; } 83.59% { opacity: 1; } 84.26% { opacity: 0; } 100.00% { opacity: 0; } }
+.a212 { animation: a212 22.3s infinite; }
+@keyframes a212 { 0.00% { opacity: 0; } 83.59% { opacity: 0; } 84.26% { opacity: 1; } 84.08% { opacity: 1; } 84.75% { opacity: 0; } 100.00% { opacity: 0; } }
+.a213 { animation: a213 22.3s infinite; }
+@keyframes a213 { 0.00% { opacity: 0; } 84.08% { opacity: 0; } 84.75% { opacity: 1; } 84.57% { opacity: 1; } 85.25% { opacity: 0; } 100.00% { opacity: 0; } }
+.a214 { animation: a214 22.3s infinite; }
+@keyframes a214 { 0.00% { opacity: 0; } 84.57% { opacity: 0; } 85.25% { opacity: 1; } 85.07% { opacity: 1; } 85.74% { opacity: 0; } 100.00% { opacity: 0; } }
+.a215 { animation: a215 22.3s infinite; }
+@keyframes a215 { 0.00% { opacity: 0; } 85.07% { opacity: 0; } 85.74% { opacity: 1; } 85.56% { opacity: 1; } 86.23% { opacity: 0; } 100.00% { opacity: 0; } }
+.a216 { animation: a216 22.3s infinite; }
+@keyframes a216 { 0.00% { opacity: 0; } 85.56% { opacity: 0; } 86.23% { opacity: 1; } 86.05% { opacity: 1; } 86.73% { opacity: 0; } 100.00% { opacity: 0; } }
+.a217 { animation: a217 22.3s infinite; }
+@keyframes a217 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.67% { opacity: 1; } 25.56% { opacity: 1; } 26.23% { opacity: 0; } 100.00% { opacity: 0; } }
+.a218 { animation: a218 22.3s infinite; }
+@keyframes a218 { 0.00% { opacity: 0; } 25.56% { opacity: 0; } 26.23% { opacity: 1; } 57.94% { opacity: 1; } 58.61% { opacity: 0; } 100.00% { opacity: 0; } }
+.a219 { animation: a219 22.3s infinite; }
+@keyframes a219 { 0.00% { opacity: 0; } 57.94% { opacity: 0; } 58.61% { opacity: 1; } 97.31% { opacity: 1; } 97.98% { opacity: 0; } 100.00% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    [class^="a"], [class*=" a"] { animation: none !important; opacity: 1; }
+    .hl, .cap { display: none; }
+  }
+</style>
+<rect class="card" x="0.5" y="0.5" width="779" height="599" rx="8"/>
+<text x="20" y="34" class="h" text-anchor="start">Sea → Little Man Stack Machine</text>
+<text x="20" y="54" class="m" text-anchor="start">The compiler I wrote for MSU&#x27;s systems course, emitting stack-machine assembly for a 100-cell teaching computer.</text>
+<rect class="chip" x="20" y="70" width="366" height="26" rx="13"/>
+<rect class="hl a0" x="20" y="70" width="366" height="26" rx="13"/>
+<text x="203" y="87" class="sm b" text-anchor="middle">1 · compile: each Sea construct becomes a block of stack code</text>
+<rect class="chip" x="394" y="70" width="366" height="26" rx="13"/>
+<rect class="hl a1" x="394" y="70" width="366" height="26" rx="13"/>
+<text x="577" y="87" class="sm b" text-anchor="middle">2 · run: step through it on the LMSM</text>
+<text x="20" y="122" class="lbl" text-anchor="start">SEA  loop.sea</text>
+<rect class="box" x="20" y="130" width="300" height="152" rx="6"/>
+<rect class="hl a2" x="39.2" y="140" width="83.4" height="20" rx="3"/>
+<rect class="hl a3" x="39.2" y="140" width="83.4" height="20" rx="3"/>
+<rect class="hl a4" x="98.8" y="162" width="63.6" height="20" rx="3"/>
+<rect class="hl a5" x="171.6" y="162" width="37.1" height="20" rx="3"/>
+<rect class="hl a6" x="92.2" y="184" width="83.4" height="20" rx="3"/>
+<rect class="hl a7" x="218.0" y="162" width="63.6" height="20" rx="3"/>
+<rect class="hl a8" x="65.7" y="162" width="23.9" height="20" rx="3"/>
+<rect class="hl a9" x="65.7" y="228" width="63.6" height="20" rx="3"/>
+<rect class="hl a10" x="39.2" y="250" width="10.6" height="20" rx="3"/>
+<rect class="hl a11" x="112.1" y="228" width="10.6" height="20" rx="3"/>
+<text x="28" y="155" class="code xs" xml:space="preserve"><tspan class="cm">1 </tspan><tspan class="k">int</tspan> <tspan class="f">main</tspan>() { </text>
+<text x="28" y="177" class="code xs" xml:space="preserve"><tspan class="cm">2 </tspan>    <tspan class="k">for</tspan> (<tspan class="k">int</tspan> i = <tspan class="num">0</tspan>; i &lt; <tspan class="num">4</tspan>; i = i + <tspan class="num">1</tspan>) { </text>
+<text x="28" y="199" class="code xs" xml:space="preserve"><tspan class="cm">3 </tspan>        <tspan class="f">putn</tspan>(i * i); </text>
+<text x="28" y="221" class="code xs" xml:space="preserve"><tspan class="cm">4 </tspan>    } </text>
+<text x="28" y="243" class="code xs" xml:space="preserve"><tspan class="cm">5 </tspan>    <tspan class="k">return</tspan> <tspan class="num">0</tspan>; </text>
+<text x="28" y="265" class="code xs" xml:space="preserve"><tspan class="cm">6 </tspan>} </text>
+<text x="20" y="306" class="lbl" text-anchor="start">MACHINE STATE</text>
+<rect class="box" x="20" y="314" width="300" height="248" rx="6"/>
+<text x="34" y="347" class="s" text-anchor="start">accumulator</text>
+<text x="34" y="393" class="s" text-anchor="start">stack</text>
+<text x="34" y="410" class="s" text-anchor="start">bottom → top</text>
+<text x="34" y="455" class="s" text-anchor="start">output</text>
+<g class="a13"><text x="120" y="348" class="code sm b">0</text><text x="120" y="393" class="s">empty</text><text x="34" y="544" class="sm"><tspan class="code k">CALL</tspan>  jump to main, remembering where to return</text></g>
+<g class="a14"><text x="120" y="348" class="code sm b">0</text><text x="120" y="393" class="s">empty</text><text x="34" y="544" class="sm"><tspan class="code k">SPSUB</tspan>  make room on the stack for local i</text></g>
+<g class="a15"><text x="120" y="348" class="code sm b">0</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><text x="34" y="544" class="sm"><tspan class="code k">SPUSHI</tspan>  push a constant</text></g>
+<g class="a16"><text x="120" y="348" class="code sm b">0</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">0</text><text x="34" y="544" class="sm"><tspan class="code k">SSTA</tspan>  pop, then store into a stack slot (i)</text></g>
+<g class="a17"><text x="120" y="348" class="code sm b">0</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><text x="34" y="544" class="sm"><tspan class="code k">SLDA</tspan>  copy a stack slot (i) onto the top</text></g>
+<g class="a18"><text x="120" y="348" class="code sm b">0</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">0</text><text x="34" y="544" class="sm"><tspan class="code k">SPUSHI</tspan>  push a constant</text></g>
+<g class="a19"><text x="120" y="348" class="code sm b">0</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="chip" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">0</text><rect class="node" x="212" y="376" width="40" height="26" rx="5"/><text x="232.0" y="393" class="code sm" text-anchor="middle">4</text><text x="34" y="544" class="sm"><tspan class="code k">SCMPLT</tspan>  pop two, push 1 if second &lt; top</text></g>
+<g class="a20"><text x="120" y="348" class="code sm b">0</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">1</text><text x="34" y="544" class="sm"><tspan class="code k">SPOP</tspan>  pop the top into the accumulator</text></g>
+<g class="a21"><text x="120" y="348" class="code sm b">1</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><text x="34" y="544" class="sm"><tspan class="code k">BRZ</tspan>  leave the loop if the accumulator is 0</text></g>
+<g class="a22"><text x="120" y="348" class="code sm b">1</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><text x="34" y="544" class="sm"><tspan class="code k">SLDA</tspan>  copy a stack slot (i) onto the top</text></g>
+<g class="a23"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">0</text><text x="34" y="544" class="sm"><tspan class="code k">SLDA</tspan>  copy a stack slot (i) onto the top</text></g>
+<g class="a24"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="chip" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">0</text><rect class="node" x="212" y="376" width="40" height="26" rx="5"/><text x="232.0" y="393" class="code sm" text-anchor="middle">0</text><text x="34" y="544" class="sm"><tspan class="code k">SMUL</tspan>  pop two, push their product</text></g>
+<g class="a25"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">0</text><text x="34" y="544" class="sm"><tspan class="code k">SPOP</tspan>  pop the top into the accumulator</text></g>
+<g class="a26"><text x="120" y="348" class="code sm b">0</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><text x="34" y="544" class="sm"><tspan class="code k">OUT</tspan>  print the accumulator</text></g>
+<g class="a27"><text x="120" y="348" class="code sm b">0</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><text x="34" y="544" class="sm"><tspan class="code k">SLDA</tspan>  copy a stack slot (i) onto the top</text></g>
+<g class="a28"><text x="120" y="348" class="code sm b">0</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">0</text><text x="34" y="544" class="sm"><tspan class="code k">SPUSHI</tspan>  push a constant</text></g>
+<g class="a29"><text x="120" y="348" class="code sm b">0</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="chip" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">0</text><rect class="node" x="212" y="376" width="40" height="26" rx="5"/><text x="232.0" y="393" class="code sm" text-anchor="middle">1</text><text x="34" y="544" class="sm"><tspan class="code k">SADD</tspan>  pop two, push their sum</text></g>
+<g class="a30"><text x="120" y="348" class="code sm b">0</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">0</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">1</text><text x="34" y="544" class="sm"><tspan class="code k">SSTA</tspan>  pop, then store into a stack slot (i)</text></g>
+<g class="a31"><text x="120" y="348" class="code sm b">0</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><text x="34" y="544" class="sm"><tspan class="code k">BRA</tspan>  jump back to the loop test</text></g>
+<g class="a32"><text x="120" y="348" class="code sm b">0</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a33"><text x="120" y="348" class="code sm b">0</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">1</text></g>
+<g class="a34"><text x="120" y="348" class="code sm b">0</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="chip" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">1</text><rect class="node" x="212" y="376" width="40" height="26" rx="5"/><text x="232.0" y="393" class="code sm" text-anchor="middle">4</text></g>
+<g class="a35"><text x="120" y="348" class="code sm b">0</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">1</text></g>
+<g class="a36"><text x="120" y="348" class="code sm b">1</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a37"><text x="120" y="348" class="code sm b">1</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a38"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">1</text></g>
+<g class="a39"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="chip" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">1</text><rect class="node" x="212" y="376" width="40" height="26" rx="5"/><text x="232.0" y="393" class="code sm" text-anchor="middle">1</text></g>
+<g class="a40"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">1</text></g>
+<g class="a41"><text x="120" y="348" class="code sm b">1</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a42"><text x="120" y="348" class="code sm b">1</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a43"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">1</text></g>
+<g class="a44"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="chip" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">1</text><rect class="node" x="212" y="376" width="40" height="26" rx="5"/><text x="232.0" y="393" class="code sm" text-anchor="middle">1</text></g>
+<g class="a45"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">1</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">2</text></g>
+<g class="a46"><text x="120" y="348" class="code sm b">1</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a47"><text x="120" y="348" class="code sm b">1</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a48"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">2</text></g>
+<g class="a49"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="chip" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">2</text><rect class="node" x="212" y="376" width="40" height="26" rx="5"/><text x="232.0" y="393" class="code sm" text-anchor="middle">4</text></g>
+<g class="a50"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">1</text></g>
+<g class="a51"><text x="120" y="348" class="code sm b">1</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a52"><text x="120" y="348" class="code sm b">1</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a53"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">2</text></g>
+<g class="a54"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="chip" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">2</text><rect class="node" x="212" y="376" width="40" height="26" rx="5"/><text x="232.0" y="393" class="code sm" text-anchor="middle">2</text></g>
+<g class="a55"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">4</text></g>
+<g class="a56"><text x="120" y="348" class="code sm b">4</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a57"><text x="120" y="348" class="code sm b">4</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a58"><text x="120" y="348" class="code sm b">4</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">2</text></g>
+<g class="a59"><text x="120" y="348" class="code sm b">4</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="chip" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">2</text><rect class="node" x="212" y="376" width="40" height="26" rx="5"/><text x="232.0" y="393" class="code sm" text-anchor="middle">1</text></g>
+<g class="a60"><text x="120" y="348" class="code sm b">4</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">2</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">3</text></g>
+<g class="a61"><text x="120" y="348" class="code sm b">4</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a62"><text x="120" y="348" class="code sm b">4</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a63"><text x="120" y="348" class="code sm b">4</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">3</text></g>
+<g class="a64"><text x="120" y="348" class="code sm b">4</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="chip" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">3</text><rect class="node" x="212" y="376" width="40" height="26" rx="5"/><text x="232.0" y="393" class="code sm" text-anchor="middle">4</text></g>
+<g class="a65"><text x="120" y="348" class="code sm b">4</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">1</text></g>
+<g class="a66"><text x="120" y="348" class="code sm b">1</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a67"><text x="120" y="348" class="code sm b">1</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a68"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">3</text></g>
+<g class="a69"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="chip" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">3</text><rect class="node" x="212" y="376" width="40" height="26" rx="5"/><text x="232.0" y="393" class="code sm" text-anchor="middle">3</text></g>
+<g class="a70"><text x="120" y="348" class="code sm b">1</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">9</text></g>
+<g class="a71"><text x="120" y="348" class="code sm b">9</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a72"><text x="120" y="348" class="code sm b">9</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a73"><text x="120" y="348" class="code sm b">9</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">3</text></g>
+<g class="a74"><text x="120" y="348" class="code sm b">9</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="chip" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">3</text><rect class="node" x="212" y="376" width="40" height="26" rx="5"/><text x="232.0" y="393" class="code sm" text-anchor="middle">1</text></g>
+<g class="a75"><text x="120" y="348" class="code sm b">9</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">3</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">4</text></g>
+<g class="a76"><text x="120" y="348" class="code sm b">9</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">4</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a77"><text x="120" y="348" class="code sm b">9</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">4</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a78"><text x="120" y="348" class="code sm b">9</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">4</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">4</text></g>
+<g class="a79"><text x="120" y="348" class="code sm b">9</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">4</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="chip" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">4</text><rect class="node" x="212" y="376" width="40" height="26" rx="5"/><text x="232.0" y="393" class="code sm" text-anchor="middle">4</text></g>
+<g class="a80"><text x="120" y="348" class="code sm b">9</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">4</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">0</text></g>
+<g class="a81"><text x="120" y="348" class="code sm b">0</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">4</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a82"><text x="120" y="348" class="code sm b">0</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">4</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a83"><text x="120" y="348" class="code sm b">0</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">4</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a84"><text x="120" y="348" class="code sm b">0</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">4</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">0</text></g>
+<g class="a85"><text x="120" y="348" class="code sm b">0</text><rect class="chip" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">4</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text><rect class="node" x="166" y="376" width="40" height="26" rx="5"/><text x="186.0" y="393" class="code sm" text-anchor="middle">0</text></g>
+<g class="a86"><text x="120" y="348" class="code sm b">0</text><rect class="node" x="120" y="376" width="40" height="26" rx="5"/><text x="140.0" y="393" class="code sm" text-anchor="middle">4</text><text x="140.0" y="416" class="s" text-anchor="middle">i</text></g>
+<g class="a87"><text x="120" y="348" class="code sm b">0</text><text x="120" y="393" class="s">empty</text></g>
+<g class="a88"><text x="120" y="348" class="code sm b">0</text><text x="120" y="393" class="s">empty</text></g>
+<g class="a89"><text x="120" y="348" class="code sm b">0</text><text x="120" y="393" class="s">empty</text></g>
+<g class="a90"><rect class="chip" x="120" y="438" width="28" height="26" rx="5"/><text x="134" y="455" class="code sm b ok" text-anchor="middle">0</text></g>
+<g class="a91"><rect class="chip" x="154" y="438" width="28" height="26" rx="5"/><text x="168" y="455" class="code sm b ok" text-anchor="middle">1</text></g>
+<g class="a92"><rect class="chip" x="188" y="438" width="28" height="26" rx="5"/><text x="202" y="455" class="code sm b ok" text-anchor="middle">4</text></g>
+<g class="a93"><rect class="chip" x="222" y="438" width="28" height="26" rx="5"/><text x="236" y="455" class="code sm b ok" text-anchor="middle">9</text></g>
+<text x="334" y="122" class="lbl" text-anchor="start">LMSM ASSEMBLY  (real compiler output)</text>
+<rect class="box" x="334" y="130" width="426" height="431.8" rx="6"/>
+<rect class="hl a94" x="338" y="138.0" width="418" height="30.80000000000001" rx="3"/>
+<g class="a95"><path class="edge" d="M610 140.0 h-6 V166.8 h6" style="stroke-width:1"/><text x="620" y="157.4" class="s">call main, halt</text></g>
+<rect class="hl a96" x="338" y="168.8" width="418" height="15.400000000000006" rx="3"/>
+<g class="a97"><path class="edge" d="M610 170.8 h-6 V182.20000000000002 h6" style="stroke-width:1"/><text x="620" y="180.5" class="s">frame: 1 local</text></g>
+<rect class="hl a98" x="338" y="184.2" width="418" height="30.80000000000001" rx="3"/>
+<g class="a99"><path class="edge" d="M610 186.2 h-6 V213.0 h6" style="stroke-width:1"/><text x="620" y="203.6" class="s">int i = 0</text></g>
+<rect class="hl a100" x="338" y="215.0" width="418" height="77.0" rx="3"/>
+<g class="a101"><path class="edge" d="M610 217.0 h-6 V290.0 h6" style="stroke-width:1"/><text x="620" y="257.5" class="s">i &lt; 4 ? else exit</text></g>
+<rect class="hl a102" x="338" y="292.0" width="418" height="77.0" rx="3"/>
+<g class="a103"><path class="edge" d="M610 294.0 h-6 V367.0 h6" style="stroke-width:1"/><text x="620" y="334.5" class="s">putn(i * i)</text></g>
+<rect class="hl a104" x="338" y="369.0" width="418" height="61.599999999999966" rx="3"/>
+<g class="a105"><path class="edge" d="M610 371.0 h-6 V428.59999999999997 h6" style="stroke-width:1"/><text x="620" y="403.79999999999995" class="s">i = i + 1</text></g>
+<rect class="hl a106" x="338" y="430.6" width="418" height="15.399999999999977" rx="3"/>
+<g class="a107"><path class="edge" d="M610 432.6 h-6 V444.0 h6" style="stroke-width:1"/><text x="620" y="442.3" class="s">loop</text></g>
+<rect class="hl a108" x="338" y="446.0" width="418" height="46.19999999999999" rx="3"/>
+<g class="a109"><path class="edge" d="M610 448.0 h-6 V490.2 h6" style="stroke-width:1"/><text x="620" y="473.1" class="s">return 0</text></g>
+<rect class="hl a110" x="338" y="492.2" width="418" height="46.19999999999999" rx="3"/>
+<g class="a111"><path class="edge" d="M610 494.2 h-6 V536.4 h6" style="stroke-width:1"/><text x="620" y="519.3" class="s">epilogue</text></g>
+<rect class="hl a112" x="338" y="538.4000000000001" width="418" height="15.399999999999977" rx="3"/>
+<g class="a113"><path class="edge" d="M610 540.4000000000001 h-6 V551.8000000000001 h6" style="stroke-width:1"/><text x="620" y="550.1000000000001" class="s">constant pool</text></g>
+<text x="344" y="149.5" class="code xs a114" xml:space="preserve"><tspan class="cm"> 0 </tspan><tspan class="f">           </tspan><tspan class="k">CALL</tspan> main</text>
+<text x="344" y="164.9" class="code xs a115" xml:space="preserve"><tspan class="cm"> 1 </tspan><tspan class="f">           </tspan><tspan class="k">HLT</tspan> </text>
+<text x="344" y="180.3" class="code xs a116" xml:space="preserve"><tspan class="cm"> 2 </tspan><tspan class="f">main       </tspan><tspan class="k">SPSUB</tspan> 0</text>
+<text x="344" y="195.7" class="code xs a117" xml:space="preserve"><tspan class="cm"> 3 </tspan><tspan class="f">           </tspan><tspan class="k">SPUSHI</tspan> 0</text>
+<text x="344" y="211.1" class="code xs a118" xml:space="preserve"><tspan class="cm"> 4 </tspan><tspan class="f">           </tspan><tspan class="k">SSTA</tspan> 0</text>
+<text x="344" y="226.5" class="code xs a119" xml:space="preserve"><tspan class="cm"> 5 </tspan><tspan class="f">$for.cond0 </tspan><tspan class="k">SLDA</tspan> 0</text>
+<text x="344" y="241.9" class="code xs a120" xml:space="preserve"><tspan class="cm"> 6 </tspan><tspan class="f">           </tspan><tspan class="k">SPUSHI</tspan> 4</text>
+<text x="344" y="257.3" class="code xs a121" xml:space="preserve"><tspan class="cm"> 7 </tspan><tspan class="f">           </tspan><tspan class="k">SCMPLT</tspan> </text>
+<text x="344" y="272.7" class="code xs a122" xml:space="preserve"><tspan class="cm"> 8 </tspan><tspan class="f">           </tspan><tspan class="k">SPOP</tspan> </text>
+<text x="344" y="288.1" class="code xs a123" xml:space="preserve"><tspan class="cm"> 9 </tspan><tspan class="f">           </tspan><tspan class="k">BRZ</tspan> $for.end0</text>
+<text x="344" y="303.5" class="code xs a124" xml:space="preserve"><tspan class="cm">10 </tspan><tspan class="f">           </tspan><tspan class="k">SLDA</tspan> 0</text>
+<text x="344" y="318.9" class="code xs a125" xml:space="preserve"><tspan class="cm">11 </tspan><tspan class="f">           </tspan><tspan class="k">SLDA</tspan> 1</text>
+<text x="344" y="334.3" class="code xs a126" xml:space="preserve"><tspan class="cm">12 </tspan><tspan class="f">           </tspan><tspan class="k">SMUL</tspan> </text>
+<text x="344" y="349.70000000000005" class="code xs a127" xml:space="preserve"><tspan class="cm">13 </tspan><tspan class="f">           </tspan><tspan class="k">SPOP</tspan> </text>
+<text x="344" y="365.1" class="code xs a128" xml:space="preserve"><tspan class="cm">14 </tspan><tspan class="f">           </tspan><tspan class="k">OUT</tspan> </text>
+<text x="344" y="380.5" class="code xs a129" xml:space="preserve"><tspan class="cm">15 </tspan><tspan class="f">           </tspan><tspan class="k">SLDA</tspan> 0</text>
+<text x="344" y="395.9" class="code xs a130" xml:space="preserve"><tspan class="cm">16 </tspan><tspan class="f">           </tspan><tspan class="k">SPUSHI</tspan> 1</text>
+<text x="344" y="411.3" class="code xs a131" xml:space="preserve"><tspan class="cm">17 </tspan><tspan class="f">           </tspan><tspan class="k">SADD</tspan> </text>
+<text x="344" y="426.7" class="code xs a132" xml:space="preserve"><tspan class="cm">18 </tspan><tspan class="f">           </tspan><tspan class="k">SSTA</tspan> 0</text>
+<text x="344" y="442.1" class="code xs a133" xml:space="preserve"><tspan class="cm">19 </tspan><tspan class="f">           </tspan><tspan class="k">BRA</tspan> $for.cond0</text>
+<text x="344" y="457.5" class="code xs a134" xml:space="preserve"><tspan class="cm">20 </tspan><tspan class="f">$for.end0  </tspan><tspan class="k">ADD</tspan> $0</text>
+<text x="344" y="472.90000000000003" class="code xs a135" xml:space="preserve"><tspan class="cm">21 </tspan><tspan class="f">           </tspan><tspan class="k">SPUSHI</tspan> 0</text>
+<text x="344" y="488.3" class="code xs a136" xml:space="preserve"><tspan class="cm">22 </tspan><tspan class="f">           </tspan><tspan class="k">BRA</tspan> $ret.main</text>
+<text x="344" y="503.7" class="code xs a137" xml:space="preserve"><tspan class="cm">23 </tspan><tspan class="f">$ret.main  </tspan><tspan class="k">SPOP</tspan> </text>
+<text x="344" y="519.1" class="code xs a138" xml:space="preserve"><tspan class="cm">24 </tspan><tspan class="f">           </tspan><tspan class="k">SPADD</tspan> 0</text>
+<text x="344" y="534.5" class="code xs a139" xml:space="preserve"><tspan class="cm">25 </tspan><tspan class="f">           </tspan><tspan class="k">RET</tspan> </text>
+<text x="344" y="549.9000000000001" class="code xs a140" xml:space="preserve"><tspan class="cm">26 </tspan><tspan class="f">$0         </tspan><tspan class="k">DAT</tspan> 0</text>
+<rect class="bad a141" x="338" y="138.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a142" x="338" y="168.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a143" x="338" y="184.2" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a144" x="338" y="199.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a145" x="338" y="215.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a146" x="338" y="230.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a147" x="338" y="245.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a148" x="338" y="261.2" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a149" x="338" y="276.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a150" x="338" y="292.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a151" x="338" y="307.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a152" x="338" y="322.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a153" x="338" y="338.20000000000005" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a154" x="338" y="353.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a155" x="338" y="369.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a156" x="338" y="384.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a157" x="338" y="399.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a158" x="338" y="415.2" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a159" x="338" y="430.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a160" x="338" y="215.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a161" x="338" y="230.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a162" x="338" y="245.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a163" x="338" y="261.2" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a164" x="338" y="276.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a165" x="338" y="292.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a166" x="338" y="307.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a167" x="338" y="322.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a168" x="338" y="338.20000000000005" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a169" x="338" y="353.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a170" x="338" y="369.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a171" x="338" y="384.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a172" x="338" y="399.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a173" x="338" y="415.2" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a174" x="338" y="430.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a175" x="338" y="215.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a176" x="338" y="230.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a177" x="338" y="245.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a178" x="338" y="261.2" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a179" x="338" y="276.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a180" x="338" y="292.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a181" x="338" y="307.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a182" x="338" y="322.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a183" x="338" y="338.20000000000005" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a184" x="338" y="353.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a185" x="338" y="369.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a186" x="338" y="384.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a187" x="338" y="399.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a188" x="338" y="415.2" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a189" x="338" y="430.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a190" x="338" y="215.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a191" x="338" y="230.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a192" x="338" y="245.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a193" x="338" y="261.2" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a194" x="338" y="276.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a195" x="338" y="292.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a196" x="338" y="307.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a197" x="338" y="322.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a198" x="338" y="338.20000000000005" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a199" x="338" y="353.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a200" x="338" y="369.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a201" x="338" y="384.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a202" x="338" y="399.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a203" x="338" y="415.2" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a204" x="338" y="430.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a205" x="338" y="215.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a206" x="338" y="230.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a207" x="338" y="245.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a208" x="338" y="261.2" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a209" x="338" y="276.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a210" x="338" y="446.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a211" x="338" y="461.40000000000003" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a212" x="338" y="476.8" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a213" x="338" y="492.2" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a214" x="338" y="507.6" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a215" x="338" y="523.0" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<rect class="bad a216" x="338" y="153.4" width="266" height="15.4" rx="3" style="fill-opacity:.22"/>
+<text x="20" y="582" class="cap a217" text-anchor="start">Each Sea construct compiles to a small block of stack code; locals live in stack slots.</text>
+<text x="20" y="582" class="cap a218" text-anchor="start">Running it: SLDA copies i to the top, SCMPLT tests i &lt; 4, SPOP moves the result to the accumulator …</text>
+<text x="20" y="582" class="cap a219" text-anchor="start">… and every OUT prints i * i, so the tape reads 0 1 4 9.</text>
+</svg>

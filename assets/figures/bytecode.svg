@@ -1,0 +1,225 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="612" viewBox="0 0 780 612" role="img" aria-label="Diagram of a JVM bytecode generator for CatScript. AST nodes call ByteCodeGenerator, whose BytecodeBuilder tracks a stack of types. Compiling 1 + &quot;cats&quot; with iAdd pushes int and String, so IADD is rejected with &#x27;String is not assignable to int&#x27;, and getSource() walks the stack trace so the error points at the student&#x27;s AdditiveExpression.java line 104.">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="tip"/></marker></defs>
+<style>
+  .card { fill: #f6f8fa; stroke: #d1d9e0; }
+  text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; fill: #1f2328; }
+  .h { font-size: 15px; font-weight: 600; }
+  .m { font-size: 12px; fill: #59636e; }
+  .cap { font-size: 13px; }
+  .s { font-size: 11px; fill: #59636e; }
+  .b { font-weight: 600; }
+  .lbl { font-size: 10px; font-weight: 600; letter-spacing: .08em; fill: #59636e; }
+  .code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13px; }
+  .sm { font-size: 11.5px; }
+  .box, .chip, .node, .rung { fill: #ffffff; stroke: #d1d9e0; }
+  .rung { stroke: #e1e6eb; }
+  .node { stroke: #0969da; }
+  .hl { fill: #0969da; fill-opacity: .14; stroke: #0969da; stroke-opacity: .6; }
+  .bad { fill: #cf222e; fill-opacity: .12; stroke: #cf222e; }
+  .badt { fill: #cf222e; }
+  .ok { fill: #1a7f37; }
+  .edge { stroke: #8c959f; stroke-width: 1.5; fill: none; }
+  .tip { fill: #8c959f; }
+  .term { fill: #1f2328; }
+  .termt { fill: #e6edf3; }
+  .termerr { fill: #ff7b72; }
+  .termdim { fill: #9198a1; }
+  .termok { fill: #3fb950; }
+  .k { fill: #cf222e; } .f { fill: #8250df; } .str { fill: #0a3069; } .num { fill: #0550ae; } .cm { fill: #6e7781; }
+  @media (prefers-color-scheme: dark) {
+    .card { fill: #151b23; stroke: #3d444d; }
+    text { fill: #e6edf3; }
+    .m, .s, .lbl { fill: #9198a1; }
+    .box, .chip, .node, .rung { fill: #0d1117; stroke: #3d444d; }
+    .node { stroke: #4493f8; }
+    .hl { fill: #4493f8; stroke: #4493f8; }
+    .bad { fill: #f85149; stroke: #f85149; }
+    .badt { fill: #ff7b72; }
+    .ok { fill: #3fb950; }
+    .edge { stroke: #656c76; }
+    .tip { fill: #656c76; }
+    .term { fill: #010409; }
+    .k { fill: #ff7b72; } .f { fill: #d2a8ff; } .str { fill: #a5d6ff; } .num { fill: #79c0ff; } .cm { fill: #8b949e; }
+  }
+
+.a0 { animation: a0 15.0s infinite; }
+@keyframes a0 { 0.00% { opacity: 0; } 1.33% { opacity: 0; } 2.33% { opacity: 1; } 6.67% { opacity: 1; } 7.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a1 { animation: a1 15.0s infinite; }
+@keyframes a1 { 0.00% { opacity: 0; } 6.67% { opacity: 0; } 7.67% { opacity: 1; } 9.33% { opacity: 1; } 10.33% { opacity: 0; } 100.00% { opacity: 0; } }
+.a2 { animation: a2 15.0s infinite; }
+@keyframes a2 { 0.00% { opacity: 0; } 9.33% { opacity: 0; } 10.33% { opacity: 1; } 12.00% { opacity: 1; } 13.00% { opacity: 0; } 100.00% { opacity: 0; } }
+.a3 { animation: a3 15.0s infinite; }
+@keyframes a3 { 0.00% { opacity: 0; } 12.00% { opacity: 0; } 13.00% { opacity: 1; } 16.00% { opacity: 1; } 17.00% { opacity: 0; } 100.00% { opacity: 0; } }
+.a4 { animation: a4 15.0s infinite; }
+@keyframes a4 { 0.00% { opacity: 0; } 17.33% { opacity: 0; } 18.33% { opacity: 1; } 18.67% { opacity: 1; } 19.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a5 { animation: a5 15.0s infinite; }
+@keyframes a5 { 0.00% { opacity: 0; } 18.67% { opacity: 0; } 19.67% { opacity: 1; } 22.67% { opacity: 1; } 23.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a6 { animation: a6 15.0s infinite; }
+@keyframes a6 { 0.00% { opacity: 0; } 22.67% { opacity: 0; } 23.67% { opacity: 1; } 26.67% { opacity: 1; } 27.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a7 { animation: a7 15.0s infinite; }
+@keyframes a7 { 0.00% { opacity: 0; } 28.00% { opacity: 0; } 29.00% { opacity: 1; } 29.33% { opacity: 1; } 30.33% { opacity: 0; } 100.00% { opacity: 0; } }
+.a8 { animation: a8 15.0s infinite; }
+@keyframes a8 { 0.00% { opacity: 0; } 29.33% { opacity: 0; } 30.33% { opacity: 1; } 33.33% { opacity: 1; } 34.33% { opacity: 0; } 100.00% { opacity: 0; } }
+.a9 { animation: a9 15.0s infinite; }
+@keyframes a9 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.33% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a10 { animation: a10 15.0s infinite; }
+@keyframes a10 { 0.00% { opacity: 0; } 37.33% { opacity: 0; } 38.33% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a11 { animation: a11 15.0s infinite; }
+@keyframes a11 { 0.00% { opacity: 0; } 1.33% { opacity: 0; } 2.33% { opacity: 1; } 6.67% { opacity: 1; } 7.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a12 { animation: a12 15.0s infinite; }
+@keyframes a12 { 0.00% { opacity: 0; } 6.67% { opacity: 0; } 7.67% { opacity: 1; } 17.33% { opacity: 1; } 18.33% { opacity: 0; } 100.00% { opacity: 0; } }
+.a13 { animation: a13 15.0s infinite; }
+@keyframes a13 { 0.00% { opacity: 0; } 17.33% { opacity: 0; } 18.33% { opacity: 1; } 28.00% { opacity: 1; } 29.00% { opacity: 0; } 100.00% { opacity: 0; } }
+.a14 { animation: a14 15.0s infinite; }
+@keyframes a14 { 0.00% { opacity: 0; } 28.00% { opacity: 0; } 29.00% { opacity: 1; } 36.00% { opacity: 1; } 37.00% { opacity: 0; } 100.00% { opacity: 0; } }
+.a15 { animation: a15 15.0s infinite; }
+@keyframes a15 { 0.00% { opacity: 0; } 36.00% { opacity: 0; } 37.00% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a16 { animation: a16 15.0s infinite; }
+@keyframes a16 { 0.00% { opacity: 0; } 61.33% { opacity: 0; } 62.33% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a17 { animation: a17 15.0s infinite; }
+@keyframes a17 { 0.00% { opacity: 0; } 10.67% { opacity: 0; } 11.67% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a18 { animation: a18 15.0s infinite; }
+@keyframes a18 { 0.00% { opacity: 0; } 21.33% { opacity: 0; } 22.33% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a19 { animation: a19 15.0s infinite; }
+@keyframes a19 { 0.00% { opacity: 0; } 32.00% { opacity: 0; } 33.00% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a20 { animation: a20 15.0s infinite; }
+@keyframes a20 { 0.00% { opacity: 0; } 37.33% { opacity: 0; } 38.33% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a21 { animation: a21 15.0s infinite; }
+@keyframes a21 { 0.00% { opacity: 0; } 37.33% { opacity: 0; } 38.33% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a22 { animation: a22 15.0s infinite; }
+@keyframes a22 { 0.00% { opacity: 0; } 13.33% { opacity: 0; } 14.33% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a23 { animation: a23 15.0s infinite; }
+@keyframes a23 { 0.00% { opacity: 0; } 24.00% { opacity: 0; } 25.00% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a24 { animation: a24 15.0s infinite; }
+@keyframes a24 { 0.00% { opacity: 0; } 36.00% { opacity: 0; } 37.00% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a25 { animation: a25 15.0s infinite; }
+@keyframes a25 { 0.00% { opacity: 0; } 36.00% { opacity: 0; } 37.00% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a26 { animation: a26 15.0s infinite; }
+@keyframes a26 { 0.00% { opacity: 0; } 32.00% { opacity: 0; } 33.00% { opacity: 1; } 36.00% { opacity: 1; } 37.00% { opacity: 0; } 100.00% { opacity: 0; } }
+.a27 { animation: a27 15.0s infinite; }
+@keyframes a27 { 0.00% { opacity: 0; } 41.33% { opacity: 0; } 42.33% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a28 { animation: a28 15.0s infinite; }
+@keyframes a28 { 0.00% { opacity: 0; } 45.33% { opacity: 0; } 46.33% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a29 { animation: a29 15.0s infinite; }
+@keyframes a29 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 1.00% { opacity: 1; } 41.33% { opacity: 1; } 42.33% { opacity: 0; } 100.00% { opacity: 0; } }
+.xs { font-size: 11px; }
+.a31 { animation: a31 15.0s infinite; }
+@keyframes a31 { 0.00% { opacity: 0; } 50.67% { opacity: 0; } 51.67% { opacity: 1; } 53.67% { opacity: 1; } 54.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a32 { animation: a32 15.0s infinite; }
+@keyframes a32 { 0.00% { opacity: 0; } 53.67% { opacity: 0; } 54.67% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a33 { animation: a33 15.0s infinite; }
+@keyframes a33 { 0.00% { opacity: 0; } 56.67% { opacity: 0; } 57.67% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a34 { animation: a34 15.0s infinite; }
+@keyframes a34 { 0.00% { opacity: 0; } 59.67% { opacity: 0; } 60.67% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a35 { animation: a35 15.0s infinite; }
+@keyframes a35 { 0.00% { opacity: 0; } 62.67% { opacity: 0; } 63.67% { opacity: 1; } 65.67% { opacity: 1; } 66.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a36 { animation: a36 15.0s infinite; }
+@keyframes a36 { 0.00% { opacity: 0; } 60.00% { opacity: 0; } 61.00% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a37 { animation: a37 15.0s infinite; }
+@keyframes a37 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 1.00% { opacity: 1; } 28.00% { opacity: 1; } 29.00% { opacity: 0; } 100.00% { opacity: 0; } }
+.a38 { animation: a38 15.0s infinite; }
+@keyframes a38 { 0.00% { opacity: 0; } 28.00% { opacity: 0; } 29.00% { opacity: 1; } 41.33% { opacity: 1; } 42.33% { opacity: 0; } 100.00% { opacity: 0; } }
+.a39 { animation: a39 15.0s infinite; }
+@keyframes a39 { 0.00% { opacity: 0; } 41.33% { opacity: 0; } 42.33% { opacity: 1; } 50.67% { opacity: 1; } 51.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a40 { animation: a40 15.0s infinite; }
+@keyframes a40 { 0.00% { opacity: 0; } 50.67% { opacity: 0; } 51.67% { opacity: 1; } 94.67% { opacity: 1; } 95.67% { opacity: 0; } 100.00% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    [class^="a"], [class*=" a"] { animation: none !important; opacity: 1; }
+    .hl, .cap { display: none; }
+  }
+</style>
+<rect class="card" x="0.5" y="0.5" width="779" height="611" rx="8"/>
+<text x="20" y="34" class="h" text-anchor="start">CatScript → JVM bytecode, with a type checker in the loop</text>
+<text x="20" y="54" class="m" text-anchor="start">A bytecode generator I built for MSU&#x27;s compilers course: it checks every instruction before the JVM does.</text>
+<text x="20" y="82" class="lbl" text-anchor="start">PIPELINE</text>
+<rect class="box" x="20" y="90" width="134" height="48" rx="6"/>
+<rect class="box" x="172" y="90" width="134" height="48" rx="6"/>
+<rect class="box" x="324" y="90" width="134" height="48" rx="6"/>
+<rect class="box" x="476" y="90" width="134" height="48" rx="6"/>
+<rect class="box" x="628" y="90" width="134" height="48" rx="6"/>
+<rect class="hl a0" x="20" y="90" width="134" height="48" rx="6"/>
+<rect class="hl a1" x="20" y="90" width="134" height="48" rx="6"/>
+<rect class="hl a2" x="172" y="90" width="134" height="48" rx="6"/>
+<rect class="hl a3" x="324" y="90" width="134" height="48" rx="6"/>
+<rect class="hl a4" x="20" y="90" width="134" height="48" rx="6"/>
+<rect class="hl a5" x="172" y="90" width="134" height="48" rx="6"/>
+<rect class="hl a6" x="324" y="90" width="134" height="48" rx="6"/>
+<rect class="hl a7" x="20" y="90" width="134" height="48" rx="6"/>
+<rect class="hl a8" x="172" y="90" width="134" height="48" rx="6"/>
+<rect class="hl a9" x="324" y="90" width="134" height="48" rx="6"/>
+<text x="87.0" y="110" class="b" text-anchor="middle">CatScript AST</text>
+<text x="87.0" y="126" class="s" text-anchor="middle">node.compile(code)</text>
+<text x="239.0" y="110" class="b" text-anchor="middle">ByteCodeGenerator</text>
+<text x="239.0" y="126" class="s" text-anchor="middle">push · iAdd · jumpTo …</text>
+<text x="391.0" y="110" class="b" text-anchor="middle">BytecodeBuilder</text>
+<text x="391.0" y="126" class="s" text-anchor="middle">basic blocks + type stack</text>
+<text x="543.0" y="110" class="b" text-anchor="middle">ASM ClassWriter</text>
+<text x="543.0" y="126" class="s" text-anchor="middle">.class bytes</text>
+<text x="695.0" y="110" class="b" text-anchor="middle">DynamicClassLoader</text>
+<text x="695.0" y="126" class="s" text-anchor="middle">load and run</text>
+<text x="619.0" y="84" class="sm badt b a10" text-anchor="middle">never reached: no .class is built</text>
+<path class="edge " d="M156 114.0 H170" marker-end="url(#arr)"/>
+<path class="edge " d="M308 114.0 H322" marker-end="url(#arr)"/>
+<path class="edge " d="M460 114.0 H474" marker-end="url(#arr)"/>
+<path class="edge " d="M612 114.0 H626" marker-end="url(#arr)"/>
+<text x="20" y="158" class="s" text-anchor="start">Every Instruction declares the types it pops and pushes; the builder checks them the moment each one is emitted.</text>
+<text x="20" y="198" class="lbl" text-anchor="start">STUDENT CODE  (compiling 1 + &quot;cats&quot;)</text>
+<text x="398" y="198" class="lbl" text-anchor="start">EMITTED</text>
+<text x="570" y="198" class="lbl" text-anchor="start">TYPE STACK</text>
+<rect class="box" x="20" y="206" width="366" height="150" rx="6"/>
+<rect class="box" x="398" y="206" width="160" height="150" rx="6"/>
+<rect class="box" x="570" y="206" width="190" height="150" rx="6"/>
+<rect class="hl a11" x="24" y="220" width="358" height="22" rx="3"/>
+<rect class="hl a12" x="24" y="244" width="358" height="22" rx="3"/>
+<rect class="hl a13" x="24" y="268" width="358" height="22" rx="3"/>
+<rect class="hl a14" x="24" y="292" width="358" height="22" rx="3"/>
+<rect class="bad a15" x="24" y="292" width="358" height="22" rx="3"/>
+<text x="30" y="236" class="code sm" xml:space="preserve"><tspan class="cm">101  </tspan><tspan class="k">public void </tspan><tspan class="f">compile</tspan>(ByteCodeGenerator code) {</text>
+<text x="30" y="260" class="code sm" xml:space="preserve"><tspan class="cm">102  </tspan>    getLeftHandSide().<tspan class="f">compile</tspan>(code);</text>
+<text x="30" y="284" class="code sm" xml:space="preserve"><tspan class="cm">103  </tspan>    getRightHandSide().<tspan class="f">compile</tspan>(code);</text>
+<text x="30" y="308" class="code sm" xml:space="preserve"><tspan class="cm">104  </tspan>    code.<tspan class="f">iAdd</tspan>();</text>
+<text x="30" y="332" class="code sm" xml:space="preserve"><tspan class="cm">105  </tspan>}</text>
+<text x="376" y="308" class="code sm badt a16" text-anchor="end">← reported here</text>
+<g class="a17"><rect class="chip" x="406" y="220" width="144" height="34" rx="5"/><text x="416" y="235" class="code sm">LDC 1</text><text x="416" y="249" class="s">→ int</text></g>
+<g class="a18"><rect class="chip" x="406" y="260" width="144" height="34" rx="5"/><text x="416" y="275" class="code sm">LDC &quot;cats&quot;</text><text x="416" y="289" class="s">→ String</text></g>
+<g class="a19"><rect class="chip" x="406" y="300" width="144" height="34" rx="5"/><text x="416" y="315" class="code sm">IADD</text><text x="416" y="329" class="s">int, int → int</text></g>
+<rect class="bad a20" x="406" y="300" width="144" height="34" rx="5"/>
+<text x="540" y="322" class="code badt b a21" text-anchor="end">✗</text>
+<path class="edge" d="M595.0 342 H735.0"/>
+<g class="a22"><rect class="chip" x="605.0" y="308" width="120" height="30" rx="5"/><text x="665.0" y="328" class="code sm" text-anchor="middle">int</text></g>
+<g class="a23"><rect class="chip" x="605.0" y="274" width="120" height="30" rx="5"/><text x="665.0" y="294" class="code sm" text-anchor="middle">String</text></g>
+<rect class="bad a24" x="605.0" y="274" width="120" height="30" rx="5"/>
+<text x="665.0" y="262" class="sm badt b a25" text-anchor="middle">IADD expects int</text>
+<text x="665.0" y="262" class="s a26" text-anchor="middle">checking top of stack…</text>
+<text x="20" y="384" class="lbl" text-anchor="start">WHAT THE STUDENT SEES</text>
+<rect class="term" x="20" y="392" width="740" height="62" rx="6"/>
+<text x="34" y="416" class="code sm termerr a27">java.lang.IllegalArgumentException: String is not assignable to int</text>
+<text x="34" y="436" class="code sm termt a28" xml:space="preserve">  at: csci468.parser.expressions.AdditiveExpression.compile(AdditiveExpression.java:104)</text>
+<text x="34" y="426" class="code sm termdim a29">$ ./gradlew test</text>
+<text x="20" y="486" class="lbl" text-anchor="start">HOW IT FINDS THAT LINE  —  getSource() walks the live stack trace</text>
+<rect class="chip" x="20.0" y="494" width="102.5" height="28" rx="5"/>
+<rect class="hl a31" x="20.0" y="494" width="102.5" height="28" rx="5"/>
+<text x="71.225" y="512.5" class="code xs" text-anchor="middle">getStackTrace</text>
+<path class="edge " d="M123.5 508 H129.4" marker-end="url(#arr)"/>
+<rect class="chip" x="130.4" y="494" width="195.6" height="28" rx="5"/>
+<rect class="hl a32" x="130.4" y="494" width="195.6" height="28" rx="5"/>
+<text x="228.225" y="512.5" class="code xs" text-anchor="middle">ByteCodeGenerator.getSource</text>
+<path class="edge " d="M327.0 508 H333.0" marker-end="url(#arr)"/>
+<rect class="chip" x="334.0" y="494" width="162.3" height="28" rx="5"/>
+<rect class="hl a33" x="334.0" y="494" width="162.3" height="28" rx="5"/>
+<text x="415.15" y="512.5" class="code xs" text-anchor="middle">ByteCodeGenerator.iAdd</text>
+<path class="edge " d="M497.3 508 H503.3" marker-end="url(#arr)"/>
+<rect class="chip" x="504.3" y="494" width="215.5" height="28" rx="5"/>
+<rect class="bad a34" x="504.3" y="494" width="215.5" height="28" rx="5"/>
+<text x="612.05" y="512.5" class="code xs" text-anchor="middle">AdditiveExpression.compile:104</text>
+<path class="edge " d="M720.8 508 H726.8" marker-end="url(#arr)"/>
+<rect class="chip" x="727.8" y="494" width="22.6" height="28" rx="5"/>
+<rect class="hl a35" x="727.8" y="494" width="22.6" height="28" rx="5"/>
+<text x="739.125" y="512.5" class="code xs" text-anchor="middle">…</text>
+<text x="20" y="540" class="s" text-anchor="start">Every instruction records the first frame after the last ByteCodeGenerator frame: the caller, not the library.</text>
+<text x="20" y="556" class="s a36"><tspan class="badt b">red</tspan> = the frame reported in the error · <tspan style="fill:#4493f8" class="b">blue</tspan> = generator frames that get skipped</text>
+<text x="20" y="594" class="cap a37" text-anchor="start">Each AST node compiles itself by calling the generator; every instruction declares the types it pops and pushes …</text>
+<text x="20" y="594" class="cap a38" text-anchor="start">… so the builder tracks a stack of types. IADD needs two ints but finds a String, so it&#x27;s rejected …</text>
+<text x="20" y="594" class="cap a39" text-anchor="start">… with an error message a student can act on …</text>
+<text x="20" y="594" class="cap a40" text-anchor="start">… that points at their own line, because getSource() skips every frame inside the generator.</text>
+</svg>

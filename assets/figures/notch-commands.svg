@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="480" viewBox="0 0 780 480" role="img" aria-label="Diagram of three Sunny template commands. #fragment: rendering todos.html#list returns only the list, for htmx partial updates. #helper: a Java class&#x27;s public fields become template variables. #require: declares typed inputs, failing with &#x27;missing required symbol&#x27; or &#x27;not assignable&#x27; diagnostics that point at the line.">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="tip"/></marker></defs>
+<style>
+  .card { fill: #f6f8fa; stroke: #d1d9e0; }
+  text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; fill: #1f2328; }
+  .h { font-size: 15px; font-weight: 600; }
+  .m { font-size: 12px; fill: #59636e; }
+  .cap { font-size: 13px; }
+  .s { font-size: 11px; fill: #59636e; }
+  .b { font-weight: 600; }
+  .lbl { font-size: 10px; font-weight: 600; letter-spacing: .08em; fill: #59636e; }
+  .code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13px; }
+  .sm { font-size: 11.5px; }
+  .box, .chip, .node, .rung { fill: #ffffff; stroke: #d1d9e0; }
+  .rung { stroke: #e1e6eb; }
+  .node { stroke: #0969da; }
+  .hl { fill: #0969da; fill-opacity: .14; stroke: #0969da; stroke-opacity: .6; }
+  .bad { fill: #cf222e; fill-opacity: .12; stroke: #cf222e; }
+  .badt { fill: #cf222e; }
+  .ok { fill: #1a7f37; }
+  .edge { stroke: #8c959f; stroke-width: 1.5; fill: none; }
+  .tip { fill: #8c959f; }
+  .term { fill: #1f2328; }
+  .termt { fill: #e6edf3; }
+  .termerr { fill: #ff7b72; }
+  .termdim { fill: #9198a1; }
+  .termok { fill: #3fb950; }
+  .k { fill: #cf222e; } .f { fill: #8250df; } .str { fill: #0a3069; } .num { fill: #0550ae; } .cm { fill: #6e7781; }
+  @media (prefers-color-scheme: dark) {
+    .card { fill: #151b23; stroke: #3d444d; }
+    text { fill: #e6edf3; }
+    .m, .s, .lbl { fill: #9198a1; }
+    .box, .chip, .node, .rung { fill: #0d1117; stroke: #3d444d; }
+    .node { stroke: #4493f8; }
+    .hl { fill: #4493f8; stroke: #4493f8; }
+    .bad { fill: #f85149; stroke: #f85149; }
+    .badt { fill: #ff7b72; }
+    .ok { fill: #3fb950; }
+    .edge { stroke: #656c76; }
+    .tip { fill: #656c76; }
+    .term { fill: #010409; }
+    .k { fill: #ff7b72; } .f { fill: #d2a8ff; } .str { fill: #a5d6ff; } .num { fill: #79c0ff; } .cm { fill: #8b949e; }
+  }
+
+.a0 { animation: a0 21.0s infinite; }
+@keyframes a0 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.71% { opacity: 1; } 33.33% { opacity: 1; } 34.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a1 { animation: a1 21.0s infinite; }
+@keyframes a1 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 66.67% { opacity: 1; } 67.38% { opacity: 0; } 100.00% { opacity: 0; } }
+.a2 { animation: a2 21.0s infinite; }
+@keyframes a2 { 0.00% { opacity: 0; } 66.67% { opacity: 0; } 67.38% { opacity: 1; } 100.00% { opacity: 1; } 100.00% { opacity: 0; } 100.00% { opacity: 0; } }
+.xs { font-size: 11px; }
+.a4 { animation: a4 21.0s infinite; }
+@keyframes a4 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.71% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a5 { animation: a5 21.0s infinite; }
+@keyframes a5 { 0.00% { opacity: 0; } 16.19% { opacity: 0; } 16.90% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a6 { animation: a6 21.0s infinite; }
+@keyframes a6 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.71% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a7 { animation: a7 21.0s infinite; }
+@keyframes a7 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.71% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a8 { animation: a8 21.0s infinite; }
+@keyframes a8 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.71% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a9 { animation: a9 21.0s infinite; }
+@keyframes a9 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.71% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a10 { animation: a10 21.0s infinite; }
+@keyframes a10 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.71% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a11 { animation: a11 21.0s infinite; }
+@keyframes a11 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.71% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a12 { animation: a12 21.0s infinite; }
+@keyframes a12 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.71% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a13 { animation: a13 21.0s infinite; }
+@keyframes a13 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.71% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a14 { animation: a14 21.0s infinite; }
+@keyframes a14 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.71% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a15 { animation: a15 21.0s infinite; }
+@keyframes a15 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.71% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a16 { animation: a16 21.0s infinite; }
+@keyframes a16 { 0.00% { opacity: 0; } 2.38% { opacity: 0; } 3.10% { opacity: 1; } 15.24% { opacity: 1; } 15.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a17 { animation: a17 21.0s infinite; }
+@keyframes a17 { 0.00% { opacity: 0; } 16.19% { opacity: 0; } 16.90% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a18 { animation: a18 21.0s infinite; }
+@keyframes a18 { 0.00% { opacity: 0; } 19.05% { opacity: 0; } 19.76% { opacity: 1; } 31.90% { opacity: 1; } 32.62% { opacity: 0; } 100.00% { opacity: 0; } }
+.a19 { animation: a19 21.0s infinite; }
+@keyframes a19 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a20 { animation: a20 21.0s infinite; }
+@keyframes a20 { 0.00% { opacity: 0; } 35.24% { opacity: 0; } 35.95% { opacity: 1; } 40.95% { opacity: 1; } 41.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a21 { animation: a21 21.0s infinite; }
+@keyframes a21 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a22 { animation: a22 21.0s infinite; }
+@keyframes a22 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a23 { animation: a23 21.0s infinite; }
+@keyframes a23 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a24 { animation: a24 21.0s infinite; }
+@keyframes a24 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a25 { animation: a25 21.0s infinite; }
+@keyframes a25 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a26 { animation: a26 21.0s infinite; }
+@keyframes a26 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a27 { animation: a27 21.0s infinite; }
+@keyframes a27 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a28 { animation: a28 21.0s infinite; }
+@keyframes a28 { 0.00% { opacity: 0; } 40.95% { opacity: 0; } 41.67% { opacity: 1; } 48.57% { opacity: 1; } 49.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a29 { animation: a29 21.0s infinite; }
+@keyframes a29 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a30 { animation: a30 21.0s infinite; }
+@keyframes a30 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a31 { animation: a31 21.0s infinite; }
+@keyframes a31 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a32 { animation: a32 21.0s infinite; }
+@keyframes a32 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a33 { animation: a33 21.0s infinite; }
+@keyframes a33 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a34 { animation: a34 21.0s infinite; }
+@keyframes a34 { 0.00% { opacity: 0; } 44.76% { opacity: 0; } 45.48% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a35 { animation: a35 21.0s infinite; }
+@keyframes a35 { 0.00% { opacity: 0; } 48.57% { opacity: 0; } 49.29% { opacity: 1; } 65.24% { opacity: 1; } 65.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a36 { animation: a36 21.0s infinite; }
+@keyframes a36 { 0.00% { opacity: 0; } 66.67% { opacity: 0; } 67.38% { opacity: 1; } 98.57% { opacity: 1; } 99.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a37 { animation: a37 21.0s infinite; }
+@keyframes a37 { 0.00% { opacity: 0; } 68.57% { opacity: 0; } 69.29% { opacity: 1; } 98.57% { opacity: 1; } 99.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a38 { animation: a38 21.0s infinite; }
+@keyframes a38 { 0.00% { opacity: 0; } 66.67% { opacity: 0; } 67.38% { opacity: 1; } 98.57% { opacity: 1; } 99.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a39 { animation: a39 21.0s infinite; }
+@keyframes a39 { 0.00% { opacity: 0; } 66.67% { opacity: 0; } 67.38% { opacity: 1; } 98.57% { opacity: 1; } 99.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a40 { animation: a40 21.0s infinite; }
+@keyframes a40 { 0.00% { opacity: 0; } 68.57% { opacity: 0; } 69.29% { opacity: 1; } 98.57% { opacity: 1; } 99.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a41 { animation: a41 21.0s infinite; }
+@keyframes a41 { 0.00% { opacity: 0; } 68.57% { opacity: 0; } 69.29% { opacity: 1; } 98.57% { opacity: 1; } 99.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a42 { animation: a42 21.0s infinite; }
+@keyframes a42 { 0.00% { opacity: 0; } 70.48% { opacity: 0; } 71.19% { opacity: 1; } 84.76% { opacity: 1; } 85.48% { opacity: 0; } 100.00% { opacity: 0; } }
+.a43 { animation: a43 21.0s infinite; }
+@keyframes a43 { 0.00% { opacity: 0; } 85.24% { opacity: 0; } 85.95% { opacity: 1; } 98.57% { opacity: 1; } 99.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a44 { animation: a44 21.0s infinite; }
+@keyframes a44 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.71% { opacity: 1; } 33.33% { opacity: 1; } 34.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a45 { animation: a45 21.0s infinite; }
+@keyframes a45 { 0.00% { opacity: 0; } 33.33% { opacity: 0; } 34.05% { opacity: 1; } 66.67% { opacity: 1; } 67.38% { opacity: 0; } 100.00% { opacity: 0; } }
+.a46 { animation: a46 21.0s infinite; }
+@keyframes a46 { 0.00% { opacity: 0; } 66.67% { opacity: 0; } 67.38% { opacity: 1; } 100.00% { opacity: 1; } 100.00% { opacity: 0; } 100.00% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    [class^="a"], [class*=" a"] { animation: none !important; opacity: 1; }
+    .hl, .cap { display: none; }
+  }
+</style>
+<rect class="card" x="0.5" y="0.5" width="779" height="479" rx="8"/>
+<text x="20" y="34" class="h" text-anchor="start">Sunny — a few template commands I like</text>
+<text x="20" y="54" class="m" text-anchor="start">Sunny is Notch&#x27;s template engine. Each scene below is real input and output.</text>
+<rect class="chip" x="20.0" y="70" width="241.3" height="36" rx="6"/>
+<rect class="hl a0" x="20.0" y="70" width="241.3" height="36" rx="6"/>
+<text x="32.0" y="86" class="code sm b" text-anchor="start">#fragment</text>
+<text x="32.0" y="100" class="s" text-anchor="start">render part of a page</text>
+<rect class="chip" x="269.3" y="70" width="241.3" height="36" rx="6"/>
+<rect class="hl a1" x="269.3" y="70" width="241.3" height="36" rx="6"/>
+<text x="281.33333333333337" y="86" class="code sm b" text-anchor="start">#helper</text>
+<text x="281.33333333333337" y="100" class="s" text-anchor="start">Java fields as variables</text>
+<rect class="chip" x="518.7" y="70" width="241.3" height="36" rx="6"/>
+<rect class="hl a2" x="518.7" y="70" width="241.3" height="36" rx="6"/>
+<text x="530.6666666666667" y="86" class="code sm b" text-anchor="start">#require</text>
+<text x="530.6666666666667" y="100" class="s" text-anchor="start">typed template inputs</text>
+<rect class="box" x="20" y="136" width="372" height="274" rx="6"/>
+<rect class="term" x="404" y="136" width="356" height="274" rx="6"/>
+<text x="404" y="128" class="lbl" text-anchor="start">OUTPUT</text>
+<text x="20" y="128" class="lbl a4">todos.html</text>
+<rect class="hl a5" x="24" y="186" width="364" height="147" rx="3"/>
+<text x="30" y="159" class="code sm a6" xml:space="preserve"><tspan class="cm"> 1 </tspan><tspan class="k">#require </tspan>todos: java.util.List</text>
+<text x="30" y="180" class="code sm a7" xml:space="preserve"><tspan class="cm"> 2 </tspan><tspan class="f">&lt;h1&gt;</tspan>My todos<tspan class="f">&lt;/h1&gt;</tspan></text>
+<text x="30" y="201" class="code sm a8" xml:space="preserve"><tspan class="cm"> 3 </tspan><tspan class="k">#fragment </tspan>list</text>
+<text x="30" y="222" class="code sm a9" xml:space="preserve"><tspan class="cm"> 4 </tspan><tspan class="f">&lt;ul&gt;</tspan></text>
+<text x="30" y="243" class="code sm a10" xml:space="preserve"><tspan class="cm"> 5 </tspan><tspan class="k">#for </tspan>t <tspan class="k">in </tspan>todos</text>
+<text x="30" y="264" class="code sm a11" xml:space="preserve"><tspan class="cm"> 6 </tspan><tspan class="f">  &lt;li&gt;</tspan><tspan class="num">${ t }</tspan><tspan class="f">&lt;/li&gt;</tspan></text>
+<text x="30" y="285" class="code sm a12" xml:space="preserve"><tspan class="cm"> 7 </tspan><tspan class="k">#end</tspan></text>
+<text x="30" y="306" class="code sm a13" xml:space="preserve"><tspan class="cm"> 8 </tspan><tspan class="f">&lt;/ul&gt;</tspan></text>
+<text x="30" y="327" class="code sm a14" xml:space="preserve"><tspan class="cm"> 9 </tspan><tspan class="k">#end</tspan></text>
+<text x="30" y="348" class="code sm a15" xml:space="preserve"><tspan class="cm">10 </tspan><tspan class="f">&lt;footer&gt;</tspan>…<tspan class="f">&lt;/footer&gt;</tspan></text>
+<text x="418" y="158" class="code xs termdim a16">render("todos.html")</text>
+<text x="418" y="180" class="code xs termt a16" xml:space="preserve">&lt;h1&gt;My todos&lt;/h1&gt;</text>
+<text x="418" y="199" class="code xs termt a16" xml:space="preserve">&lt;ul&gt;</text>
+<text x="418" y="218" class="code xs termt a16" xml:space="preserve">  &lt;li&gt;write README&lt;/li&gt;</text>
+<text x="418" y="237" class="code xs termt a16" xml:space="preserve">  &lt;li&gt;ship it&lt;/li&gt;</text>
+<text x="418" y="256" class="code xs termt a16" xml:space="preserve">&lt;/ul&gt;</text>
+<text x="418" y="275" class="code xs termt a16" xml:space="preserve">&lt;footer&gt;…&lt;/footer&gt;</text>
+<text x="418" y="158" class="code xs termdim a17">render("todos.html#list")</text>
+<text x="418" y="180" class="code xs termt a17" xml:space="preserve">&lt;ul&gt;</text>
+<text x="418" y="199" class="code xs termt a17" xml:space="preserve">  &lt;li&gt;write README&lt;/li&gt;</text>
+<text x="418" y="218" class="code xs termt a17" xml:space="preserve">  &lt;li&gt;ship it&lt;/li&gt;</text>
+<text x="418" y="237" class="code xs termt a17" xml:space="preserve">&lt;/ul&gt;</text>
+<text x="418" y="394" class="s termdim a18">one template, and htmx can swap in just the list</text>
+<text x="20" y="128" class="lbl a19">page.html</text>
+<rect class="hl a20" x="24" y="144" width="364" height="21" rx="3"/>
+<text x="30" y="159" class="code sm a21" xml:space="preserve"><tspan class="cm"> 1 </tspan><tspan class="k">#helper </tspan>app.SiteHelper</text>
+<text x="30" y="180" class="code sm a22" xml:space="preserve"><tspan class="cm"> 2 </tspan><tspan class="f">&lt;title&gt;</tspan><tspan class="num">${ siteName }</tspan><tspan class="f">&lt;/title&gt;</tspan></text>
+<text x="30" y="201" class="code sm a23" xml:space="preserve"><tspan class="cm"> 3 </tspan><tspan class="k">#for </tspan>item <tspan class="k">in </tspan>nav</text>
+<text x="30" y="222" class="code sm a24" xml:space="preserve"><tspan class="cm"> 4 </tspan><tspan class="f">&lt;a href="/</tspan><tspan class="num">${ item }</tspan><tspan class="f">"&gt;</tspan><tspan class="num">${ item }</tspan><tspan class="f">&lt;/a&gt;</tspan></text>
+<text x="30" y="243" class="code sm a25" xml:space="preserve"><tspan class="cm"> 5 </tspan><tspan class="k">#end</tspan></text>
+<text x="30" y="264" class="code sm a26" xml:space="preserve"><tspan class="cm"> 6 </tspan><tspan class="f">&lt;small&gt;</tspan>© <tspan class="num">${ year }</tspan><tspan class="f">&lt;/small&gt;</tspan></text>
+<text x="30" y="292" class="lbl a27">app/SiteHelper.java</text>
+<rect class="hl a28" x="24" y="317" width="364" height="63" rx="3"/>
+<text x="30" y="310" class="code xs a29" xml:space="preserve"><tspan class="k">public class </tspan>SiteHelper {</text>
+<text x="30" y="331" class="code xs a30" xml:space="preserve"><tspan class="k">  public final </tspan>String siteName = <tspan class="str">"My App"</tspan>;</text>
+<text x="30" y="352" class="code xs a31" xml:space="preserve"><tspan class="k">  public final </tspan>List&lt;String&gt; nav = List.of(…);</text>
+<text x="30" y="373" class="code xs a32" xml:space="preserve"><tspan class="k">  public final </tspan>int year = <tspan class="num">2026</tspan>;</text>
+<text x="30" y="394" class="code xs a33" xml:space="preserve">}</text>
+<text x="418" y="158" class="code xs termdim a34">render("page.html")</text>
+<text x="418" y="180" class="code xs termt a34" xml:space="preserve">&lt;title&gt;My App&lt;/title&gt;</text>
+<text x="418" y="199" class="code xs termt a34" xml:space="preserve">&lt;a href="/home"&gt;home&lt;/a&gt;</text>
+<text x="418" y="218" class="code xs termt a34" xml:space="preserve">&lt;a href="/docs"&gt;docs&lt;/a&gt;</text>
+<text x="418" y="237" class="code xs termt a34" xml:space="preserve">&lt;a href="/blog"&gt;blog&lt;/a&gt;</text>
+<text x="418" y="256" class="code xs termt a34" xml:space="preserve">&lt;small&gt;© 2026&lt;/small&gt;</text>
+<text x="418" y="394" class="s termdim a35">public fields resolve like variables, no wiring code</text>
+<text x="20" y="128" class="lbl a36">todos.html</text>
+<rect class="hl a37" x="24" y="144" width="364" height="21" rx="3"/>
+<text x="30" y="159" class="code sm a38" xml:space="preserve"><tspan class="cm"> 1 </tspan><tspan class="k">#require </tspan>todos: java.util.List</text>
+<text x="30" y="180" class="code sm a39" xml:space="preserve"><tspan class="cm"> 2 </tspan><tspan class="f">&lt;h1&gt;</tspan>My todos<tspan class="f">&lt;/h1&gt;</tspan></text>
+<text x="30" y="216" class="s a40">declares what the template needs, with a Java type,</text>
+<text x="30" y="232" class="s a41">and fails with a diagnostic that points at the line.</text>
+<text x="418" y="158" class="code xs termdim a42">render("todos.html")   // no todos passed</text>
+<text x="418" y="180" class="code xs termt a42" xml:space="preserve">   --&gt; todos.html:1:10</text>
+<text x="418" y="199" class="code xs termt a42" xml:space="preserve">    |</text>
+<text x="418" y="218" class="code xs termt a42" xml:space="preserve">  1 | #require todos: java.util.List</text>
+<text x="418" y="237" class="code xs termerr a42" xml:space="preserve">    |          ^^^^^</text>
+<text x="418" y="256" class="code xs termerr a42" xml:space="preserve">note: missing required symbol "todos"</text>
+<text x="418" y="275" class="code xs termerr a42" xml:space="preserve">      (expected java.util.List)</text>
+<text x="418" y="158" class="code xs termdim a43">render("todos.html", todos: "oops")</text>
+<text x="418" y="180" class="code xs termt a43" xml:space="preserve">   --&gt; todos.html:1:10</text>
+<text x="418" y="199" class="code xs termt a43" xml:space="preserve">    |</text>
+<text x="418" y="218" class="code xs termt a43" xml:space="preserve">  1 | #require todos: java.util.List</text>
+<text x="418" y="237" class="code xs termerr a43" xml:space="preserve">    |          ^^^^^</text>
+<text x="418" y="256" class="code xs termerr a43" xml:space="preserve">note: java.lang.String is not assignable</text>
+<text x="418" y="275" class="code xs termerr a43" xml:space="preserve">      to java.util.List</text>
+<text x="20" y="458" class="cap a44" text-anchor="start">#fragment names a region, so a request for todos.html#list renders only that region.</text>
+<text x="20" y="458" class="cap a45" text-anchor="start">#helper points a template at a Java class; its public fields become variables.</text>
+<text x="20" y="458" class="cap a46" text-anchor="start">#require turns a template&#x27;s inputs into a typed contract, with diagnostics that point at the line.</text>
+</svg>

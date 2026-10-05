@@ -1,0 +1,265 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="520" viewBox="0 0 780 520" role="img" aria-label="Diagram of the sea.c project: main.c reads a source file, sea_tokenize splits it into tokens, and a recursive-descent parser with one function per precedence level builds an ASSIGN / ADD / MUL syntax tree for x = a + b * 2.">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="tip"/></marker></defs>
+<style>
+  .card { fill: #f6f8fa; stroke: #d1d9e0; }
+  text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; fill: #1f2328; }
+  .h { font-size: 15px; font-weight: 600; }
+  .m { font-size: 12px; fill: #59636e; }
+  .cap { font-size: 13px; }
+  .s { font-size: 11px; fill: #59636e; }
+  .b { font-weight: 600; }
+  .lbl { font-size: 10px; font-weight: 600; letter-spacing: .08em; fill: #59636e; }
+  .code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13px; }
+  .sm { font-size: 11.5px; }
+  .box, .chip, .node, .rung { fill: #ffffff; stroke: #d1d9e0; }
+  .rung { stroke: #e1e6eb; }
+  .node { stroke: #0969da; }
+  .hl { fill: #0969da; fill-opacity: .14; stroke: #0969da; stroke-opacity: .6; }
+  .bad { fill: #cf222e; fill-opacity: .12; stroke: #cf222e; }
+  .badt { fill: #cf222e; }
+  .ok { fill: #1a7f37; }
+  .edge { stroke: #8c959f; stroke-width: 1.5; fill: none; }
+  .tip { fill: #8c959f; }
+  .term { fill: #1f2328; }
+  .termt { fill: #e6edf3; }
+  .termerr { fill: #ff7b72; }
+  .termdim { fill: #9198a1; }
+  .termok { fill: #3fb950; }
+  .k { fill: #cf222e; } .f { fill: #8250df; } .str { fill: #0a3069; } .num { fill: #0550ae; } .cm { fill: #6e7781; }
+  @media (prefers-color-scheme: dark) {
+    .card { fill: #151b23; stroke: #3d444d; }
+    text { fill: #e6edf3; }
+    .m, .s, .lbl { fill: #9198a1; }
+    .box, .chip, .node, .rung { fill: #0d1117; stroke: #3d444d; }
+    .node { stroke: #4493f8; }
+    .hl { fill: #4493f8; stroke: #4493f8; }
+    .bad { fill: #f85149; stroke: #f85149; }
+    .badt { fill: #ff7b72; }
+    .ok { fill: #3fb950; }
+    .edge { stroke: #656c76; }
+    .tip { fill: #656c76; }
+    .term { fill: #010409; }
+    .k { fill: #ff7b72; } .f { fill: #d2a8ff; } .str { fill: #a5d6ff; } .num { fill: #79c0ff; } .cm { fill: #8b949e; }
+  }
+
+.a0 { animation: a0 16.0s infinite; }
+@keyframes a0 { 0.00% { opacity: 0; } 8.75% { opacity: 0; } 9.69% { opacity: 1; } 36.62% { opacity: 1; } 37.56% { opacity: 0.3; } 93.75% { opacity: 0.3; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a1 { animation: a1 16.0s infinite; }
+@keyframes a1 { 0.00% { opacity: 0; } 9.87% { opacity: 0; } 10.81% { opacity: 1; } 39.00% { opacity: 1; } 39.94% { opacity: 0.3; } 93.75% { opacity: 0.3; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a2 { animation: a2 16.0s infinite; }
+@keyframes a2 { 0.00% { opacity: 0; } 11.00% { opacity: 0; } 11.94% { opacity: 1; } 53.25% { opacity: 1; } 54.19% { opacity: 0.3; } 93.75% { opacity: 0.3; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a3 { animation: a3 16.0s infinite; }
+@keyframes a3 { 0.00% { opacity: 0; } 12.12% { opacity: 0; } 13.06% { opacity: 1; } 55.62% { opacity: 1; } 56.56% { opacity: 0.3; } 93.75% { opacity: 0.3; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a4 { animation: a4 16.0s infinite; }
+@keyframes a4 { 0.00% { opacity: 0; } 13.25% { opacity: 0; } 14.19% { opacity: 1; } 62.75% { opacity: 1; } 63.69% { opacity: 0.3; } 93.75% { opacity: 0.3; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a5 { animation: a5 16.0s infinite; }
+@keyframes a5 { 0.00% { opacity: 0; } 14.37% { opacity: 0; } 15.31% { opacity: 1; } 65.12% { opacity: 1; } 66.06% { opacity: 0.3; } 93.75% { opacity: 0.3; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a6 { animation: a6 16.0s infinite; }
+@keyframes a6 { 0.00% { opacity: 0; } 15.50% { opacity: 0; } 16.44% { opacity: 1; } 69.88% { opacity: 1; } 70.81% { opacity: 0.3; } 93.75% { opacity: 0.3; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a7 { animation: a7 16.0s infinite; }
+@keyframes a7 { 0.00% { opacity: 0; } 16.62% { opacity: 0; } 17.56% { opacity: 1; } 72.25% { opacity: 1; } 73.19% { opacity: 0.3; } 93.75% { opacity: 0.3; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a8 { animation: a8 16.0s infinite; }
+@keyframes a8 { 0.00% { opacity: 0; } 1.88% { opacity: 0; } 2.81% { opacity: 1; } 8.75% { opacity: 1; } 9.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a9 { animation: a9 16.0s infinite; }
+@keyframes a9 { 0.00% { opacity: 0; } 1.88% { opacity: 0; } 2.81% { opacity: 1; } 8.75% { opacity: 1; } 9.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a10 { animation: a10 16.0s infinite; }
+@keyframes a10 { 0.00% { opacity: 0; } 8.75% { opacity: 0; } 9.69% { opacity: 1; } 74.62% { opacity: 1; } 75.56% { opacity: 0; } 100.00% { opacity: 0; } }
+.a11 { animation: a11 16.0s infinite; }
+@keyframes a11 { 0.00% { opacity: 0; } 36.62% { opacity: 0; } 37.56% { opacity: 1; } 74.62% { opacity: 1; } 75.56% { opacity: 0; } 100.00% { opacity: 0; } }
+.a12 { animation: a12 16.0s infinite; }
+@keyframes a12 { 0.00% { opacity: 0; } 8.75% { opacity: 0; } 9.69% { opacity: 1; } 74.62% { opacity: 1; } 75.56% { opacity: 0; } 100.00% { opacity: 0; } }
+.a13 { animation: a13 16.0s infinite; }
+@keyframes a13 { 0.00% { opacity: 0; } 20.00% { opacity: 0; } 20.94% { opacity: 1; } 22.38% { opacity: 1; } 23.31% { opacity: 0; } 100.00% { opacity: 0; } }
+.a14 { animation: a14 16.0s infinite; }
+@keyframes a14 { 0.00% { opacity: 0; } 22.38% { opacity: 0; } 23.31% { opacity: 1; } 24.75% { opacity: 1; } 25.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a15 { animation: a15 16.0s infinite; }
+@keyframes a15 { 0.00% { opacity: 0; } 24.75% { opacity: 0; } 25.69% { opacity: 1; } 27.12% { opacity: 1; } 28.06% { opacity: 0; } 100.00% { opacity: 0; } }
+.a16 { animation: a16 16.0s infinite; }
+@keyframes a16 { 0.00% { opacity: 0; } 27.12% { opacity: 0; } 28.06% { opacity: 1; } 29.50% { opacity: 1; } 30.44% { opacity: 0; } 100.00% { opacity: 0; } }
+.a17 { animation: a17 16.0s infinite; }
+@keyframes a17 { 0.00% { opacity: 0; } 29.50% { opacity: 0; } 30.44% { opacity: 1; } 31.88% { opacity: 1; } 32.81% { opacity: 0; } 100.00% { opacity: 0; } }
+.a18 { animation: a18 16.0s infinite; }
+@keyframes a18 { 0.00% { opacity: 0; } 31.87% { opacity: 0; } 32.81% { opacity: 1; } 34.25% { opacity: 1; } 35.19% { opacity: 0; } 100.00% { opacity: 0; } }
+.a19 { animation: a19 16.0s infinite; }
+@keyframes a19 { 0.00% { opacity: 0; } 34.25% { opacity: 0; } 35.19% { opacity: 1; } 36.62% { opacity: 1; } 37.56% { opacity: 0; } 100.00% { opacity: 0; } }
+.a20 { animation: a20 16.0s infinite; }
+@keyframes a20 { 0.00% { opacity: 0; } 36.62% { opacity: 0; } 37.56% { opacity: 1; } 39.00% { opacity: 1; } 39.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a21 { animation: a21 16.0s infinite; }
+@keyframes a21 { 0.00% { opacity: 0; } 39.00% { opacity: 0; } 39.94% { opacity: 1; } 41.38% { opacity: 1; } 42.31% { opacity: 0; } 100.00% { opacity: 0; } }
+.a22 { animation: a22 16.0s infinite; }
+@keyframes a22 { 0.00% { opacity: 0; } 41.38% { opacity: 0; } 42.31% { opacity: 1; } 43.75% { opacity: 1; } 44.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a23 { animation: a23 16.0s infinite; }
+@keyframes a23 { 0.00% { opacity: 0; } 43.75% { opacity: 0; } 44.69% { opacity: 1; } 46.12% { opacity: 1; } 47.06% { opacity: 0; } 100.00% { opacity: 0; } }
+.a24 { animation: a24 16.0s infinite; }
+@keyframes a24 { 0.00% { opacity: 0; } 46.12% { opacity: 0; } 47.06% { opacity: 1; } 48.50% { opacity: 1; } 49.44% { opacity: 0; } 100.00% { opacity: 0; } }
+.a25 { animation: a25 16.0s infinite; }
+@keyframes a25 { 0.00% { opacity: 0; } 48.50% { opacity: 0; } 49.44% { opacity: 1; } 50.88% { opacity: 1; } 51.81% { opacity: 0; } 100.00% { opacity: 0; } }
+.a26 { animation: a26 16.0s infinite; }
+@keyframes a26 { 0.00% { opacity: 0; } 50.88% { opacity: 0; } 51.81% { opacity: 1; } 53.25% { opacity: 1; } 54.19% { opacity: 0; } 100.00% { opacity: 0; } }
+.a27 { animation: a27 16.0s infinite; }
+@keyframes a27 { 0.00% { opacity: 0; } 53.25% { opacity: 0; } 54.19% { opacity: 1; } 55.62% { opacity: 1; } 56.56% { opacity: 0; } 100.00% { opacity: 0; } }
+.a28 { animation: a28 16.0s infinite; }
+@keyframes a28 { 0.00% { opacity: 0; } 55.62% { opacity: 0; } 56.56% { opacity: 1; } 58.00% { opacity: 1; } 58.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a29 { animation: a29 16.0s infinite; }
+@keyframes a29 { 0.00% { opacity: 0; } 58.00% { opacity: 0; } 58.94% { opacity: 1; } 60.38% { opacity: 1; } 61.31% { opacity: 0; } 100.00% { opacity: 0; } }
+.a30 { animation: a30 16.0s infinite; }
+@keyframes a30 { 0.00% { opacity: 0; } 60.38% { opacity: 0; } 61.31% { opacity: 1; } 62.75% { opacity: 1; } 63.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a31 { animation: a31 16.0s infinite; }
+@keyframes a31 { 0.00% { opacity: 0; } 62.75% { opacity: 0; } 63.69% { opacity: 1; } 65.12% { opacity: 1; } 66.06% { opacity: 0; } 100.00% { opacity: 0; } }
+.a32 { animation: a32 16.0s infinite; }
+@keyframes a32 { 0.00% { opacity: 0; } 65.12% { opacity: 0; } 66.06% { opacity: 1; } 67.50% { opacity: 1; } 68.44% { opacity: 0; } 100.00% { opacity: 0; } }
+.a33 { animation: a33 16.0s infinite; }
+@keyframes a33 { 0.00% { opacity: 0; } 67.50% { opacity: 0; } 68.44% { opacity: 1; } 69.88% { opacity: 1; } 70.81% { opacity: 0; } 100.00% { opacity: 0; } }
+.a34 { animation: a34 16.0s infinite; }
+@keyframes a34 { 0.00% { opacity: 0; } 69.88% { opacity: 0; } 70.81% { opacity: 1; } 72.25% { opacity: 1; } 73.19% { opacity: 0; } 100.00% { opacity: 0; } }
+.a35 { animation: a35 16.0s infinite; }
+@keyframes a35 { 0.00% { opacity: 0; } 72.25% { opacity: 0; } 73.19% { opacity: 1; } 74.62% { opacity: 1; } 75.56% { opacity: 0; } 100.00% { opacity: 0; } }
+.a36 { animation: a36 16.0s infinite; }
+@keyframes a36 { 0.00% { opacity: 0; } 39.00% { opacity: 0; } 39.94% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a37 { animation: a37 16.0s infinite; }
+@keyframes a37 { 0.00% { opacity: 0; } 55.62% { opacity: 0; } 56.56% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a38 { animation: a38 16.0s infinite; }
+@keyframes a38 { 0.00% { opacity: 0; } 55.62% { opacity: 0; } 56.56% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a39 { animation: a39 16.0s infinite; }
+@keyframes a39 { 0.00% { opacity: 0; } 65.12% { opacity: 0; } 66.06% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a40 { animation: a40 16.0s infinite; }
+@keyframes a40 { 0.00% { opacity: 0; } 65.12% { opacity: 0; } 66.06% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a41 { animation: a41 16.0s infinite; }
+@keyframes a41 { 0.00% { opacity: 0; } 69.88% { opacity: 0; } 70.81% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a42 { animation: a42 16.0s infinite; }
+@keyframes a42 { 0.00% { opacity: 0; } 39.00% { opacity: 0; } 39.94% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a43 { animation: a43 16.0s infinite; }
+@keyframes a43 { 0.00% { opacity: 0; } 36.62% { opacity: 0; } 37.56% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a44 { animation: a44 16.0s infinite; }
+@keyframes a44 { 0.00% { opacity: 0; } 55.62% { opacity: 0; } 56.56% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a45 { animation: a45 16.0s infinite; }
+@keyframes a45 { 0.00% { opacity: 0; } 53.25% { opacity: 0; } 54.19% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a46 { animation: a46 16.0s infinite; }
+@keyframes a46 { 0.00% { opacity: 0; } 65.12% { opacity: 0; } 66.06% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a47 { animation: a47 16.0s infinite; }
+@keyframes a47 { 0.00% { opacity: 0; } 62.75% { opacity: 0; } 63.69% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a48 { animation: a48 16.0s infinite; }
+@keyframes a48 { 0.00% { opacity: 0; } 69.88% { opacity: 0; } 70.81% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a49 { animation: a49 16.0s infinite; }
+@keyframes a49 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.94% { opacity: 1; } 8.75% { opacity: 1; } 9.69% { opacity: 0; } 100.00% { opacity: 0; } }
+.a50 { animation: a50 16.0s infinite; }
+@keyframes a50 { 0.00% { opacity: 0; } 8.75% { opacity: 0; } 9.69% { opacity: 1; } 20.00% { opacity: 1; } 20.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a51 { animation: a51 16.0s infinite; }
+@keyframes a51 { 0.00% { opacity: 0; } 20.00% { opacity: 0; } 20.94% { opacity: 1; } 74.62% { opacity: 1; } 75.56% { opacity: 0; } 100.00% { opacity: 0; } }
+.a52 { animation: a52 16.0s infinite; }
+@keyframes a52 { 0.00% { opacity: 0; } 74.62% { opacity: 0; } 75.56% { opacity: 1; } 93.75% { opacity: 1; } 94.69% { opacity: 0; } 100.00% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    [class^="a"], [class*=" a"] { animation: none !important; opacity: 1; }
+    .hl, .cap { display: none; }
+  }
+</style>
+<rect class="card" x="0.5" y="0.5" width="779" height="519" rx="8"/>
+<text x="20" y="34" class="h" text-anchor="start">sea.c — from source line to syntax tree</text>
+<text x="20" y="54" class="m" text-anchor="start">A small C-like teaching language: tokenize up front, then recursive descent with one function per precedence level.</text>
+<rect class="box" x="20" y="78" width="146" height="34" rx="6"/>
+<text x="32" y="100" class="code" text-anchor="start">x = a + b * 2;</text>
+<text x="20" y="128" class="s" text-anchor="start">main.sea</text>
+<path class="edge" d="M172 95 H262" marker-end="url(#arr)"/>
+<text x="217" y="88" class="s" text-anchor="middle">sea_tokenize</text>
+<g class="a0"><rect class="chip" x="272" y="81" width="30" height="28" rx="5"/><text x="287.0" y="100" class="code" text-anchor="middle">x</text></g>
+<g class="a1"><rect class="chip" x="308" y="81" width="30" height="28" rx="5"/><text x="323.0" y="100" class="code" text-anchor="middle">=</text></g>
+<g class="a2"><rect class="chip" x="344" y="81" width="30" height="28" rx="5"/><text x="359.0" y="100" class="code" text-anchor="middle">a</text></g>
+<g class="a3"><rect class="chip" x="380" y="81" width="30" height="28" rx="5"/><text x="395.0" y="100" class="code" text-anchor="middle">+</text></g>
+<g class="a4"><rect class="chip" x="416" y="81" width="30" height="28" rx="5"/><text x="431.0" y="100" class="code" text-anchor="middle">b</text></g>
+<g class="a5"><rect class="chip" x="452" y="81" width="30" height="28" rx="5"/><text x="467.0" y="100" class="code" text-anchor="middle">*</text></g>
+<g class="a6"><rect class="chip" x="488" y="81" width="30" height="28" rx="5"/><text x="503.0" y="100" class="code" text-anchor="middle">2</text></g>
+<g class="a7"><rect class="chip" x="524" y="81" width="30" height="28" rx="5"/><text x="539.0" y="100" class="code" text-anchor="middle">;</text></g>
+<text x="272" y="128" class="s" text-anchor="start">sea_tokens — every token produced before parsing starts</text>
+<text x="20" y="168" class="lbl" text-anchor="start">PROJECT</text>
+<rect class="hl a8" x="14" y="184" width="226" height="36" rx="5"/>
+<text x="22" y="200" class="code" text-anchor="start">├ main.c</text>
+<text x="36" y="215" class="s" text-anchor="start">CLI: tokenize, repl</text>
+<rect class="hl a9" x="14" y="224" width="226" height="36" rx="5"/>
+<text x="22" y="240" class="code" text-anchor="start">├ util.c/h</text>
+<text x="36" y="255" class="s" text-anchor="start">readFile, streq, repl loop</text>
+<rect class="hl a10" x="14" y="264" width="226" height="36" rx="5"/>
+<text x="22" y="280" class="code" text-anchor="start">├ sea.c</text>
+<text x="36" y="295" class="s" text-anchor="start">tokenizer + parser, 1.6k lines</text>
+<rect class="hl a11" x="14" y="304" width="226" height="36" rx="5"/>
+<text x="22" y="320" class="code" text-anchor="start">├ sea.h</text>
+<text x="36" y="335" class="s" text-anchor="start">token, AST + error types</text>
+<rect class="hl a12" x="14" y="344" width="226" height="36" rx="5"/>
+<text x="22" y="360" class="code" text-anchor="start">├ vec.h</text>
+<text x="36" y="375" class="s" text-anchor="start">generic vector (vendored)</text>
+<text x="22" y="400" class="code" text-anchor="start">├ parsing.md</text>
+<text x="36" y="415" class="s" text-anchor="start">design notes</text>
+<text x="22" y="440" class="code" text-anchor="start">└ tests/expr</text>
+<text x="36" y="455" class="s" text-anchor="start">sample programs</text>
+<text x="262" y="168" class="lbl" text-anchor="start">PARSER  (each level calls the one below)</text>
+<rect class="rung" x="262" y="182" width="236" height="24" rx="4"/>
+<rect class="rung" x="262" y="210" width="236" height="24" rx="4"/>
+<rect class="rung" x="262" y="238" width="236" height="24" rx="4"/>
+<rect class="rung" x="262" y="266" width="236" height="24" rx="4"/>
+<rect class="rung" x="262" y="294" width="236" height="24" rx="4"/>
+<rect class="rung" x="262" y="322" width="236" height="24" rx="4"/>
+<rect class="rung" x="262" y="350" width="236" height="24" rx="4"/>
+<rect class="rung" x="262" y="378" width="236" height="24" rx="4"/>
+<rect class="rung" x="262" y="406" width="236" height="24" rx="4"/>
+<rect class="rung" x="262" y="434" width="236" height="24" rx="4"/>
+<rect class="hl a13" x="262" y="238" width="236" height="24" rx="4"/>
+<rect class="hl a14" x="262" y="266" width="236" height="24" rx="4"/>
+<rect class="hl a15" x="262" y="294" width="236" height="24" rx="4"/>
+<rect class="hl a16" x="262" y="322" width="236" height="24" rx="4"/>
+<rect class="hl a17" x="262" y="350" width="236" height="24" rx="4"/>
+<rect class="hl a18" x="262" y="378" width="236" height="24" rx="4"/>
+<rect class="hl a19" x="262" y="406" width="236" height="24" rx="4"/>
+<rect class="hl a20" x="262" y="434" width="236" height="24" rx="4"/>
+<rect class="hl a21" x="262" y="266" width="236" height="24" rx="4"/>
+<rect class="hl a22" x="262" y="294" width="236" height="24" rx="4"/>
+<rect class="hl a23" x="262" y="322" width="236" height="24" rx="4"/>
+<rect class="hl a24" x="262" y="350" width="236" height="24" rx="4"/>
+<rect class="hl a25" x="262" y="378" width="236" height="24" rx="4"/>
+<rect class="hl a26" x="262" y="406" width="236" height="24" rx="4"/>
+<rect class="hl a27" x="262" y="434" width="236" height="24" rx="4"/>
+<rect class="hl a28" x="262" y="350" width="236" height="24" rx="4"/>
+<rect class="hl a29" x="262" y="378" width="236" height="24" rx="4"/>
+<rect class="hl a30" x="262" y="406" width="236" height="24" rx="4"/>
+<rect class="hl a31" x="262" y="434" width="236" height="24" rx="4"/>
+<rect class="hl a32" x="262" y="378" width="236" height="24" rx="4"/>
+<rect class="hl a33" x="262" y="406" width="236" height="24" rx="4"/>
+<rect class="hl a34" x="262" y="434" width="236" height="24" rx="4"/>
+<rect class="hl a35" x="262" y="238" width="236" height="24" rx="4"/>
+<text x="270" y="198" class="code sm" text-anchor="start">sea_parse_program</text>
+<text x="490" y="198" class="s" text-anchor="end">decl*</text>
+<text x="270" y="226" class="code sm" text-anchor="start">sea_parse_decl</text>
+<text x="490" y="226" class="s" text-anchor="end">extern · func · global</text>
+<text x="270" y="254" class="code sm" text-anchor="start">sea_parse_stmt</text>
+<text x="490" y="254" class="s" text-anchor="end">block if for while var</text>
+<text x="270" y="282" class="code sm" text-anchor="start">sea_parse_expr</text>
+<text x="490" y="282" class="s" text-anchor="end">=</text>
+<text x="270" y="310" class="code sm" text-anchor="start">sea_parse_equality</text>
+<text x="490" y="310" class="s" text-anchor="end">== !=</text>
+<text x="270" y="338" class="code sm" text-anchor="start">sea_parse_ordinal</text>
+<text x="490" y="338" class="s" text-anchor="end">&lt; &gt; &lt;= &gt;=</text>
+<text x="270" y="366" class="code sm" text-anchor="start">sea_parse_additive</text>
+<text x="490" y="366" class="s" text-anchor="end">+ -</text>
+<text x="270" y="394" class="code sm" text-anchor="start">sea_parse_term</text>
+<text x="490" y="394" class="s" text-anchor="end">* / %</text>
+<text x="270" y="422" class="code sm" text-anchor="start">sea_parse_unary</text>
+<text x="490" y="422" class="s" text-anchor="end">! -</text>
+<text x="270" y="450" class="code sm" text-anchor="start">sea_parse_primary</text>
+<text x="490" y="450" class="s" text-anchor="end">int · name · call</text>
+<text x="520" y="168" class="lbl" text-anchor="start">AST  (sea_expr nodes)</text>
+<path class="edge a36" d="M600 235 L546 277"/>
+<path class="edge a37" d="M600 235 L656 277"/>
+<path class="edge a38" d="M656 303 L606 345"/>
+<path class="edge a39" d="M656 303 L704 345"/>
+<path class="edge a40" d="M704 371 L662 413"/>
+<path class="edge a41" d="M704 371 L726 413"/>
+<g class="a42"><rect class="node" x="570.8" y="209" width="58.4" height="26" rx="13"/><text x="600" y="226.5" class="code sm" text-anchor="middle">ASSIGN</text></g>
+<g class="a43"><rect class="node" x="520.5" y="277" width="51.0" height="26" rx="13"/><text x="546" y="294.5" class="code sm" text-anchor="middle">SYM x</text></g>
+<g class="a44"><rect class="node" x="637.9" y="277" width="36.2" height="26" rx="13"/><text x="656" y="294.5" class="code sm" text-anchor="middle">ADD</text></g>
+<g class="a45"><rect class="node" x="580.5" y="345" width="51.0" height="26" rx="13"/><text x="606" y="362.5" class="code sm" text-anchor="middle">SYM a</text></g>
+<g class="a46"><rect class="node" x="685.9" y="345" width="36.2" height="26" rx="13"/><text x="704" y="362.5" class="code sm" text-anchor="middle">MUL</text></g>
+<g class="a47"><rect class="node" x="636.5" y="413" width="51.0" height="26" rx="13"/><text x="662" y="430.5" class="code sm" text-anchor="middle">SYM b</text></g>
+<g class="a48"><rect class="node" x="700.5" y="413" width="51.0" height="26" rx="13"/><text x="726" y="430.5" class="code sm" text-anchor="middle">INT 2</text></g>
+<text x="20" y="498" class="cap a49" text-anchor="start">main.c reads the file with util.c&#x27;s readFile …</text>
+<text x="20" y="498" class="cap a50" text-anchor="start">… sea_tokenize splits it into tokens up front, so the parser never sees whitespace …</text>
+<text x="20" y="498" class="cap a51" text-anchor="start">… and the parser walks down the precedence ladder, building a node each time it consumes a token.</text>
+<text x="20" y="498" class="cap a52" text-anchor="start">Errors become nodes too, so one bad token never stops the parse.</text>
+</svg>

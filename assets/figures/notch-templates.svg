@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="622" viewBox="0 0 780 622" role="img" aria-label="Diagram of layouts in Sunny, Notch&#x27;s template engine. index.html declares #layout :base.html and fills the title block. Pass 1 registers base.html&#x27;s slots and checks the child&#x27;s block names; pass 2 renders the child into a blocks map, then renders the layout with the slots filled, producing a page with the title &#x27;Home | My App&#x27; and &#x27;Hello, world!&#x27;. A misspelled block name fails in pass 1 with a diagnostic pointing at the line.">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="tip"/></marker></defs>
+<style>
+  .card { fill: #f6f8fa; stroke: #d1d9e0; }
+  text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; fill: #1f2328; }
+  .h { font-size: 15px; font-weight: 600; }
+  .m { font-size: 12px; fill: #59636e; }
+  .cap { font-size: 13px; }
+  .s { font-size: 11px; fill: #59636e; }
+  .b { font-weight: 600; }
+  .lbl { font-size: 10px; font-weight: 600; letter-spacing: .08em; fill: #59636e; }
+  .code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13px; }
+  .sm { font-size: 11.5px; }
+  .box, .chip, .node, .rung { fill: #ffffff; stroke: #d1d9e0; }
+  .rung { stroke: #e1e6eb; }
+  .node { stroke: #0969da; }
+  .hl { fill: #0969da; fill-opacity: .14; stroke: #0969da; stroke-opacity: .6; }
+  .bad { fill: #cf222e; fill-opacity: .12; stroke: #cf222e; }
+  .badt { fill: #cf222e; }
+  .ok { fill: #1a7f37; }
+  .edge { stroke: #8c959f; stroke-width: 1.5; fill: none; }
+  .tip { fill: #8c959f; }
+  .term { fill: #1f2328; }
+  .termt { fill: #e6edf3; }
+  .termerr { fill: #ff7b72; }
+  .termdim { fill: #9198a1; }
+  .termok { fill: #3fb950; }
+  .k { fill: #cf222e; } .f { fill: #8250df; } .str { fill: #0a3069; } .num { fill: #0550ae; } .cm { fill: #6e7781; }
+  @media (prefers-color-scheme: dark) {
+    .card { fill: #151b23; stroke: #3d444d; }
+    text { fill: #e6edf3; }
+    .m, .s, .lbl { fill: #9198a1; }
+    .box, .chip, .node, .rung { fill: #0d1117; stroke: #3d444d; }
+    .node { stroke: #4493f8; }
+    .hl { fill: #4493f8; stroke: #4493f8; }
+    .bad { fill: #f85149; stroke: #f85149; }
+    .badt { fill: #ff7b72; }
+    .ok { fill: #3fb950; }
+    .edge { stroke: #656c76; }
+    .tip { fill: #656c76; }
+    .term { fill: #010409; }
+    .k { fill: #ff7b72; } .f { fill: #d2a8ff; } .str { fill: #a5d6ff; } .num { fill: #79c0ff; } .cm { fill: #8b949e; }
+  }
+
+.a0 { animation: a0 17.0s infinite; }
+@keyframes a0 { 0.00% { opacity: 0; } 1.76% { opacity: 0; } 2.65% { opacity: 1; } 29.41% { opacity: 1; } 30.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a1 { animation: a1 17.0s infinite; }
+@keyframes a1 { 0.00% { opacity: 0; } 29.41% { opacity: 0; } 30.29% { opacity: 1; } 64.71% { opacity: 1; } 65.59% { opacity: 0; } 100.00% { opacity: 0; } }
+.a2 { animation: a2 17.0s infinite; }
+@keyframes a2 { 0.00% { opacity: 0; } 1.76% { opacity: 0; } 2.65% { opacity: 1; } 7.06% { opacity: 1; } 7.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a3 { animation: a3 17.0s infinite; }
+@keyframes a3 { 0.00% { opacity: 0; } 17.06% { opacity: 0; } 17.94% { opacity: 1; } 22.94% { opacity: 1; } 23.82% { opacity: 0; } 100.00% { opacity: 0; } }
+.a4 { animation: a4 17.0s infinite; }
+@keyframes a4 { 0.00% { opacity: 0; } 29.41% { opacity: 0; } 30.29% { opacity: 1; } 35.29% { opacity: 1; } 36.18% { opacity: 0; } 100.00% { opacity: 0; } }
+.a5 { animation: a5 17.0s infinite; }
+@keyframes a5 { 0.00% { opacity: 0; } 36.47% { opacity: 0; } 37.35% { opacity: 1; } 44.71% { opacity: 1; } 45.59% { opacity: 0; } 100.00% { opacity: 0; } }
+.a6 { animation: a6 17.0s infinite; }
+@keyframes a6 { 0.00% { opacity: 0; } 7.06% { opacity: 0; } 7.94% { opacity: 1; } 11.76% { opacity: 1; } 12.65% { opacity: 0; } 100.00% { opacity: 0; } }
+.a7 { animation: a7 17.0s infinite; }
+@keyframes a7 { 0.00% { opacity: 0; } 49.41% { opacity: 0; } 50.29% { opacity: 1; } 52.94% { opacity: 1; } 53.82% { opacity: 0; } 100.00% { opacity: 0; } }
+.a8 { animation: a8 17.0s infinite; }
+@keyframes a8 { 0.00% { opacity: 0; } 11.76% { opacity: 0; } 12.65% { opacity: 1; } 16.47% { opacity: 1; } 17.35% { opacity: 0; } 100.00% { opacity: 0; } }
+.a9 { animation: a9 17.0s infinite; }
+@keyframes a9 { 0.00% { opacity: 0; } 56.47% { opacity: 0; } 57.35% { opacity: 1; } 59.41% { opacity: 1; } 60.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a10 { animation: a10 17.0s infinite; }
+@keyframes a10 { 0.00% { opacity: 0; } 47.06% { opacity: 0; } 47.94% { opacity: 1; } 49.41% { opacity: 1; } 50.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a11 { animation: a11 17.0s infinite; }
+@keyframes a11 { 0.00% { opacity: 0; } 52.94% { opacity: 0; } 53.82% { opacity: 1; } 54.71% { opacity: 1; } 55.59% { opacity: 0; } 100.00% { opacity: 0; } }
+.a12 { animation: a12 17.0s infinite; }
+@keyframes a12 { 0.00% { opacity: 0; } 54.71% { opacity: 0; } 55.59% { opacity: 1; } 56.47% { opacity: 1; } 57.35% { opacity: 0; } 100.00% { opacity: 0; } }
+.a13 { animation: a13 17.0s infinite; }
+@keyframes a13 { 0.00% { opacity: 0; } 59.41% { opacity: 0; } 60.29% { opacity: 1; } 61.76% { opacity: 1; } 62.65% { opacity: 0; } 100.00% { opacity: 0; } }
+.a14 { animation: a14 17.0s infinite; }
+@keyframes a14 { 0.00% { opacity: 0; } 9.41% { opacity: 0; } 10.29% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a15 { animation: a15 17.0s infinite; }
+@keyframes a15 { 0.00% { opacity: 0; } 49.41% { opacity: 0; } 50.29% { opacity: 1; } 52.94% { opacity: 1; } 53.82% { opacity: 0; } 100.00% { opacity: 0; } }
+.a16 { animation: a16 17.0s infinite; }
+@keyframes a16 { 0.00% { opacity: 0; } 9.41% { opacity: 0; } 10.29% { opacity: 1; } 32.94% { opacity: 1; } 33.82% { opacity: 0; } 100.00% { opacity: 0; } }
+.a17 { animation: a17 17.0s infinite; }
+@keyframes a17 { 0.00% { opacity: 0; } 32.94% { opacity: 0; } 33.82% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a18 { animation: a18 17.0s infinite; }
+@keyframes a18 { 0.00% { opacity: 0; } 14.12% { opacity: 0; } 15.00% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a19 { animation: a19 17.0s infinite; }
+@keyframes a19 { 0.00% { opacity: 0; } 56.47% { opacity: 0; } 57.35% { opacity: 1; } 59.41% { opacity: 1; } 60.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a20 { animation: a20 17.0s infinite; }
+@keyframes a20 { 0.00% { opacity: 0; } 14.12% { opacity: 0; } 15.00% { opacity: 1; } 42.35% { opacity: 1; } 43.24% { opacity: 0; } 100.00% { opacity: 0; } }
+.a21 { animation: a21 17.0s infinite; }
+@keyframes a21 { 0.00% { opacity: 0; } 42.35% { opacity: 0; } 43.24% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.xs { font-size: 11px; }
+.a23 { animation: a23 17.0s infinite; }
+@keyframes a23 { 0.00% { opacity: 0; } 19.41% { opacity: 0; } 20.29% { opacity: 1; } 29.41% { opacity: 1; } 30.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a24 { animation: a24 17.0s infinite; }
+@keyframes a24 { 0.00% { opacity: 0; } 38.82% { opacity: 0; } 39.71% { opacity: 1; } 44.71% { opacity: 1; } 45.59% { opacity: 0; } 100.00% { opacity: 0; } }
+.a25 { animation: a25 17.0s infinite; }
+@keyframes a25 { 0.00% { opacity: 0; } 47.06% { opacity: 0; } 47.94% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a26 { animation: a26 17.0s infinite; }
+@keyframes a26 { 0.00% { opacity: 0; } 49.41% { opacity: 0; } 50.29% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a27 { animation: a27 17.0s infinite; }
+@keyframes a27 { 0.00% { opacity: 0; } 52.94% { opacity: 0; } 53.82% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a28 { animation: a28 17.0s infinite; }
+@keyframes a28 { 0.00% { opacity: 0; } 54.71% { opacity: 0; } 55.59% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a29 { animation: a29 17.0s infinite; }
+@keyframes a29 { 0.00% { opacity: 0; } 56.47% { opacity: 0; } 57.35% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a30 { animation: a30 17.0s infinite; }
+@keyframes a30 { 0.00% { opacity: 0; } 59.41% { opacity: 0; } 60.29% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a31 { animation: a31 17.0s infinite; }
+@keyframes a31 { 0.00% { opacity: 0; } 64.71% { opacity: 0; } 65.59% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a32 { animation: a32 17.0s infinite; }
+@keyframes a32 { 0.00% { opacity: 0; } 68.24% { opacity: 0; } 69.12% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a33 { animation: a33 17.0s infinite; }
+@keyframes a33 { 0.00% { opacity: 0; } 68.24% { opacity: 0; } 69.12% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a34 { animation: a34 17.0s infinite; }
+@keyframes a34 { 0.00% { opacity: 0; } 68.24% { opacity: 0; } 69.12% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a35 { animation: a35 17.0s infinite; }
+@keyframes a35 { 0.00% { opacity: 0; } 70.00% { opacity: 0; } 70.88% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a36 { animation: a36 17.0s infinite; }
+@keyframes a36 { 0.00% { opacity: 0; } 70.00% { opacity: 0; } 70.88% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a37 { animation: a37 17.0s infinite; }
+@keyframes a37 { 0.00% { opacity: 0; } 72.35% { opacity: 0; } 73.24% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a38 { animation: a38 17.0s infinite; }
+@keyframes a38 { 0.00% { opacity: 0; } 72.35% { opacity: 0; } 73.24% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+.a39 { animation: a39 17.0s infinite; }
+@keyframes a39 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.88% { opacity: 1; } 29.41% { opacity: 1; } 30.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a40 { animation: a40 17.0s infinite; }
+@keyframes a40 { 0.00% { opacity: 0; } 29.41% { opacity: 0; } 30.29% { opacity: 1; } 47.06% { opacity: 1; } 47.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a41 { animation: a41 17.0s infinite; }
+@keyframes a41 { 0.00% { opacity: 0; } 47.06% { opacity: 0; } 47.94% { opacity: 1; } 64.71% { opacity: 1; } 65.59% { opacity: 0; } 100.00% { opacity: 0; } }
+.a42 { animation: a42 17.0s infinite; }
+@keyframes a42 { 0.00% { opacity: 0; } 64.71% { opacity: 0; } 65.59% { opacity: 1; } 95.88% { opacity: 1; } 96.76% { opacity: 0; } 100.00% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    [class^="a"], [class*=" a"] { animation: none !important; opacity: 1; }
+    .hl, .cap { display: none; }
+  }
+</style>
+<rect class="card" x="0.5" y="0.5" width="779" height="621" rx="8"/>
+<text x="20" y="34" class="h" text-anchor="start">Sunny — layouts in two passes</text>
+<text x="20" y="54" class="m" text-anchor="start">Layout and content blocks I wrote for Sunny, the template engine in Notch (MSU&#x27;s scripting language): check every slot, then render.</text>
+<rect class="chip" x="20" y="72" width="366" height="26" rx="13"/>
+<rect class="hl a0" x="20" y="72" width="366" height="26" rx="13"/>
+<text x="203" y="89" class="sm b" text-anchor="middle">PASS 1 · preRender: register and check slots</text>
+<rect class="chip" x="394" y="72" width="366" height="26" rx="13"/>
+<rect class="hl a1" x="394" y="72" width="366" height="26" rx="13"/>
+<text x="577" y="89" class="sm b" text-anchor="middle">PASS 2 · render: child into blocks, then layout</text>
+<text x="20" y="120" class="lbl" text-anchor="start">CHILD  index.html</text>
+<text x="276" y="120" class="lbl" text-anchor="start">BLOCKS  (shared map)</text>
+<text x="516" y="120" class="lbl" text-anchor="start">LAYOUT  base.html</text>
+<rect class="box" x="20" y="128" width="244" height="196" rx="6"/>
+<rect class="box" x="276" y="128" width="228" height="196" rx="6"/>
+<rect class="box" x="516" y="128" width="244" height="196" rx="6"/>
+<rect class="hl a2" x="24" y="138" width="236" height="20" rx="3"/>
+<rect class="hl a3" x="24" y="160" width="236" height="20" rx="3"/>
+<rect class="hl a4" x="24" y="182" width="236" height="20" rx="3"/>
+<rect class="hl a5" x="24" y="226" width="236" height="20" rx="3"/>
+<text x="30" y="153" class="code sm" xml:space="preserve"><tspan class="cm">1 </tspan><tspan class="k">#layout </tspan><tspan class="str">:base.html</tspan></text>
+<text x="30" y="175" class="code sm" xml:space="preserve"><tspan class="cm">2 </tspan><tspan class="k">#content </tspan>title <tspan class="k">with</tspan></text>
+<text x="30" y="197" class="code sm" xml:space="preserve"><tspan class="cm">3 </tspan><tspan class="f">  &lt;title&gt;</tspan>Home | My App<tspan class="f">&lt;/title&gt;</tspan></text>
+<text x="30" y="219" class="code sm" xml:space="preserve"><tspan class="cm">4 </tspan><tspan class="k">#end</tspan></text>
+<text x="30" y="241" class="code sm" xml:space="preserve"><tspan class="cm">5 </tspan><tspan class="f">&lt;main&gt;</tspan>Hello, <tspan class="num">${ name }</tspan>!<tspan class="f">&lt;/main&gt;</tspan></text>
+<rect class="hl a6" x="520" y="160" width="236" height="20" rx="3"/>
+<rect class="hl a7" x="520" y="160" width="236" height="20" rx="3"/>
+<rect class="hl a8" x="520" y="270" width="236" height="20" rx="3"/>
+<rect class="hl a9" x="520" y="270" width="236" height="20" rx="3"/>
+<rect class="hl a10" x="520" y="138" width="236" height="20" rx="3"/>
+<rect class="hl a11" x="520" y="226" width="236" height="20" rx="3"/>
+<rect class="hl a12" x="520" y="248" width="236" height="20" rx="3"/>
+<rect class="hl a13" x="520" y="292" width="236" height="20" rx="3"/>
+<text x="526" y="153" class="code sm" xml:space="preserve"><tspan class="cm">1 </tspan><tspan class="f">&lt;head&gt;</tspan></text>
+<text x="526" y="175" class="code sm" xml:space="preserve"><tspan class="cm">2 </tspan><tspan class="k">#content </tspan>title <tspan class="k">with</tspan></text>
+<text x="526" y="197" class="code sm" xml:space="preserve"><tspan class="cm">3 </tspan><tspan class="f">  &lt;title&gt;</tspan>My App<tspan class="f">&lt;/title&gt;</tspan></text>
+<text x="526" y="219" class="code sm" xml:space="preserve"><tspan class="cm">4 </tspan><tspan class="k">#end</tspan></text>
+<text x="526" y="241" class="code sm" xml:space="preserve"><tspan class="cm">5 </tspan><tspan class="f">&lt;/head&gt;</tspan></text>
+<text x="526" y="263" class="code sm" xml:space="preserve"><tspan class="cm">6 </tspan><tspan class="f">&lt;body&gt;</tspan></text>
+<text x="526" y="285" class="code sm" xml:space="preserve"><tspan class="cm">7 </tspan><tspan class="k">#content</tspan></text>
+<text x="526" y="307" class="code sm" xml:space="preserve"><tspan class="cm">8 </tspan><tspan class="f">&lt;/body&gt;</tspan></text>
+<g class="a14"><rect class="chip" x="284" y="140" width="212" height="52" rx="5"/><text x="294" y="159" class="code sm b">title</text></g>
+<rect class="hl a15" x="284" y="140" width="212" height="52" rx="5"/>
+<text x="294" y="180" class="s a16">empty slot</text>
+<text x="294" y="180" class="code xs a17">&lt;title&gt;Home | My App&lt;/title&gt;</text>
+<g class="a18"><rect class="chip" x="284" y="202" width="212" height="52" rx="5"/><text x="294" y="221" class="code sm b">&lt;body&gt;</text></g>
+<rect class="hl a19" x="284" y="202" width="212" height="52" rx="5"/>
+<text x="294" y="242" class="s a20">empty slot</text>
+<text x="294" y="242" class="code xs a21">&lt;main&gt;Hello, world!&lt;/main&gt;</text>
+<text x="486" y="159" class="b ok a23" text-anchor="end">✓ exists</text>
+<g class="a24"><rect class="chip" x="284" y="268" width="212" height="40" rx="5"/><text x="294" y="286" class="s">evaluate with the full parser:</text><text x="294" y="301" class="code xs">${ name } → "world"</text></g>
+<text x="20" y="354" class="lbl" text-anchor="start">RENDERED OUTPUT</text>
+<rect class="box" x="20" y="362" width="346" height="186" rx="6"/>
+<text x="32" y="388" class="code sm a25" xml:space="preserve"><tspan class="f">&lt;head&gt;</tspan></text>
+<text x="32" y="412" class="code sm a26" xml:space="preserve"><tspan class="f">  &lt;title&gt;</tspan>Home | My App<tspan class="f">&lt;/title&gt;</tspan></text>
+<text x="32" y="436" class="code sm a27" xml:space="preserve"><tspan class="f">&lt;/head&gt;</tspan></text>
+<text x="32" y="460" class="code sm a28" xml:space="preserve"><tspan class="f">&lt;body&gt;</tspan></text>
+<text x="32" y="484" class="code sm a29" xml:space="preserve"><tspan class="f">&lt;main&gt;</tspan>Hello, world!<tspan class="f">&lt;/main&gt;</tspan></text>
+<text x="32" y="508" class="code sm a30" xml:space="preserve"><tspan class="f">&lt;/body&gt;</tspan></text>
+<text x="380" y="354" class="lbl" text-anchor="start">AND IF A BLOCK NAME IS WRONG …</text>
+<rect class="term" x="380" y="362" width="380" height="186" rx="6"/>
+<text x="394" y="386" class="code xs termdim a31" xml:space="preserve">#content footer with   (in bad.html)</text>
+<text x="394" y="406" class="code xs termt a32" xml:space="preserve">   --&gt; bad.html:2:1</text>
+<text x="394" y="426" class="code xs termt a33" xml:space="preserve">    |</text>
+<text x="394" y="446" class="code xs termt a34" xml:space="preserve">  2 | #content footer with</text>
+<text x="394" y="466" class="code xs termerr a35" xml:space="preserve">    | ^^^^^^^^</text>
+<text x="394" y="486" class="code xs termt a36" xml:space="preserve">    |</text>
+<text x="394" y="506" class="code xs termerr a37" xml:space="preserve">note: no block named "footer" in the layout</text>
+<text x="394" y="526" class="code xs termerr a38" xml:space="preserve">      template</text>
+<text x="20" y="574" class="s" text-anchor="start">Pass 1 runs before any output exists, so a typo in a block name never produces a half-rendered page.</text>
+<text x="20" y="604" class="cap a39" text-anchor="start">Pass 1: the layout registers its slots, and every #content block in the child is checked against them …</text>
+<text x="20" y="604" class="cap a40" text-anchor="start">Pass 2: the child renders into the shared blocks map; ${ … } runs through the full Notch parser …</text>
+<text x="20" y="604" class="cap a41" text-anchor="start">… then the layout renders, swapping each #content slot for the child&#x27;s block (or its default).</text>
+<text x="20" y="604" class="cap a42" text-anchor="start">A misspelled block fails in pass 1 with a diagnostic that points at the exact line.</text>
+</svg>

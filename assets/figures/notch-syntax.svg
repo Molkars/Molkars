@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="656" viewBox="0 0 780 656" role="img" aria-label="Diagram of Notch syntax with real results. Strings: &#x27;single&#x27;, &quot;double&quot;, and quote-free :terse. Maps: {:apples -&gt; 3, :pears -&gt; 5} read with m.apples or m[:pears]. Loops: for i &lt; 4 counts 0 to 3, printing 0 1 4 9. Missing values: an unknown variable is an error, foo?.bar.baz coalesces to undefined, ?: supplies a fallback, and a misspelled method call errors with a suggestion.">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="tip"/></marker></defs>
+<style>
+  .card { fill: #f6f8fa; stroke: #d1d9e0; }
+  text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; fill: #1f2328; }
+  .h { font-size: 15px; font-weight: 600; }
+  .m { font-size: 12px; fill: #59636e; }
+  .cap { font-size: 13px; }
+  .s { font-size: 11px; fill: #59636e; }
+  .b { font-weight: 600; }
+  .lbl { font-size: 10px; font-weight: 600; letter-spacing: .08em; fill: #59636e; }
+  .code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13px; }
+  .sm { font-size: 11.5px; }
+  .box, .chip, .node, .rung { fill: #ffffff; stroke: #d1d9e0; }
+  .rung { stroke: #e1e6eb; }
+  .node { stroke: #0969da; }
+  .hl { fill: #0969da; fill-opacity: .14; stroke: #0969da; stroke-opacity: .6; }
+  .bad { fill: #cf222e; fill-opacity: .12; stroke: #cf222e; }
+  .badt { fill: #cf222e; }
+  .ok { fill: #1a7f37; }
+  .edge { stroke: #8c959f; stroke-width: 1.5; fill: none; }
+  .tip { fill: #8c959f; }
+  .term { fill: #1f2328; }
+  .termt { fill: #e6edf3; }
+  .termerr { fill: #ff7b72; }
+  .termdim { fill: #9198a1; }
+  .termok { fill: #3fb950; }
+  .k { fill: #cf222e; } .f { fill: #8250df; } .str { fill: #0a3069; } .num { fill: #0550ae; } .cm { fill: #6e7781; }
+  @media (prefers-color-scheme: dark) {
+    .card { fill: #151b23; stroke: #3d444d; }
+    text { fill: #e6edf3; }
+    .m, .s, .lbl { fill: #9198a1; }
+    .box, .chip, .node, .rung { fill: #0d1117; stroke: #3d444d; }
+    .node { stroke: #4493f8; }
+    .hl { fill: #4493f8; stroke: #4493f8; }
+    .bad { fill: #f85149; stroke: #f85149; }
+    .badt { fill: #ff7b72; }
+    .ok { fill: #3fb950; }
+    .edge { stroke: #656c76; }
+    .tip { fill: #656c76; }
+    .term { fill: #010409; }
+    .k { fill: #ff7b72; } .f { fill: #d2a8ff; } .str { fill: #a5d6ff; } .num { fill: #79c0ff; } .cm { fill: #8b949e; }
+  }
+
+.a0 { animation: a0 18.0s infinite; }
+@keyframes a0 { 0.00% { opacity: 0; } 2.22% { opacity: 0; } 3.06% { opacity: 1; } 8.33% { opacity: 1; } 9.17% { opacity: 0; } 100.00% { opacity: 0; } }
+.a1 { animation: a1 18.0s infinite; }
+@keyframes a1 { 0.00% { opacity: 0; } 2.22% { opacity: 0; } 3.06% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a2 { animation: a2 18.0s infinite; }
+@keyframes a2 { 0.00% { opacity: 0; } 4.72% { opacity: 0; } 5.56% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a3 { animation: a3 18.0s infinite; }
+@keyframes a3 { 0.00% { opacity: 0; } 8.33% { opacity: 0; } 9.17% { opacity: 1; } 14.44% { opacity: 1; } 15.28% { opacity: 0; } 100.00% { opacity: 0; } }
+.a4 { animation: a4 18.0s infinite; }
+@keyframes a4 { 0.00% { opacity: 0; } 8.33% { opacity: 0; } 9.17% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a5 { animation: a5 18.0s infinite; }
+@keyframes a5 { 0.00% { opacity: 0; } 10.83% { opacity: 0; } 11.67% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a6 { animation: a6 18.0s infinite; }
+@keyframes a6 { 0.00% { opacity: 0; } 14.44% { opacity: 0; } 15.28% { opacity: 1; } 22.78% { opacity: 1; } 23.61% { opacity: 0; } 100.00% { opacity: 0; } }
+.a7 { animation: a7 18.0s infinite; }
+@keyframes a7 { 0.00% { opacity: 0; } 14.44% { opacity: 0; } 15.28% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a8 { animation: a8 18.0s infinite; }
+@keyframes a8 { 0.00% { opacity: 0; } 16.94% { opacity: 0; } 17.78% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a9 { animation: a9 18.0s infinite; }
+@keyframes a9 { 0.00% { opacity: 0; } 16.94% { opacity: 0; } 17.78% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a10 { animation: a10 18.0s infinite; }
+@keyframes a10 { 0.00% { opacity: 0; } 22.78% { opacity: 0; } 23.61% { opacity: 1; } 28.89% { opacity: 1; } 29.72% { opacity: 0; } 100.00% { opacity: 0; } }
+.a11 { animation: a11 18.0s infinite; }
+@keyframes a11 { 0.00% { opacity: 0; } 22.78% { opacity: 0; } 23.61% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a12 { animation: a12 18.0s infinite; }
+@keyframes a12 { 0.00% { opacity: 0; } 28.89% { opacity: 0; } 29.72% { opacity: 1; } 35.00% { opacity: 1; } 35.83% { opacity: 0; } 100.00% { opacity: 0; } }
+.a13 { animation: a13 18.0s infinite; }
+@keyframes a13 { 0.00% { opacity: 0; } 28.89% { opacity: 0; } 29.72% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a14 { animation: a14 18.0s infinite; }
+@keyframes a14 { 0.00% { opacity: 0; } 31.39% { opacity: 0; } 32.22% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a15 { animation: a15 18.0s infinite; }
+@keyframes a15 { 0.00% { opacity: 0; } 35.00% { opacity: 0; } 35.83% { opacity: 1; } 41.11% { opacity: 1; } 41.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a16 { animation: a16 18.0s infinite; }
+@keyframes a16 { 0.00% { opacity: 0; } 35.00% { opacity: 0; } 35.83% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a17 { animation: a17 18.0s infinite; }
+@keyframes a17 { 0.00% { opacity: 0; } 37.50% { opacity: 0; } 38.33% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a18 { animation: a18 18.0s infinite; }
+@keyframes a18 { 0.00% { opacity: 0; } 41.11% { opacity: 0; } 41.94% { opacity: 1; } 49.44% { opacity: 1; } 50.28% { opacity: 0; } 100.00% { opacity: 0; } }
+.a19 { animation: a19 18.0s infinite; }
+@keyframes a19 { 0.00% { opacity: 0; } 41.11% { opacity: 0; } 41.94% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a20 { animation: a20 18.0s infinite; }
+@keyframes a20 { 0.00% { opacity: 0; } 43.61% { opacity: 0; } 44.44% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a21 { animation: a21 18.0s infinite; }
+@keyframes a21 { 0.00% { opacity: 0; } 43.61% { opacity: 0; } 44.44% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a22 { animation: a22 18.0s infinite; }
+@keyframes a22 { 0.00% { opacity: 0; } 49.44% { opacity: 0; } 50.28% { opacity: 1; } 57.78% { opacity: 1; } 58.61% { opacity: 0; } 100.00% { opacity: 0; } }
+.a23 { animation: a23 18.0s infinite; }
+@keyframes a23 { 0.00% { opacity: 0; } 51.94% { opacity: 0; } 52.78% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a24 { animation: a24 18.0s infinite; }
+@keyframes a24 { 0.00% { opacity: 0; } 49.44% { opacity: 0; } 50.28% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a25 { animation: a25 18.0s infinite; }
+@keyframes a25 { 0.00% { opacity: 0; } 51.94% { opacity: 0; } 52.78% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a26 { animation: a26 18.0s infinite; }
+@keyframes a26 { 0.00% { opacity: 0; } 51.94% { opacity: 0; } 52.78% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a27 { animation: a27 18.0s infinite; }
+@keyframes a27 { 0.00% { opacity: 0; } 57.78% { opacity: 0; } 58.61% { opacity: 1; } 66.11% { opacity: 1; } 66.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a28 { animation: a28 18.0s infinite; }
+@keyframes a28 { 0.00% { opacity: 0; } 57.78% { opacity: 0; } 58.61% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a29 { animation: a29 18.0s infinite; }
+@keyframes a29 { 0.00% { opacity: 0; } 60.28% { opacity: 0; } 61.11% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a30 { animation: a30 18.0s infinite; }
+@keyframes a30 { 0.00% { opacity: 0; } 60.28% { opacity: 0; } 61.11% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a31 { animation: a31 18.0s infinite; }
+@keyframes a31 { 0.00% { opacity: 0; } 66.11% { opacity: 0; } 66.94% { opacity: 1; } 74.44% { opacity: 1; } 75.28% { opacity: 0; } 100.00% { opacity: 0; } }
+.a32 { animation: a32 18.0s infinite; }
+@keyframes a32 { 0.00% { opacity: 0; } 66.11% { opacity: 0; } 66.94% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a33 { animation: a33 18.0s infinite; }
+@keyframes a33 { 0.00% { opacity: 0; } 68.61% { opacity: 0; } 69.44% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a34 { animation: a34 18.0s infinite; }
+@keyframes a34 { 0.00% { opacity: 0; } 68.61% { opacity: 0; } 69.44% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a35 { animation: a35 18.0s infinite; }
+@keyframes a35 { 0.00% { opacity: 0; } 74.44% { opacity: 0; } 75.28% { opacity: 1; } 82.78% { opacity: 1; } 83.61% { opacity: 0; } 100.00% { opacity: 0; } }
+.a36 { animation: a36 18.0s infinite; }
+@keyframes a36 { 0.00% { opacity: 0; } 76.94% { opacity: 0; } 77.78% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a37 { animation: a37 18.0s infinite; }
+@keyframes a37 { 0.00% { opacity: 0; } 74.44% { opacity: 0; } 75.28% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a38 { animation: a38 18.0s infinite; }
+@keyframes a38 { 0.00% { opacity: 0; } 76.94% { opacity: 0; } 77.78% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a39 { animation: a39 18.0s infinite; }
+@keyframes a39 { 0.00% { opacity: 0; } 76.94% { opacity: 0; } 77.78% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a40 { animation: a40 18.0s infinite; }
+@keyframes a40 { 0.00% { opacity: 0; } 2.22% { opacity: 0; } 3.06% { opacity: 1; } 22.78% { opacity: 1; } 23.61% { opacity: 0; } 100.00% { opacity: 0; } }
+.a41 { animation: a41 18.0s infinite; }
+@keyframes a41 { 0.00% { opacity: 0; } 22.78% { opacity: 0; } 23.61% { opacity: 1; } 41.11% { opacity: 1; } 41.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a42 { animation: a42 18.0s infinite; }
+@keyframes a42 { 0.00% { opacity: 0; } 41.11% { opacity: 0; } 41.94% { opacity: 1; } 49.44% { opacity: 1; } 50.28% { opacity: 0; } 100.00% { opacity: 0; } }
+.a43 { animation: a43 18.0s infinite; }
+@keyframes a43 { 0.00% { opacity: 0; } 49.44% { opacity: 0; } 50.28% { opacity: 1; } 95.56% { opacity: 1; } 96.39% { opacity: 0; } 100.00% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    [class^="a"], [class*=" a"] { animation: none !important; opacity: 1; }
+    .hl, .cap { display: none; }
+  }
+</style>
+<rect class="card" x="0.5" y="0.5" width="779" height="655" rx="8"/>
+<text x="20" y="34" class="h" text-anchor="start">Notch — small syntax, strict where it matters</text>
+<text x="20" y="54" class="m" text-anchor="start">Syntax I worked on in Notch, MSU&#x27;s scripting language. Every result below is from a real run.</text>
+<rect class="box" x="20" y="76" width="740" height="526" rx="6"/>
+<text x="34" y="103" class="lbl">STRINGS</text><text x="97" y="103" class="s">three ways to write one</text>
+<rect class="hl a0" x="26" y="112" width="728" height="30" rx="4"/>
+<text x="34" y="132" class="code sm a1" xml:space="preserve"><tspan class="cm">&gt; </tspan><tspan class="str">'single'</tspan></text>
+<text x="452" y="132" class="code sm b  a2" xml:space="preserve">single</text>
+<rect class="hl a3" x="26" y="146" width="728" height="30" rx="4"/>
+<text x="34" y="166" class="code sm a4" xml:space="preserve"><tspan class="cm">&gt; </tspan><tspan class="str">"double"</tspan></text>
+<text x="452" y="166" class="code sm b  a5" xml:space="preserve">double</text>
+<rect class="hl a6" x="26" y="180" width="728" height="30" rx="4"/>
+<text x="34" y="200" class="code sm a7" xml:space="preserve"><tspan class="cm">&gt; </tspan><tspan class="str">:terse</tspan></text>
+<text x="452" y="194" class="code sm b  a8" xml:space="preserve">terse</text>
+<text x="452" y="207" class="s a9">no quotes: ends at a space or , ) ] }</text>
+<text x="34" y="241" class="lbl">MAPS</text><text x="74" y="241" class="s">terse keys, property-style reads</text>
+<rect class="hl a10" x="26" y="250" width="728" height="30" rx="4"/>
+<text x="34" y="270" class="code sm a11" xml:space="preserve"><tspan class="cm">&gt; </tspan>m = {<tspan class="str">:apples</tspan> -&gt; <tspan class="num">3</tspan>, <tspan class="str">:pears</tspan> -&gt; <tspan class="num">5</tspan>}</text>
+<rect class="hl a12" x="26" y="284" width="728" height="30" rx="4"/>
+<text x="34" y="304" class="code sm a13" xml:space="preserve"><tspan class="cm">&gt; </tspan>m.apples</text>
+<text x="452" y="304" class="code sm b  a14" xml:space="preserve">3</text>
+<rect class="hl a15" x="26" y="318" width="728" height="30" rx="4"/>
+<text x="34" y="338" class="code sm a16" xml:space="preserve"><tspan class="cm">&gt; </tspan>m[<tspan class="str">:pears</tspan>]</text>
+<text x="452" y="338" class="code sm b  a17" xml:space="preserve">5</text>
+<text x="34" y="379" class="lbl">LOOPS</text><text x="82" y="379" class="s">count up without a range</text>
+<rect class="hl a18" x="26" y="388" width="728" height="30" rx="4"/>
+<text x="34" y="408" class="code sm a19" xml:space="preserve"><tspan class="cm">&gt; </tspan><tspan class="k">for </tspan>i &lt; <tspan class="num">4</tspan> <tspan class="f">print</tspan>(i * i) <tspan class="k">end</tspan></text>
+<text x="452" y="402" class="code sm b  a20" xml:space="preserve">0  1  4  9</text>
+<text x="452" y="415" class="s a21">i runs from 0 while i &lt; n</text>
+<text x="34" y="449" class="lbl">MISSING VALUES</text><text x="150" y="449" class="s">variables and calls are strict, property reads coalesce</text>
+<rect class="hl a22" x="26" y="458" width="728" height="30" rx="4"/>
+<rect class="bad a23" x="446" y="460" width="302" height="26" rx="4" style="stroke-opacity:.4"/>
+<text x="34" y="478" class="code sm a24" xml:space="preserve"><tspan class="cm">&gt; </tspan>foo</text>
+<text x="452" y="472" class="code sm b badt a25" xml:space="preserve">✗ unknown variable "foo"</text>
+<text x="452" y="485" class="s a26">a typo'd variable is an error …</text>
+<rect class="hl a27" x="26" y="492" width="728" height="30" rx="4"/>
+<text x="34" y="512" class="code sm a28" xml:space="preserve"><tspan class="cm">&gt; </tspan>foo?.bar.baz <tspan class="k">is undefined</tspan></text>
+<text x="452" y="506" class="code sm b  a29" xml:space="preserve">true</text>
+<text x="452" y="519" class="s a30">… unless you opt in with ?</text>
+<rect class="hl a31" x="26" y="526" width="728" height="30" rx="4"/>
+<text x="34" y="546" class="code sm a32" xml:space="preserve"><tspan class="cm">&gt; </tspan>foo?.bar.baz <tspan class="k">?:</tspan> <tspan class="str">:nope</tspan></text>
+<text x="452" y="540" class="code sm b  a33" xml:space="preserve">nope</text>
+<text x="452" y="553" class="s a34">?: turns &lt;undefined&gt; into a value</text>
+<rect class="hl a35" x="26" y="560" width="728" height="30" rx="4"/>
+<rect class="bad a36" x="446" y="562" width="302" height="26" rx="4" style="stroke-opacity:.4"/>
+<text x="34" y="580" class="code sm a37" xml:space="preserve"><tspan class="cm">&gt; </tspan><tspan class="str">'hello'</tspan>.<tspan class="f">lenght</tspan>()</text>
+<text x="452" y="574" class="code sm b badt a38" xml:space="preserve">✗ no method 'lenght' on String</text>
+<text x="452" y="587" class="s a39">Did you mean 'length'?</text>
+<path class="edge" d="M438 86 V592" style="stroke-width:1"/>
+<text x="20" y="638" class="cap a40" text-anchor="start">Strings come in three flavours; terse ones are perfect for keys and names …</text>
+<text x="20" y="638" class="cap a41" text-anchor="start">… which makes map literals read cleanly, and keys read like properties …</text>
+<text x="20" y="638" class="cap a42" text-anchor="start">… for i &lt; n is the loop you reach for most, without building a range …</text>
+<text x="20" y="638" class="cap a43" text-anchor="start">… and missing values fail loudly unless you opt in, with a suggestion when you misspell a method.</text>
+</svg>
