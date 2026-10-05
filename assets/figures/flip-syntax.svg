@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="594" viewBox="0 0 780 594" role="img" aria-label="Diagram of flip syntax, using swap-job-in from a paging simulator. Functions are &#x27;name does … end-name&#x27;; &#x27;s and s&#x27; are property access; &#x27;s result calls a method and &#x27;do f of a &amp; b&#x27; calls a function; let&#x27;s … let&#x27;s-be-done is a block; strings choose their own delimiter with String X … X and comments start with NOTE:; loop over binds loop&#x27;s item; then chains statements; &#x27;hi x becomes it plus 1&#x27; reassigns using it for the old value.">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="tip"/></marker></defs>
+<style>
+  .card { fill: #f6f8fa; stroke: #d1d9e0; }
+  text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; fill: #1f2328; }
+  .h { font-size: 15px; font-weight: 600; }
+  .m { font-size: 12px; fill: #59636e; }
+  .cap { font-size: 13px; }
+  .s { font-size: 11px; fill: #59636e; }
+  .b { font-weight: 600; }
+  .lbl { font-size: 10px; font-weight: 600; letter-spacing: .08em; fill: #59636e; }
+  .code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13px; }
+  .sm { font-size: 11.5px; }
+  .box, .chip, .node, .rung { fill: #ffffff; stroke: #d1d9e0; }
+  .rung { stroke: #e1e6eb; }
+  .node { stroke: #0969da; }
+  .hl { fill: #0969da; fill-opacity: .14; stroke: #0969da; stroke-opacity: .6; }
+  .bad { fill: #cf222e; fill-opacity: .12; stroke: #cf222e; }
+  .badt { fill: #cf222e; }
+  .ok { fill: #1a7f37; }
+  .edge { stroke: #8c959f; stroke-width: 1.5; fill: none; }
+  .tip { fill: #8c959f; }
+  .term { fill: #1f2328; }
+  .termt { fill: #e6edf3; }
+  .termerr { fill: #ff7b72; }
+  .termdim { fill: #9198a1; }
+  .termok { fill: #3fb950; }
+  .k { fill: #cf222e; } .f { fill: #8250df; } .str { fill: #0a3069; } .num { fill: #0550ae; } .cm { fill: #6e7781; }
+  @media (prefers-color-scheme: dark) {
+    .card { fill: #151b23; stroke: #3d444d; }
+    text { fill: #e6edf3; }
+    .m, .s, .lbl { fill: #9198a1; }
+    .box, .chip, .node, .rung { fill: #0d1117; stroke: #3d444d; }
+    .node { stroke: #4493f8; }
+    .hl { fill: #4493f8; stroke: #4493f8; }
+    .bad { fill: #f85149; stroke: #f85149; }
+    .badt { fill: #ff7b72; }
+    .ok { fill: #3fb950; }
+    .edge { stroke: #656c76; }
+    .tip { fill: #656c76; }
+    .term { fill: #010409; }
+    .k { fill: #ff7b72; } .f { fill: #d2a8ff; } .str { fill: #a5d6ff; } .num { fill: #79c0ff; } .cm { fill: #8b949e; }
+  }
+
+.a0 { animation: a0 22.0s infinite; }
+@keyframes a0 { 0.00% { opacity: 0; } 2.73% { opacity: 0; } 3.41% { opacity: 1; } 13.86% { opacity: 1; } 14.55% { opacity: 0; } 100.00% { opacity: 0; } }
+.a1 { animation: a1 22.0s infinite; }
+@keyframes a1 { 0.00% { opacity: 0; } 2.73% { opacity: 0; } 3.41% { opacity: 1; } 13.86% { opacity: 1; } 14.55% { opacity: 0.6; } 95.45% { opacity: 0.6; } 96.36% { opacity: 0.6; } 97.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a2 { animation: a2 22.0s infinite; }
+@keyframes a2 { 0.00% { opacity: 0; } 2.73% { opacity: 0; } 3.41% { opacity: 1; } 13.86% { opacity: 1; } 14.55% { opacity: 0.6; } 95.45% { opacity: 0.6; } 96.36% { opacity: 0.6; } 97.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a3 { animation: a3 22.0s infinite; }
+@keyframes a3 { 0.00% { opacity: 0; } 13.86% { opacity: 0; } 14.55% { opacity: 1; } 25.00% { opacity: 1; } 25.68% { opacity: 0; } 100.00% { opacity: 0; } }
+.a4 { animation: a4 22.0s infinite; }
+@keyframes a4 { 0.00% { opacity: 0; } 13.86% { opacity: 0; } 14.55% { opacity: 1; } 25.00% { opacity: 1; } 25.68% { opacity: 0.6; } 95.45% { opacity: 0.6; } 96.36% { opacity: 0.6; } 97.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a5 { animation: a5 22.0s infinite; }
+@keyframes a5 { 0.00% { opacity: 0; } 25.00% { opacity: 0; } 25.68% { opacity: 1; } 36.14% { opacity: 1; } 36.82% { opacity: 0; } 100.00% { opacity: 0; } }
+.a6 { animation: a6 22.0s infinite; }
+@keyframes a6 { 0.00% { opacity: 0; } 25.00% { opacity: 0; } 25.68% { opacity: 1; } 36.14% { opacity: 1; } 36.82% { opacity: 0.6; } 95.45% { opacity: 0.6; } 96.36% { opacity: 0.6; } 97.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a7 { animation: a7 22.0s infinite; }
+@keyframes a7 { 0.00% { opacity: 0; } 36.14% { opacity: 0; } 36.82% { opacity: 1; } 47.27% { opacity: 1; } 47.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a8 { animation: a8 22.0s infinite; }
+@keyframes a8 { 0.00% { opacity: 0; } 36.14% { opacity: 0; } 36.82% { opacity: 1; } 47.27% { opacity: 1; } 47.95% { opacity: 0.6; } 95.45% { opacity: 0.6; } 96.36% { opacity: 0.6; } 97.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a9 { animation: a9 22.0s infinite; }
+@keyframes a9 { 0.00% { opacity: 0; } 47.27% { opacity: 0; } 47.95% { opacity: 1; } 58.41% { opacity: 1; } 59.09% { opacity: 0; } 100.00% { opacity: 0; } }
+.a10 { animation: a10 22.0s infinite; }
+@keyframes a10 { 0.00% { opacity: 0; } 47.27% { opacity: 0; } 47.95% { opacity: 1; } 58.41% { opacity: 1; } 59.09% { opacity: 0.6; } 95.45% { opacity: 0.6; } 96.36% { opacity: 0.6; } 97.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a11 { animation: a11 22.0s infinite; }
+@keyframes a11 { 0.00% { opacity: 0; } 47.27% { opacity: 0; } 47.95% { opacity: 1; } 58.41% { opacity: 1; } 59.09% { opacity: 0.6; } 95.45% { opacity: 0.6; } 96.36% { opacity: 0.6; } 97.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a12 { animation: a12 22.0s infinite; }
+@keyframes a12 { 0.00% { opacity: 0; } 58.41% { opacity: 0; } 59.09% { opacity: 1; } 69.55% { opacity: 1; } 70.23% { opacity: 0; } 100.00% { opacity: 0; } }
+.a13 { animation: a13 22.0s infinite; }
+@keyframes a13 { 0.00% { opacity: 0; } 58.41% { opacity: 0; } 59.09% { opacity: 1; } 69.55% { opacity: 1; } 70.23% { opacity: 0.6; } 95.45% { opacity: 0.6; } 96.36% { opacity: 0.6; } 97.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a14 { animation: a14 22.0s infinite; }
+@keyframes a14 { 0.00% { opacity: 0; } 58.41% { opacity: 0; } 59.09% { opacity: 1; } 69.55% { opacity: 1; } 70.23% { opacity: 0.6; } 95.45% { opacity: 0.6; } 96.36% { opacity: 0.6; } 97.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a15 { animation: a15 22.0s infinite; }
+@keyframes a15 { 0.00% { opacity: 0; } 69.55% { opacity: 0; } 70.23% { opacity: 1; } 80.68% { opacity: 1; } 81.36% { opacity: 0; } 100.00% { opacity: 0; } }
+.a16 { animation: a16 22.0s infinite; }
+@keyframes a16 { 0.00% { opacity: 0; } 69.55% { opacity: 0; } 70.23% { opacity: 1; } 80.68% { opacity: 1; } 81.36% { opacity: 0.6; } 95.45% { opacity: 0.6; } 96.36% { opacity: 0.6; } 97.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a17 { animation: a17 22.0s infinite; }
+@keyframes a17 { 0.00% { opacity: 0; } 80.68% { opacity: 0; } 81.36% { opacity: 1; } 91.82% { opacity: 1; } 92.50% { opacity: 0; } 100.00% { opacity: 0; } }
+.a18 { animation: a18 22.0s infinite; }
+@keyframes a18 { 0.00% { opacity: 0; } 80.68% { opacity: 0; } 81.36% { opacity: 1; } 91.82% { opacity: 1; } 92.50% { opacity: 0.6; } 95.45% { opacity: 0.6; } 96.36% { opacity: 0.6; } 97.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a19 { animation: a19 22.0s infinite; }
+@keyframes a19 { 0.00% { opacity: 0; } 80.68% { opacity: 0; } 81.36% { opacity: 1; } 91.82% { opacity: 1; } 92.50% { opacity: 0.6; } 95.45% { opacity: 0.6; } 96.36% { opacity: 0.6; } 97.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a20 { animation: a20 22.0s infinite; }
+@keyframes a20 { 0.00% { opacity: 0; } 80.68% { opacity: 0; } 81.36% { opacity: 1; } 91.82% { opacity: 1; } 92.50% { opacity: 0.6; } 95.45% { opacity: 0.6; } 96.36% { opacity: 0.6; } 97.05% { opacity: 0; } 100.00% { opacity: 0; } }
+.a21 { animation: a21 22.0s infinite; }
+@keyframes a21 { 0.00% { opacity: 0; } 2.73% { opacity: 0; } 3.41% { opacity: 1; } 13.86% { opacity: 1; } 14.55% { opacity: 0; } 100.00% { opacity: 0; } }
+.a22 { animation: a22 22.0s infinite; }
+@keyframes a22 { 0.00% { opacity: 0; } 13.86% { opacity: 0; } 14.55% { opacity: 1; } 25.00% { opacity: 1; } 25.68% { opacity: 0; } 100.00% { opacity: 0; } }
+.a23 { animation: a23 22.0s infinite; }
+@keyframes a23 { 0.00% { opacity: 0; } 25.00% { opacity: 0; } 25.68% { opacity: 1; } 36.14% { opacity: 1; } 36.82% { opacity: 0; } 100.00% { opacity: 0; } }
+.a24 { animation: a24 22.0s infinite; }
+@keyframes a24 { 0.00% { opacity: 0; } 36.14% { opacity: 0; } 36.82% { opacity: 1; } 47.27% { opacity: 1; } 47.95% { opacity: 0; } 100.00% { opacity: 0; } }
+.a25 { animation: a25 22.0s infinite; }
+@keyframes a25 { 0.00% { opacity: 0; } 47.27% { opacity: 0; } 47.95% { opacity: 1; } 58.41% { opacity: 1; } 59.09% { opacity: 0; } 100.00% { opacity: 0; } }
+.a26 { animation: a26 22.0s infinite; }
+@keyframes a26 { 0.00% { opacity: 0; } 58.41% { opacity: 0; } 59.09% { opacity: 1; } 69.55% { opacity: 1; } 70.23% { opacity: 0; } 100.00% { opacity: 0; } }
+.a27 { animation: a27 22.0s infinite; }
+@keyframes a27 { 0.00% { opacity: 0; } 69.55% { opacity: 0; } 70.23% { opacity: 1; } 80.68% { opacity: 1; } 81.36% { opacity: 0; } 100.00% { opacity: 0; } }
+.a28 { animation: a28 22.0s infinite; }
+@keyframes a28 { 0.00% { opacity: 0; } 80.68% { opacity: 0; } 81.36% { opacity: 1; } 91.82% { opacity: 1; } 92.50% { opacity: 0; } 100.00% { opacity: 0; } }
+.a29 { animation: a29 22.0s infinite; }
+@keyframes a29 { 0.00% { opacity: 0; } 91.82% { opacity: 0; } 92.50% { opacity: 1; } 95.45% { opacity: 1; } 96.14% { opacity: 0; } 100.00% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    [class^="a"], [class*=" a"] { animation: none !important; opacity: 1; }
+    .hl, .cap { display: none; }
+  }
+</style>
+<rect class="card" x="0.5" y="0.5" width="779" height="593" rx="8"/>
+<text x="20" y="34" class="h" text-anchor="start">flip — a language I wrote for one OS assignment</text>
+<text x="20" y="54" class="m" text-anchor="start">CSCI 460&#x27;s paging simulator, written in flip: its own tokenizer, parser and interpreter, all in one Python file.</text>
+<rect class="box" x="20" y="76" width="740" height="478" rx="6"/>
+<text x="746" y="94" class="lbl" text-anchor="end">PYTHON, ROUGHLY</text>
+<rect class="hl a0" x="28" y="103" width="132" height="17" rx="3"/>
+<rect class="hl a0" x="28" y="120" width="168" height="17" rx="3"/>
+<rect class="hl a0" x="28" y="528" width="125" height="17" rx="3"/>
+<text x="746" y="116" class="code sm cm a1" text-anchor="end">def swap_job_in(*args):</text>
+<text x="746" y="133" class="code sm cm a2" text-anchor="end">s, job = args</text>
+<rect class="hl a3" x="28" y="154" width="451" height="17" rx="3"/>
+<text x="746" y="167" class="code sm cm a4" text-anchor="end">while job.pages &gt; s.n_free_frames:</text>
+<rect class="hl a5" x="28" y="154" width="451" height="17" rx="3"/>
+<rect class="hl a5" x="28" y="290" width="125" height="17" rx="3"/>
+<text x="746" y="303" class="code sm cm a6" text-anchor="end"># end of the while body</text>
+<rect class="hl a7" x="28" y="171" width="603" height="17" rx="3"/>
+<rect class="hl a7" x="28" y="222" width="625" height="17" rx="3"/>
+<text x="746" y="235" class="code sm cm a8" text-anchor="end">abort(...)</text>
+<rect class="hl a9" x="28" y="256" width="357" height="17" rx="3"/>
+<rect class="hl a9" x="28" y="273" width="248" height="17" rx="3"/>
+<text x="746" y="269" class="code sm cm a10" text-anchor="end">job_id = s.queue.pop_front()</text>
+<text x="746" y="286" class="code sm cm a11" text-anchor="end">suspend_job(s, job_id)</text>
+<rect class="hl a12" x="28" y="341" width="176" height="17" rx="3"/>
+<rect class="hl a12" x="28" y="358" width="183" height="17" rx="3"/>
+<text x="746" y="354" class="code sm cm a13" text-anchor="end">for f in s.frames:</text>
+<text x="746" y="371" class="code sm cm a14" text-anchor="end">f = &lt;current item&gt;</text>
+<rect class="hl a15" x="28" y="375" width="277" height="17" rx="3"/>
+<rect class="hl a15" x="28" y="392" width="277" height="17" rx="3"/>
+<rect class="hl a15" x="28" y="409" width="248" height="17" rx="3"/>
+<rect class="hl a15" x="28" y="426" width="255" height="17" rx="3"/>
+<rect class="hl a15" x="28" y="443" width="277" height="17" rx="3"/>
+<text x="746" y="388" class="code sm cm a16" text-anchor="end">if f.job_id == FRAME_FREE:</text>
+<rect class="hl a17" x="28" y="392" width="277" height="17" rx="3"/>
+<rect class="hl a17" x="28" y="409" width="248" height="17" rx="3"/>
+<rect class="hl a17" x="28" y="426" width="255" height="17" rx="3"/>
+<rect class="hl a17" x="28" y="494" width="386" height="17" rx="3"/>
+<text x="746" y="405" class="code sm cm a18" text-anchor="end">f.job_id = job.id</text>
+<text x="746" y="439" class="code sm cm a19" text-anchor="end">i += 1</text>
+<text x="746" y="507" class="code sm cm a20" text-anchor="end">s.n_free_frames -= job.pages</text>
+<text x="36" y="116" class="code sm" xml:space="preserve">swap-job-in <tspan class="k">does</tspan></text>
+<text x="36" y="133" class="code sm" xml:space="preserve">  s job <tspan class="k">do-be</tspan> <tspan class="k">my</tspan> args</text>
+<text x="36" y="167" class="code sm" xml:space="preserve">  <tspan class="k">loop</tspan> <tspan class="k">while</tspan> job<tspan class="f">&#x27;s</tspan> pages <tspan class="k">greater-than</tspan> s<tspan class="f">&#x27;</tspan> n-free-frames <tspan class="k">let&#x27;s</tspan></text>
+<text x="36" y="184" class="code sm" xml:space="preserve">    <tspan class="cm">NOTE: exit if job-queue becomes empty (job should be checked that it can fit)</tspan></text>
+<text x="36" y="201" class="code sm" xml:space="preserve">    <tspan class="k">if</tspan> s<tspan class="f">&#x27;</tspan> queue <tspan class="k">is-empty</tspan></text>
+<text x="36" y="218" class="code sm" xml:space="preserve">      <tspan class="k">do</tspan> print-simulator-state <tspan class="k">of</tspan> s</text>
+<text x="36" y="235" class="code sm" xml:space="preserve">      <tspan class="k">then</tspan> <tspan class="k">ABORT</tspan> <tspan class="k">with</tspan> <tspan class="k">String </tspan><tspan class="str">X unreachable: job queue is empty. the job can&#x27;t fit! X</tspan></text>
+<text x="36" y="269" class="code sm" xml:space="preserve">    job-id <tspan class="k">do-be</tspan> s<tspan class="f">&#x27;s</tspan> queue<tspan class="f">&#x27;s</tspan> pop-front<tspan class="f">&#x27;s</tspan> <tspan class="k">result</tspan></text>
+<text x="36" y="286" class="code sm" xml:space="preserve">    <tspan class="k">do</tspan> suspend-job <tspan class="k">of</tspan> s <tspan class="k">&amp;</tspan> job-id</text>
+<text x="36" y="303" class="code sm" xml:space="preserve">  <tspan class="k">let&#x27;s-be-done</tspan></text>
+<text x="36" y="337" class="code sm" xml:space="preserve">  i <tspan class="k">do-be</tspan> <tspan class="num">0</tspan></text>
+<text x="36" y="354" class="code sm" xml:space="preserve">  <tspan class="k">loop</tspan> <tspan class="k">over</tspan> s<tspan class="f">&#x27;s</tspan> frames</text>
+<text x="36" y="371" class="code sm" xml:space="preserve">    f <tspan class="k">do-be</tspan> <tspan class="k">loop</tspan><tspan class="f">&#x27;s</tspan> item</text>
+<text x="36" y="388" class="code sm" xml:space="preserve">    <tspan class="k">then</tspan> <tspan class="k">if</tspan> f<tspan class="f">&#x27;s</tspan> job-id <tspan class="k">is</tspan> <tspan class="num">FRAME_FREE</tspan></text>
+<text x="36" y="405" class="code sm" xml:space="preserve">      <tspan class="k">hi</tspan> f<tspan class="f">&#x27;s</tspan> job-id <tspan class="k">becomes</tspan> job<tspan class="f">&#x27;s</tspan> id</text>
+<text x="36" y="422" class="code sm" xml:space="preserve">      <tspan class="k">then</tspan> <tspan class="k">hi</tspan> f<tspan class="f">&#x27;s</tspan> page <tspan class="k">becomes</tspan> i</text>
+<text x="36" y="439" class="code sm" xml:space="preserve">      <tspan class="k">then</tspan> <tspan class="k">hi</tspan> i <tspan class="k">becomes</tspan> <tspan class="k">it</tspan> <tspan class="k">plus</tspan> <tspan class="num">1</tspan></text>
+<text x="36" y="456" class="code sm" xml:space="preserve">      <tspan class="k">then</tspan> <tspan class="k">if</tspan> i <tspan class="k">is</tspan> job<tspan class="f">&#x27;s</tspan> pages <tspan class="k">break</tspan></text>
+<text x="36" y="490" class="code sm" xml:space="preserve">  <tspan class="k">do</tspan> s<tspan class="f">&#x27;s</tspan> queue<tspan class="f">&#x27;s</tspan> add <tspan class="k">of</tspan> job<tspan class="f">&#x27;s</tspan> id</text>
+<text x="36" y="507" class="code sm" xml:space="preserve">  <tspan class="k">hi</tspan> s<tspan class="f">&#x27;s</tspan> n-free-frames <tspan class="k">becomes</tspan> <tspan class="k">it</tspan> <tspan class="k">minus</tspan> job<tspan class="f">&#x27;s</tspan> pages</text>
+<text x="36" y="524" class="code sm" xml:space="preserve">  <tspan class="k">hi</tspan> job<tspan class="f">&#x27;s</tspan> status <tspan class="k">becomes</tspan> <tspan class="num">STATUS_RESIDENT</tspan></text>
+<text x="36" y="541" class="code sm" xml:space="preserve"><tspan class="k">end-swap-job-in</tspan></text>
+<text x="20" y="584" class="cap a21" xml:space="preserve">Functions are <tspan class="code">name does … end-name</tspan>; <tspan class="code">my args</tspan> unpacks the arguments.</text>
+<text x="20" y="584" class="cap a22" xml:space="preserve"><tspan class="code">&#x27;s</tspan> reads a property, and names ending in s get <tspan class="code">s&#x27;</tspan> — it&#x27;s possessive.</text>
+<text x="20" y="584" class="cap a23" xml:space="preserve"><tspan class="code">let&#x27;s</tspan> … <tspan class="code">let&#x27;s-be-done</tspan> is a block. Without one, a body is a single statement.</text>
+<text x="20" y="584" class="cap a24" xml:space="preserve">Comments start with <tspan class="code">NOTE:</tspan>. Strings pick their own delimiter: <tspan class="code">String X … X</tspan>.</text>
+<text x="20" y="584" class="cap a25" xml:space="preserve"><tspan class="code">&#x27;s result</tspan> calls a method, and <tspan class="code">do f of a &amp; b</tspan> calls a function.</text>
+<text x="20" y="584" class="cap a26" xml:space="preserve"><tspan class="code">loop over</tspan> iterates, and <tspan class="code">loop&#x27;s item</tspan> / <tspan class="code">loop&#x27;s index</tspan> name where it is.</text>
+<text x="20" y="584" class="cap a27" xml:space="preserve"><tspan class="code">then</tspan> chains statements, so one <tspan class="code">if</tspan> or <tspan class="code">loop</tspan> can own several.</text>
+<text x="20" y="584" class="cap a28" xml:space="preserve"><tspan class="code">hi x becomes …</tspan> reassigns, and <tspan class="code">it</tspan> is the value being replaced.</text>
+<text x="20" y="584" class="cap a29" xml:space="preserve">It started as a joke. Then I wrote the whole assignment in it — <tspan class="code">dillon-shaffer-1.flip</tspan>.</text>
+</svg>
