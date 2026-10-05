@@ -19,7 +19,7 @@
   "Haskell": "#5e5086"
  },
  "totals": {
-  "Rust": 459338,
+  "Rust": 427507,
   "Java": 380548,
   "Dart": 219715,
   "C": 67468,
@@ -77,16 +77,6 @@
    "note": ""
   },
   {
-   "name": "pcode-emulator-rs",
-   "url": "https://github.com/Molkars/pcode-emulator-rs",
-   "description": "A p-code emulator written in Rust",
-   "pushed_at": "2024-02-23T16:06:14Z",
-   "languages": {
-    "Rust": 69787
-   },
-   "note": "sleigh/ and sleigh-sys/ vendor Ghidra's C++ decompiler"
-  },
-  {
    "name": "sea.c",
    "url": "https://github.com/Molkars/sea.c",
    "description": "the sea programming language (a simplified version of C for student instruction)",
@@ -116,6 +106,16 @@
     "Java": 46761
    },
    "note": ""
+  },
+  {
+   "name": "pcode-emulator-rs",
+   "url": "https://github.com/Molkars/pcode-emulator-rs",
+   "description": "A p-code emulator written in Rust",
+   "pushed_at": "2026-10-05T18:12:53Z",
+   "languages": {
+    "Rust": 37956
+   },
+   "note": "sleigh/ and sleigh-sys/ vendor Ghidra's C++ decompiler"
   },
   {
    "name": "serde_value",
