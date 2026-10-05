@@ -1,0 +1,415 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="620" viewBox="0 0 780 620" role="img" aria-label="Animated diagram of pcode-emulator-rs: llvm-readobj reads an i386 ELF, Sleigh lifts its code to P-code, and the emulator interprets each op over register, unique and ram spaces. Three instructions of fib(10) run as 17 P-code ops: mov loads n = 10 into EAX, cmp sets five flags through twelve ops, and jge branches to 0x804975F.">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="tip"/></marker></defs>
+<style>
+  .card { fill: #f6f8fa; stroke: #d1d9e0; }
+  text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; fill: #1f2328; }
+  .h { font-size: 15px; font-weight: 600; }
+  .m { font-size: 12px; fill: #59636e; }
+  .cap { font-size: 13px; }
+  .s { font-size: 11px; fill: #59636e; }
+  .b { font-weight: 600; }
+  .lbl { font-size: 10px; font-weight: 600; letter-spacing: .08em; fill: #59636e; }
+  .code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13px; }
+  .sm { font-size: 11.5px; }
+  .box, .chip, .node, .rung { fill: #ffffff; stroke: #d1d9e0; }
+  .rung { stroke: #e1e6eb; }
+  .node { stroke: #0969da; }
+  .hl { fill: #0969da; fill-opacity: .14; stroke: #0969da; stroke-opacity: .6; }
+  .bad { fill: #cf222e; fill-opacity: .12; stroke: #cf222e; }
+  .badt { fill: #cf222e; }
+  .ok { fill: #1a7f37; }
+  .edge { stroke: #8c959f; stroke-width: 1.5; fill: none; }
+  .tip { fill: #8c959f; }
+  .term { fill: #1f2328; }
+  .termt { fill: #e6edf3; }
+  .termerr { fill: #ff7b72; }
+  .termdim { fill: #9198a1; }
+  .termok { fill: #3fb950; }
+  .k { fill: #cf222e; } .f { fill: #8250df; } .str { fill: #0a3069; } .num { fill: #0550ae; } .cm { fill: #6e7781; }
+  @media (prefers-color-scheme: dark) {
+    .card { fill: #151b23; stroke: #3d444d; }
+    text { fill: #e6edf3; }
+    .m, .s, .lbl { fill: #9198a1; }
+    .box, .chip, .node, .rung { fill: #0d1117; stroke: #3d444d; }
+    .node { stroke: #4493f8; }
+    .hl { fill: #4493f8; stroke: #4493f8; }
+    .bad { fill: #f85149; stroke: #f85149; }
+    .badt { fill: #ff7b72; }
+    .ok { fill: #3fb950; }
+    .edge { stroke: #656c76; }
+    .tip { fill: #656c76; }
+    .term { fill: #010409; }
+    .k { fill: #ff7b72; } .f { fill: #d2a8ff; } .str { fill: #a5d6ff; } .num { fill: #79c0ff; } .cm { fill: #8b949e; }
+  }
+
+.a0 { animation: a0 15.950000000000003s infinite; }
+@keyframes a0 { 0.00% { opacity: 0; } 1.88% { opacity: 0; } 2.82% { opacity: 1; } 5.64% { opacity: 1; } 6.58% { opacity: 0; } 100.00% { opacity: 0; } }
+.a1 { animation: a1 15.950000000000003s infinite; }
+@keyframes a1 { 0.00% { opacity: 0; } 5.64% { opacity: 0; } 6.58% { opacity: 1; } 9.40% { opacity: 1; } 10.34% { opacity: 0; } 100.00% { opacity: 0; } }
+.a2 { animation: a2 15.950000000000003s infinite; }
+@keyframes a2 { 0.00% { opacity: 0; } 9.40% { opacity: 0; } 10.34% { opacity: 1; } 13.17% { opacity: 1; } 14.11% { opacity: 0; } 100.00% { opacity: 0; } }
+.a3 { animation: a3 15.950000000000003s infinite; }
+@keyframes a3 { 0.00% { opacity: 0; } 13.17% { opacity: 0; } 14.11% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a4 { animation: a4 15.950000000000003s infinite; }
+@keyframes a4 { 0.00% { opacity: 0; } 17.55% { opacity: 0; } 18.50% { opacity: 1; } 27.90% { opacity: 1; } 28.84% { opacity: 0; } 100.00% { opacity: 0; } }
+.a5 { animation: a5 15.950000000000003s infinite; }
+@keyframes a5 { 0.00% { opacity: 0; } 27.90% { opacity: 0; } 28.84% { opacity: 1; } 69.28% { opacity: 1; } 70.22% { opacity: 0; } 100.00% { opacity: 0; } }
+.a6 { animation: a6 15.950000000000003s infinite; }
+@keyframes a6 { 0.00% { opacity: 0; } 69.28% { opacity: 0; } 70.22% { opacity: 1; } 76.18% { opacity: 1; } 77.12% { opacity: 0; } 100.00% { opacity: 0; } }
+.a7 { animation: a7 15.950000000000003s infinite; }
+@keyframes a7 { 0.00% { opacity: 0; } 76.18% { opacity: 0; } 77.12% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a8 { animation: a8 15.950000000000003s infinite; }
+@keyframes a8 { 0.00% { opacity: 0; } 72.73% { opacity: 0; } 73.67% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a9 { animation: a9 15.950000000000003s infinite; }
+@keyframes a9 { 0.00% { opacity: 0; } 17.55% { opacity: 0; } 18.50% { opacity: 1; } 27.90% { opacity: 1; } 28.84% { opacity: 0; } 100.00% { opacity: 0; } }
+.a10 { animation: a10 15.950000000000003s infinite; }
+@keyframes a10 { 0.00% { opacity: 0; } 27.90% { opacity: 0; } 28.84% { opacity: 1; } 69.28% { opacity: 1; } 70.22% { opacity: 0; } 100.00% { opacity: 0; } }
+.a11 { animation: a11 15.950000000000003s infinite; }
+@keyframes a11 { 0.00% { opacity: 0; } 69.28% { opacity: 0; } 70.22% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a12 { animation: a12 15.950000000000003s infinite; }
+@keyframes a12 { 0.00% { opacity: 0; } 17.55% { opacity: 0; } 18.50% { opacity: 1; } 21.00% { opacity: 1; } 21.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a13 { animation: a13 15.950000000000003s infinite; }
+@keyframes a13 { 0.00% { opacity: 0; } 21.00% { opacity: 0; } 21.94% { opacity: 1; } 24.45% { opacity: 1; } 25.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a14 { animation: a14 15.950000000000003s infinite; }
+@keyframes a14 { 0.00% { opacity: 0; } 24.45% { opacity: 0; } 25.39% { opacity: 1; } 27.90% { opacity: 1; } 28.84% { opacity: 0; } 100.00% { opacity: 0; } }
+.a15 { animation: a15 15.950000000000003s infinite; }
+@keyframes a15 { 0.00% { opacity: 0; } 27.90% { opacity: 0; } 28.84% { opacity: 1; } 31.35% { opacity: 1; } 32.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a16 { animation: a16 15.950000000000003s infinite; }
+@keyframes a16 { 0.00% { opacity: 0; } 31.35% { opacity: 0; } 32.29% { opacity: 1; } 34.80% { opacity: 1; } 35.74% { opacity: 0; } 100.00% { opacity: 0; } }
+.a17 { animation: a17 15.950000000000003s infinite; }
+@keyframes a17 { 0.00% { opacity: 0; } 34.80% { opacity: 0; } 35.74% { opacity: 1; } 38.24% { opacity: 1; } 39.18% { opacity: 0; } 100.00% { opacity: 0; } }
+.a18 { animation: a18 15.950000000000003s infinite; }
+@keyframes a18 { 0.00% { opacity: 0; } 38.24% { opacity: 0; } 39.18% { opacity: 1; } 41.69% { opacity: 1; } 42.63% { opacity: 0; } 100.00% { opacity: 0; } }
+.a19 { animation: a19 15.950000000000003s infinite; }
+@keyframes a19 { 0.00% { opacity: 0; } 41.69% { opacity: 0; } 42.63% { opacity: 1; } 45.14% { opacity: 1; } 46.08% { opacity: 0; } 100.00% { opacity: 0; } }
+.a20 { animation: a20 15.950000000000003s infinite; }
+@keyframes a20 { 0.00% { opacity: 0; } 45.14% { opacity: 0; } 46.08% { opacity: 1; } 48.59% { opacity: 1; } 49.53% { opacity: 0; } 100.00% { opacity: 0; } }
+.a21 { animation: a21 15.950000000000003s infinite; }
+@keyframes a21 { 0.00% { opacity: 0; } 48.59% { opacity: 0; } 49.53% { opacity: 1; } 52.04% { opacity: 1; } 52.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a22 { animation: a22 15.950000000000003s infinite; }
+@keyframes a22 { 0.00% { opacity: 0; } 52.04% { opacity: 0; } 52.98% { opacity: 1; } 55.49% { opacity: 1; } 56.43% { opacity: 0; } 100.00% { opacity: 0; } }
+.a23 { animation: a23 15.950000000000003s infinite; }
+@keyframes a23 { 0.00% { opacity: 0; } 55.49% { opacity: 0; } 56.43% { opacity: 1; } 58.93% { opacity: 1; } 59.87% { opacity: 0; } 100.00% { opacity: 0; } }
+.a24 { animation: a24 15.950000000000003s infinite; }
+@keyframes a24 { 0.00% { opacity: 0; } 58.93% { opacity: 0; } 59.87% { opacity: 1; } 62.38% { opacity: 1; } 63.32% { opacity: 0; } 100.00% { opacity: 0; } }
+.a25 { animation: a25 15.950000000000003s infinite; }
+@keyframes a25 { 0.00% { opacity: 0; } 62.38% { opacity: 0; } 63.32% { opacity: 1; } 65.83% { opacity: 1; } 66.77% { opacity: 0; } 100.00% { opacity: 0; } }
+.a26 { animation: a26 15.950000000000003s infinite; }
+@keyframes a26 { 0.00% { opacity: 0; } 65.83% { opacity: 0; } 66.77% { opacity: 1; } 69.28% { opacity: 1; } 70.22% { opacity: 0; } 100.00% { opacity: 0; } }
+.a27 { animation: a27 15.950000000000003s infinite; }
+@keyframes a27 { 0.00% { opacity: 0; } 69.28% { opacity: 0; } 70.22% { opacity: 1; } 72.73% { opacity: 1; } 73.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a28 { animation: a28 15.950000000000003s infinite; }
+@keyframes a28 { 0.00% { opacity: 0; } 72.73% { opacity: 0; } 73.67% { opacity: 1; } 76.18% { opacity: 1; } 77.12% { opacity: 0; } 100.00% { opacity: 0; } }
+.a29 { animation: a29 15.950000000000003s infinite; }
+@keyframes a29 { 0.00% { opacity: 1; } 24.45% { opacity: 1; } 25.39% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a30 { animation: a30 15.950000000000003s infinite; }
+@keyframes a30 { 0.00% { opacity: 0; } 24.45% { opacity: 0; } 25.39% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a31 { animation: a31 15.950000000000003s infinite; }
+@keyframes a31 { 0.00% { opacity: 0; } 24.45% { opacity: 0; } 25.39% { opacity: 1; } 27.90% { opacity: 1; } 28.84% { opacity: 0; } 100.00% { opacity: 0; } }
+.a32 { animation: a32 15.950000000000003s infinite; }
+@keyframes a32 { 0.00% { opacity: 1; } 38.24% { opacity: 1; } 39.18% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a33 { animation: a33 15.950000000000003s infinite; }
+@keyframes a33 { 0.00% { opacity: 0; } 38.24% { opacity: 0; } 39.18% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a34 { animation: a34 15.950000000000003s infinite; }
+@keyframes a34 { 0.00% { opacity: 0; } 38.24% { opacity: 0; } 39.18% { opacity: 1; } 41.69% { opacity: 1; } 42.63% { opacity: 0; } 100.00% { opacity: 0; } }
+.a35 { animation: a35 15.950000000000003s infinite; }
+@keyframes a35 { 0.00% { opacity: 1; } 41.69% { opacity: 1; } 42.63% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a36 { animation: a36 15.950000000000003s infinite; }
+@keyframes a36 { 0.00% { opacity: 0; } 41.69% { opacity: 0; } 42.63% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a37 { animation: a37 15.950000000000003s infinite; }
+@keyframes a37 { 0.00% { opacity: 0; } 41.69% { opacity: 0; } 42.63% { opacity: 1; } 45.14% { opacity: 1; } 46.08% { opacity: 0; } 100.00% { opacity: 0; } }
+.a38 { animation: a38 15.950000000000003s infinite; }
+@keyframes a38 { 0.00% { opacity: 1; } 48.59% { opacity: 1; } 49.53% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a39 { animation: a39 15.950000000000003s infinite; }
+@keyframes a39 { 0.00% { opacity: 0; } 48.59% { opacity: 0; } 49.53% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a40 { animation: a40 15.950000000000003s infinite; }
+@keyframes a40 { 0.00% { opacity: 0; } 48.59% { opacity: 0; } 49.53% { opacity: 1; } 52.04% { opacity: 1; } 52.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a41 { animation: a41 15.950000000000003s infinite; }
+@keyframes a41 { 0.00% { opacity: 1; } 52.04% { opacity: 1; } 52.98% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a42 { animation: a42 15.950000000000003s infinite; }
+@keyframes a42 { 0.00% { opacity: 0; } 52.04% { opacity: 0; } 52.98% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a43 { animation: a43 15.950000000000003s infinite; }
+@keyframes a43 { 0.00% { opacity: 0; } 52.04% { opacity: 0; } 52.98% { opacity: 1; } 55.49% { opacity: 1; } 56.43% { opacity: 0; } 100.00% { opacity: 0; } }
+.a44 { animation: a44 15.950000000000003s infinite; }
+@keyframes a44 { 0.00% { opacity: 1; } 65.83% { opacity: 1; } 66.77% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a45 { animation: a45 15.950000000000003s infinite; }
+@keyframes a45 { 0.00% { opacity: 0; } 65.83% { opacity: 0; } 66.77% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a46 { animation: a46 15.950000000000003s infinite; }
+@keyframes a46 { 0.00% { opacity: 0; } 65.83% { opacity: 0; } 66.77% { opacity: 1; } 69.28% { opacity: 1; } 70.22% { opacity: 0; } 100.00% { opacity: 0; } }
+.a47 { animation: a47 15.950000000000003s infinite; }
+@keyframes a47 { 0.00% { opacity: 1; } 17.55% { opacity: 1; } 18.50% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a48 { animation: a48 15.950000000000003s infinite; }
+@keyframes a48 { 0.00% { opacity: 0; } 17.55% { opacity: 0; } 18.50% { opacity: 1; } 27.90% { opacity: 1; } 28.84% { opacity: 0; } 100.00% { opacity: 0; } }
+.a49 { animation: a49 15.950000000000003s infinite; }
+@keyframes a49 { 0.00% { opacity: 0; } 27.90% { opacity: 0; } 28.84% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a50 { animation: a50 15.950000000000003s infinite; }
+@keyframes a50 { 0.00% { opacity: 0; } 17.55% { opacity: 0; } 18.50% { opacity: 1; } 21.00% { opacity: 1; } 21.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a51 { animation: a51 15.950000000000003s infinite; }
+@keyframes a51 { 0.00% { opacity: 0; } 27.90% { opacity: 0; } 28.84% { opacity: 1; } 31.35% { opacity: 1; } 32.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a52 { animation: a52 15.950000000000003s infinite; }
+@keyframes a52 { 0.00% { opacity: 1; } 21.00% { opacity: 1; } 21.94% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a53 { animation: a53 15.950000000000003s infinite; }
+@keyframes a53 { 0.00% { opacity: 0; } 21.00% { opacity: 0; } 21.94% { opacity: 1; } 31.35% { opacity: 1; } 32.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a54 { animation: a54 15.950000000000003s infinite; }
+@keyframes a54 { 0.00% { opacity: 0; } 31.35% { opacity: 0; } 32.29% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a55 { animation: a55 15.950000000000003s infinite; }
+@keyframes a55 { 0.00% { opacity: 0; } 21.00% { opacity: 0; } 21.94% { opacity: 1; } 24.45% { opacity: 1; } 25.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a56 { animation: a56 15.950000000000003s infinite; }
+@keyframes a56 { 0.00% { opacity: 0; } 31.35% { opacity: 0; } 32.29% { opacity: 1; } 34.80% { opacity: 1; } 35.74% { opacity: 0; } 100.00% { opacity: 0; } }
+.a57 { animation: a57 15.950000000000003s infinite; }
+@keyframes a57 { 0.00% { opacity: 1; } 34.80% { opacity: 1; } 35.74% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a58 { animation: a58 15.950000000000003s infinite; }
+@keyframes a58 { 0.00% { opacity: 0; } 34.80% { opacity: 0; } 35.74% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a59 { animation: a59 15.950000000000003s infinite; }
+@keyframes a59 { 0.00% { opacity: 0; } 34.80% { opacity: 0; } 35.74% { opacity: 1; } 38.24% { opacity: 1; } 39.18% { opacity: 0; } 100.00% { opacity: 0; } }
+.a60 { animation: a60 15.950000000000003s infinite; }
+@keyframes a60 { 0.00% { opacity: 1; } 45.14% { opacity: 1; } 46.08% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a61 { animation: a61 15.950000000000003s infinite; }
+@keyframes a61 { 0.00% { opacity: 0; } 45.14% { opacity: 0; } 46.08% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a62 { animation: a62 15.950000000000003s infinite; }
+@keyframes a62 { 0.00% { opacity: 0; } 45.14% { opacity: 0; } 46.08% { opacity: 1; } 48.59% { opacity: 1; } 49.53% { opacity: 0; } 100.00% { opacity: 0; } }
+.a63 { animation: a63 15.950000000000003s infinite; }
+@keyframes a63 { 0.00% { opacity: 1; } 55.49% { opacity: 1; } 56.43% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a64 { animation: a64 15.950000000000003s infinite; }
+@keyframes a64 { 0.00% { opacity: 0; } 55.49% { opacity: 0; } 56.43% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a65 { animation: a65 15.950000000000003s infinite; }
+@keyframes a65 { 0.00% { opacity: 0; } 55.49% { opacity: 0; } 56.43% { opacity: 1; } 58.93% { opacity: 1; } 59.87% { opacity: 0; } 100.00% { opacity: 0; } }
+.a66 { animation: a66 15.950000000000003s infinite; }
+@keyframes a66 { 0.00% { opacity: 1; } 58.93% { opacity: 1; } 59.87% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a67 { animation: a67 15.950000000000003s infinite; }
+@keyframes a67 { 0.00% { opacity: 0; } 58.93% { opacity: 0; } 59.87% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a68 { animation: a68 15.950000000000003s infinite; }
+@keyframes a68 { 0.00% { opacity: 0; } 58.93% { opacity: 0; } 59.87% { opacity: 1; } 62.38% { opacity: 1; } 63.32% { opacity: 0; } 100.00% { opacity: 0; } }
+.a69 { animation: a69 15.950000000000003s infinite; }
+@keyframes a69 { 0.00% { opacity: 1; } 62.38% { opacity: 1; } 63.32% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a70 { animation: a70 15.950000000000003s infinite; }
+@keyframes a70 { 0.00% { opacity: 0; } 62.38% { opacity: 0; } 63.32% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a71 { animation: a71 15.950000000000003s infinite; }
+@keyframes a71 { 0.00% { opacity: 0; } 62.38% { opacity: 0; } 63.32% { opacity: 1; } 65.83% { opacity: 1; } 66.77% { opacity: 0; } 100.00% { opacity: 0; } }
+.a72 { animation: a72 15.950000000000003s infinite; }
+@keyframes a72 { 0.00% { opacity: 1; } 69.28% { opacity: 1; } 70.22% { opacity: 0; } 94.98% { opacity: 0; } 95.92% { opacity: 1; } 100.00% { opacity: 1; } }
+.a73 { animation: a73 15.950000000000003s infinite; }
+@keyframes a73 { 0.00% { opacity: 0; } 69.28% { opacity: 0; } 70.22% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a74 { animation: a74 15.950000000000003s infinite; }
+@keyframes a74 { 0.00% { opacity: 0; } 69.28% { opacity: 0; } 70.22% { opacity: 1; } 72.73% { opacity: 1; } 73.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a75 { animation: a75 15.950000000000003s infinite; }
+@keyframes a75 { 0.00% { opacity: 0; } 21.00% { opacity: 0; } 21.94% { opacity: 1; } 24.45% { opacity: 1; } 25.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a76 { animation: a76 15.950000000000003s infinite; }
+@keyframes a76 { 0.00% { opacity: 0; } 31.35% { opacity: 0; } 32.29% { opacity: 1; } 34.80% { opacity: 1; } 35.74% { opacity: 0; } 100.00% { opacity: 0; } }
+.a77 { animation: a77 15.950000000000003s infinite; }
+@keyframes a77 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.94% { opacity: 1; } 17.55% { opacity: 1; } 18.50% { opacity: 0; } 100.00% { opacity: 0; } }
+.a78 { animation: a78 15.950000000000003s infinite; }
+@keyframes a78 { 0.00% { opacity: 0; } 9.40% { opacity: 0; } 10.34% { opacity: 1; } 17.55% { opacity: 1; } 18.50% { opacity: 0; } 100.00% { opacity: 0; } }
+.a79 { animation: a79 15.950000000000003s infinite; }
+@keyframes a79 { 0.00% { opacity: 0; } 17.55% { opacity: 0; } 18.50% { opacity: 1; } 21.00% { opacity: 1; } 21.94% { opacity: 0; } 100.00% { opacity: 0; } }
+.a80 { animation: a80 15.950000000000003s infinite; }
+@keyframes a80 { 0.00% { opacity: 0; } 21.00% { opacity: 0; } 21.94% { opacity: 1; } 24.45% { opacity: 1; } 25.39% { opacity: 0; } 100.00% { opacity: 0; } }
+.a81 { animation: a81 15.950000000000003s infinite; }
+@keyframes a81 { 0.00% { opacity: 0; } 24.45% { opacity: 0; } 25.39% { opacity: 1; } 27.90% { opacity: 1; } 28.84% { opacity: 0; } 100.00% { opacity: 0; } }
+.a82 { animation: a82 15.950000000000003s infinite; }
+@keyframes a82 { 0.00% { opacity: 0; } 27.90% { opacity: 0; } 28.84% { opacity: 1; } 31.35% { opacity: 1; } 32.29% { opacity: 0; } 100.00% { opacity: 0; } }
+.a83 { animation: a83 15.950000000000003s infinite; }
+@keyframes a83 { 0.00% { opacity: 0; } 31.35% { opacity: 0; } 32.29% { opacity: 1; } 34.80% { opacity: 1; } 35.74% { opacity: 0; } 100.00% { opacity: 0; } }
+.a84 { animation: a84 15.950000000000003s infinite; }
+@keyframes a84 { 0.00% { opacity: 0; } 34.80% { opacity: 0; } 35.74% { opacity: 1; } 38.24% { opacity: 1; } 39.18% { opacity: 0; } 100.00% { opacity: 0; } }
+.a85 { animation: a85 15.950000000000003s infinite; }
+@keyframes a85 { 0.00% { opacity: 0; } 38.24% { opacity: 0; } 39.18% { opacity: 1; } 41.69% { opacity: 1; } 42.63% { opacity: 0; } 100.00% { opacity: 0; } }
+.a86 { animation: a86 15.950000000000003s infinite; }
+@keyframes a86 { 0.00% { opacity: 0; } 41.69% { opacity: 0; } 42.63% { opacity: 1; } 45.14% { opacity: 1; } 46.08% { opacity: 0; } 100.00% { opacity: 0; } }
+.a87 { animation: a87 15.950000000000003s infinite; }
+@keyframes a87 { 0.00% { opacity: 0; } 45.14% { opacity: 0; } 46.08% { opacity: 1; } 48.59% { opacity: 1; } 49.53% { opacity: 0; } 100.00% { opacity: 0; } }
+.a88 { animation: a88 15.950000000000003s infinite; }
+@keyframes a88 { 0.00% { opacity: 0; } 48.59% { opacity: 0; } 49.53% { opacity: 1; } 52.04% { opacity: 1; } 52.98% { opacity: 0; } 100.00% { opacity: 0; } }
+.a89 { animation: a89 15.950000000000003s infinite; }
+@keyframes a89 { 0.00% { opacity: 0; } 52.04% { opacity: 0; } 52.98% { opacity: 1; } 55.49% { opacity: 1; } 56.43% { opacity: 0; } 100.00% { opacity: 0; } }
+.a90 { animation: a90 15.950000000000003s infinite; }
+@keyframes a90 { 0.00% { opacity: 0; } 55.49% { opacity: 0; } 56.43% { opacity: 1; } 58.93% { opacity: 1; } 59.87% { opacity: 0; } 100.00% { opacity: 0; } }
+.a91 { animation: a91 15.950000000000003s infinite; }
+@keyframes a91 { 0.00% { opacity: 0; } 58.93% { opacity: 0; } 59.87% { opacity: 1; } 62.38% { opacity: 1; } 63.32% { opacity: 0; } 100.00% { opacity: 0; } }
+.a92 { animation: a92 15.950000000000003s infinite; }
+@keyframes a92 { 0.00% { opacity: 0; } 62.38% { opacity: 0; } 63.32% { opacity: 1; } 65.83% { opacity: 1; } 66.77% { opacity: 0; } 100.00% { opacity: 0; } }
+.a93 { animation: a93 15.950000000000003s infinite; }
+@keyframes a93 { 0.00% { opacity: 0; } 65.83% { opacity: 0; } 66.77% { opacity: 1; } 69.28% { opacity: 1; } 70.22% { opacity: 0; } 100.00% { opacity: 0; } }
+.a94 { animation: a94 15.950000000000003s infinite; }
+@keyframes a94 { 0.00% { opacity: 0; } 69.28% { opacity: 0; } 70.22% { opacity: 1; } 72.73% { opacity: 1; } 73.67% { opacity: 0; } 100.00% { opacity: 0; } }
+.a95 { animation: a95 15.950000000000003s infinite; }
+@keyframes a95 { 0.00% { opacity: 0; } 72.73% { opacity: 0; } 73.67% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+.a96 { animation: a96 15.950000000000003s infinite; }
+@keyframes a96 { 0.00% { opacity: 0; } 0.00% { opacity: 0; } 0.94% { opacity: 1; } 17.55% { opacity: 1; } 18.50% { opacity: 0; } 100.00% { opacity: 0; } }
+.a97 { animation: a97 15.950000000000003s infinite; }
+@keyframes a97 { 0.00% { opacity: 0; } 17.55% { opacity: 0; } 18.50% { opacity: 1; } 27.90% { opacity: 1; } 28.84% { opacity: 0; } 100.00% { opacity: 0; } }
+.a98 { animation: a98 15.950000000000003s infinite; }
+@keyframes a98 { 0.00% { opacity: 0; } 27.90% { opacity: 0; } 28.84% { opacity: 1; } 69.28% { opacity: 1; } 70.22% { opacity: 0; } 100.00% { opacity: 0; } }
+.a99 { animation: a99 15.950000000000003s infinite; }
+@keyframes a99 { 0.00% { opacity: 0; } 69.28% { opacity: 0; } 70.22% { opacity: 1; } 76.18% { opacity: 1; } 77.12% { opacity: 0; } 100.00% { opacity: 0; } }
+.a100 { animation: a100 15.950000000000003s infinite; }
+@keyframes a100 { 0.00% { opacity: 0; } 76.18% { opacity: 0; } 77.12% { opacity: 1; } 94.98% { opacity: 1; } 95.92% { opacity: 0; } 100.00% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    [class^="a"], [class*=" a"] { animation: none !important; opacity: 1; }
+    .hl, .cap { display: none; }
+  }
+</style>
+<rect class="card" x="0.5" y="0.5" width="779" height="619" rx="8"/>
+<text x="20" y="34" class="h" text-anchor="start">pcode-emulator-rs — x86 by way of Ghidra&#x27;s P-code</text>
+<text x="20" y="54" class="m" text-anchor="start">Sleigh lifts each machine instruction into P-code ops; the emulator interprets those ops over sparse byte spaces.</text>
+<rect class="box" x="20" y="74" width="166" height="44" rx="6"/>
+<rect class="hl a0" x="20" y="74" width="166" height="44" rx="6"/>
+<text x="30" y="93" class="code sm b" text-anchor="start">tests/fib/bin</text>
+<text x="30" y="109" class="s" text-anchor="start">static i386 ELF</text>
+<rect class="box" x="211" y="74" width="166" height="44" rx="6"/>
+<rect class="hl a1" x="211" y="74" width="166" height="44" rx="6"/>
+<text x="221" y="93" class="code sm b" text-anchor="start">llvm-readobj</text>
+<text x="221" y="109" class="s" text-anchor="start">sections + symbols as JSON</text>
+<path class="edge " d="M188 96 H209" marker-end="url(#arr)"/>
+<rect class="box" x="402" y="74" width="166" height="44" rx="6"/>
+<rect class="hl a2" x="402" y="74" width="166" height="44" rx="6"/>
+<text x="412" y="93" class="code sm b" text-anchor="start">Sleigh (C++ FFI)</text>
+<text x="412" y="109" class="s" text-anchor="start">.text → P-code per address</text>
+<path class="edge " d="M379 96 H400" marker-end="url(#arr)"/>
+<rect class="box" x="593" y="74" width="166" height="44" rx="6"/>
+<rect class="hl a3" x="593" y="74" width="166" height="44" rx="6"/>
+<text x="603" y="93" class="code sm b" text-anchor="start">Emulator</text>
+<text x="603" y="109" class="s" text-anchor="start">emulate_one(pcode)</text>
+<path class="edge " d="M570 96 H591" marker-end="url(#arr)"/>
+<text x="20" y="152" class="lbl" text-anchor="start">X86  (fib, n at [ebp+8])</text>
+<rect class="rung" x="20" y="164" width="200" height="38" rx="5"/>
+<rect class="hl a4" x="20" y="164" width="200" height="38" rx="5"/>
+<text x="30" y="179" class="s" text-anchor="start">0x8049746</text>
+<text x="30" y="195" class="code sm" text-anchor="start">mov eax, [ebp+0x8]</text>
+<rect class="rung" x="20" y="208" width="200" height="38" rx="5"/>
+<rect class="hl a5" x="20" y="208" width="200" height="38" rx="5"/>
+<text x="30" y="223" class="s" text-anchor="start">0x8049749</text>
+<text x="30" y="239" class="code sm" text-anchor="start">cmp [ebp+0x8], 0x2</text>
+<rect class="rung" x="20" y="252" width="200" height="38" rx="5"/>
+<rect class="hl a6" x="20" y="252" width="200" height="38" rx="5"/>
+<text x="30" y="267" class="s" text-anchor="start">0x804974d</text>
+<text x="30" y="283" class="code sm" text-anchor="start">jge 0x804975f</text>
+<rect class="rung" x="20" y="310" width="200" height="38" rx="5"/>
+<rect class="hl a7" x="20" y="310" width="200" height="38" rx="5"/>
+<text x="30" y="325" class="s" text-anchor="start">0x804975f</text>
+<text x="30" y="341" class="code sm" text-anchor="start">mov ebx, [ebp-0xc]</text>
+<text x="20" y="306" class="s" text-anchor="start">branch target</text>
+<path class="edge a8" d="M224 271 C238 271 238 329 224 329" marker-end="url(#arr)"/>
+<text x="20" y="380" class="s" text-anchor="start">17 P-code ops for 3 instructions:</text>
+<text x="20" y="396" class="s" text-anchor="start">every x86 flag is its own op.</text>
+<text x="236" y="152" class="lbl" text-anchor="start">P-CODE  (machine.pcodes[address])</text>
+<rect class="box" x="236" y="164" width="300" height="276" rx="6"/>
+<g class="a9"><text x="248" y="185" class="code sm f">IntAdd</text><text x="340" y="185" class="code sm">$U6600 ← EBP, 0x8</text><text x="248" y="207" class="code sm f">Load</text><text x="340" y="207" class="code sm">$U17200 ← ram[$U6600]</text><text x="248" y="229" class="code sm f">Copy</text><text x="340" y="229" class="code sm">EAX ← $U17200</text></g>
+<g class="a10"><text x="248" y="185" class="code sm f">IntAdd</text><text x="340" y="185" class="code sm">$U6600 ← EBP, 0x8</text><text x="248" y="207" class="code sm f">Load</text><text x="340" y="207" class="code sm">$U17200 ← ram[$U6600]</text><text x="248" y="229" class="code sm f">Copy</text><text x="340" y="229" class="code sm">$U66100 ← $U17200</text><text x="248" y="251" class="code sm f">IntLess</text><text x="340" y="251" class="code sm">CF ← $U66100, 0x2</text><text x="248" y="273" class="code sm f">IntSBorrow</text><text x="340" y="273" class="code sm">OF ← $U66100, 0x2</text><text x="248" y="295" class="code sm f">IntSub</text><text x="340" y="295" class="code sm">$U66300 ← $U66100, 0x2</text><text x="248" y="317" class="code sm f">IntSLess</text><text x="340" y="317" class="code sm">SF ← $U66300, 0x0</text><text x="248" y="339" class="code sm f">IntEqual</text><text x="340" y="339" class="code sm">ZF ← $U66300, 0x0</text><text x="248" y="361" class="code sm f">IntAnd</text><text x="340" y="361" class="code sm">$U49800 ← $U66300, 0xFF</text><text x="248" y="383" class="code sm f">PopCount</text><text x="340" y="383" class="code sm">$U49900 ← $U49800</text><text x="248" y="405" class="code sm f">IntAnd</text><text x="340" y="405" class="code sm">$U49a00 ← $U49900, 0x1</text><text x="248" y="427" class="code sm f">IntEqual</text><text x="340" y="427" class="code sm">PF ← $U49a00, 0x0</text></g>
+<g class="a11"><text x="248" y="185" class="code sm f">IntEqual</text><text x="340" y="185" class="code sm">$U18900 ← OF, SF</text><text x="248" y="207" class="code sm f">CBranch</text><text x="340" y="207" class="code sm">→ 0x804975F if $U18900</text></g>
+<rect class="hl a12" x="240" y="170" width="292" height="20" rx="4"/>
+<rect class="hl a13" x="240" y="192" width="292" height="20" rx="4"/>
+<rect class="hl a14" x="240" y="214" width="292" height="20" rx="4"/>
+<rect class="hl a15" x="240" y="170" width="292" height="20" rx="4"/>
+<rect class="hl a16" x="240" y="192" width="292" height="20" rx="4"/>
+<rect class="hl a17" x="240" y="214" width="292" height="20" rx="4"/>
+<rect class="hl a18" x="240" y="236" width="292" height="20" rx="4"/>
+<rect class="hl a19" x="240" y="258" width="292" height="20" rx="4"/>
+<rect class="hl a20" x="240" y="280" width="292" height="20" rx="4"/>
+<rect class="hl a21" x="240" y="302" width="292" height="20" rx="4"/>
+<rect class="hl a22" x="240" y="324" width="292" height="20" rx="4"/>
+<rect class="hl a23" x="240" y="346" width="292" height="20" rx="4"/>
+<rect class="hl a24" x="240" y="368" width="292" height="20" rx="4"/>
+<rect class="hl a25" x="240" y="390" width="292" height="20" rx="4"/>
+<rect class="hl a26" x="240" y="412" width="292" height="20" rx="4"/>
+<rect class="hl a27" x="240" y="170" width="292" height="20" rx="4"/>
+<rect class="hl a28" x="240" y="192" width="292" height="20" rx="4"/>
+<text x="552" y="152" class="lbl" text-anchor="start">SPACES  (BTreeMap&lt;u64, u8&gt;)</text>
+<rect class="box" x="552" y="164" width="208" height="96" rx="6"/>
+<text x="560" y="180" class="s b" text-anchor="start">register</text>
+<text x="562" y="200" class="code sm" text-anchor="start">EAX</text>
+<text x="748" y="200.0" class="code sm a29" text-anchor="end">080EF000</text>
+<text x="748" y="200.0" class="code sm a30" text-anchor="end">0000000A</text>
+<rect class="hl a31" x="556" y="186" width="200" height="19" rx="4"/>
+<text x="562" y="220" class="code sm" text-anchor="start">EBP</text>
+<text x="748" y="220.0" class="code sm " text-anchor="end">FFFFCB94</text>
+<text x="576.0" y="242" class="s" text-anchor="middle">CF</text>
+<text x="576.0" y="256" class="code sm a32" text-anchor="middle">·</text>
+<text x="576.0" y="256" class="code sm a33" text-anchor="middle">0</text>
+<rect class="hl a34" x="558.0" y="230" width="36.0" height="30" rx="4"/>
+<text x="616.0" y="242" class="s" text-anchor="middle">OF</text>
+<text x="616.0" y="256" class="code sm a35" text-anchor="middle">·</text>
+<text x="616.0" y="256" class="code sm a36" text-anchor="middle">0</text>
+<rect class="hl a37" x="598.0" y="230" width="36.0" height="30" rx="4"/>
+<text x="656.0" y="242" class="s" text-anchor="middle">SF</text>
+<text x="656.0" y="256" class="code sm a38" text-anchor="middle">·</text>
+<text x="656.0" y="256" class="code sm a39" text-anchor="middle">0</text>
+<rect class="hl a40" x="638.0" y="230" width="36.0" height="30" rx="4"/>
+<text x="696.0" y="242" class="s" text-anchor="middle">ZF</text>
+<text x="696.0" y="256" class="code sm a41" text-anchor="middle">·</text>
+<text x="696.0" y="256" class="code sm a42" text-anchor="middle">0</text>
+<rect class="hl a43" x="678.0" y="230" width="36.0" height="30" rx="4"/>
+<text x="736.0" y="242" class="s" text-anchor="middle">PF</text>
+<text x="736.0" y="256" class="code sm a44" text-anchor="middle">·</text>
+<text x="736.0" y="256" class="code sm a45" text-anchor="middle">0</text>
+<rect class="hl a46" x="718.0" y="230" width="36.0" height="30" rx="4"/>
+<rect class="box" x="552" y="270" width="208" height="176" rx="6"/>
+<text x="560" y="286" class="s b" text-anchor="start">unique  (Sleigh temporaries)</text>
+<text x="562" y="305.5" class="code sm" text-anchor="start">$U6600</text>
+<text x="748" y="305.5" class="code sm termdim a47" text-anchor="end">·</text>
+<text x="748" y="305.5" class="code sm a48" text-anchor="end">FFFFCB9C</text>
+<text x="748" y="305.5" class="code sm a49" text-anchor="end">FFFFCB9C</text>
+<rect class="hl a50" x="556" y="292" width="200" height="18" rx="4"/>
+<rect class="hl a51" x="556" y="292" width="200" height="18" rx="4"/>
+<text x="562" y="324.5" class="code sm" text-anchor="start">$U17200</text>
+<text x="748" y="324.5" class="code sm termdim a52" text-anchor="end">·</text>
+<text x="748" y="324.5" class="code sm a53" text-anchor="end">0000000A</text>
+<text x="748" y="324.5" class="code sm a54" text-anchor="end">0000000A</text>
+<rect class="hl a55" x="556" y="311" width="200" height="18" rx="4"/>
+<rect class="hl a56" x="556" y="311" width="200" height="18" rx="4"/>
+<text x="562" y="343.5" class="code sm" text-anchor="start">$U66100</text>
+<text x="748" y="343.5" class="code sm termdim a57" text-anchor="end">·</text>
+<text x="748" y="343.5" class="code sm a58" text-anchor="end">0000000A</text>
+<rect class="hl a59" x="556" y="330" width="200" height="18" rx="4"/>
+<text x="562" y="362.5" class="code sm" text-anchor="start">$U66300</text>
+<text x="748" y="362.5" class="code sm termdim a60" text-anchor="end">·</text>
+<text x="748" y="362.5" class="code sm a61" text-anchor="end">00000008</text>
+<rect class="hl a62" x="556" y="349" width="200" height="18" rx="4"/>
+<text x="562" y="381.5" class="code sm" text-anchor="start">$U49800</text>
+<text x="748" y="381.5" class="code sm termdim a63" text-anchor="end">·</text>
+<text x="748" y="381.5" class="code sm a64" text-anchor="end">00000008</text>
+<rect class="hl a65" x="556" y="368" width="200" height="18" rx="4"/>
+<text x="562" y="400.5" class="code sm" text-anchor="start">$U49900</text>
+<text x="748" y="400.5" class="code sm termdim a66" text-anchor="end">·</text>
+<text x="748" y="400.5" class="code sm a67" text-anchor="end">01</text>
+<rect class="hl a68" x="556" y="387" width="200" height="18" rx="4"/>
+<text x="562" y="419.5" class="code sm" text-anchor="start">$U49a00</text>
+<text x="748" y="419.5" class="code sm termdim a69" text-anchor="end">·</text>
+<text x="748" y="419.5" class="code sm a70" text-anchor="end">01</text>
+<rect class="hl a71" x="556" y="406" width="200" height="18" rx="4"/>
+<text x="562" y="438.5" class="code sm" text-anchor="start">$U18900</text>
+<text x="748" y="438.5" class="code sm termdim a72" text-anchor="end">·</text>
+<text x="748" y="438.5" class="code sm a73" text-anchor="end">01</text>
+<rect class="hl a74" x="556" y="425" width="200" height="18" rx="4"/>
+<rect class="box" x="552" y="456" width="208" height="44" rx="6"/>
+<text x="560" y="472" class="s b" text-anchor="start">ram</text>
+<text x="562" y="490" class="code sm" text-anchor="start">FFFFCB9C</text>
+<text x="750" y="490" class="code sm" text-anchor="end">0A 00 00 00</text>
+<rect class="hl a75" x="556" y="476" width="200" height="20" rx="4"/>
+<rect class="hl a76" x="556" y="476" width="200" height="20" rx="4"/>
+<rect class="term" x="20" y="512" width="740" height="56" rx="6"/>
+<text x="32" y="531" class="code sm termdim a77" text-anchor="start">$ cargo run -- emulate ./tests/fib/bin</text>
+<text x="32" y="551" class="code sm termdim a78" text-anchor="start">loading section: .text</text>
+<g class="a79"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049746.00 IntAdd               - (MOV) EAX,dword ptr [EBP + 0x8]</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [9C, CB, FF, FF] to unique:6600+4</text></g>
+<g class="a80"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049746.01 Load                 - (MOV) EAX,dword ptr [EBP + 0x8]</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [A, 0, 0, 0] to unique:17200+4</text></g>
+<g class="a81"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049746.02 Copy                 - (MOV) EAX,dword ptr [EBP + 0x8]</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [A, 0, 0, 0] to EAX</text></g>
+<g class="a82"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049749.00 IntAdd               - (CMP) dword ptr [EBP + 0x8],0x2</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [9C, CB, FF, FF] to unique:6600+4</text></g>
+<g class="a83"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049749.01 Load                 - (CMP) dword ptr [EBP + 0x8],0x2</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [A, 0, 0, 0] to unique:17200+4</text></g>
+<g class="a84"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049749.02 Copy                 - (CMP) dword ptr [EBP + 0x8],0x2</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [A, 0, 0, 0] to unique:66100+4</text></g>
+<g class="a85"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049749.03 IntLess              - (CMP) dword ptr [EBP + 0x8],0x2</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [0] to CF</text></g>
+<g class="a86"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049749.04 IntSBorrow           - (CMP) dword ptr [EBP + 0x8],0x2</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [0] to OF</text></g>
+<g class="a87"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049749.05 IntSub               - (CMP) dword ptr [EBP + 0x8],0x2</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [8, 0, 0, 0] to unique:66300+4</text></g>
+<g class="a88"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049749.06 IntSLess             - (CMP) dword ptr [EBP + 0x8],0x2</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [0] to SF</text></g>
+<g class="a89"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049749.07 IntEqual             - (CMP) dword ptr [EBP + 0x8],0x2</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [0] to ZF</text></g>
+<g class="a90"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049749.08 IntAnd               - (CMP) dword ptr [EBP + 0x8],0x2</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [8, 0, 0, 0] to unique:49800+4</text></g>
+<g class="a91"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049749.09 PopCount             - (CMP) dword ptr [EBP + 0x8],0x2</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [1] to unique:49900+1</text></g>
+<g class="a92"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049749.0A IntAnd               - (CMP) dword ptr [EBP + 0x8],0x2</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [1] to unique:49a00+1</text></g>
+<g class="a93"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 08049749.0B IntEqual             - (CMP) dword ptr [EBP + 0x8],0x2</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [0] to PF</text></g>
+<g class="a94"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 0804974D.00 IntEqual             - (JGE) 0x804975f</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  wrote [1] to unique:18900+1</text></g>
+<g class="a95"><text x="32" y="534" class="code sm termt" xml:space="preserve">emulating 0804974D.01 CBranch              - (JGE) 0x804975f</text><text x="32" y="554" class="code sm termok" xml:space="preserve">  branch to 804975F</text></g>
+<text x="20" y="598" class="cap a96" text-anchor="start">llvm-readobj finds .text and the fib symbol; Sleigh lifts every instruction to P-code before anything runs …</text>
+<text x="20" y="598" class="cap a97" text-anchor="start">… mov is three ops: add the offset, load n from ram, copy it into EAX …</text>
+<text x="20" y="598" class="cap a98" text-anchor="start">… cmp is twelve: the subtraction once, then each flag computed by its own match arm …</text>
+<text x="20" y="598" class="cap a99" text-anchor="start">… and jge compares OF with SF, then CBranch returns PCodeControl::Branch.</text>
+<text x="20" y="598" class="cap a100" text-anchor="start">n = 10 ≥ 2, so the emulator jumps to 0x804975F and keeps walking fib&#x27;s P-code.</text>
+</svg>
